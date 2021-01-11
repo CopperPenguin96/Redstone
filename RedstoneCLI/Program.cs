@@ -1,5 +1,4 @@
-﻿using Redstone;
-using System;
+﻿using System;
 
 namespace RedstoneCLI
 {
@@ -7,8 +6,7 @@ namespace RedstoneCLI
 	{
 		static void Main(string[] args)
 		{
-			Server.Start();
-			Console.ReadLine();
+			Console.WriteLine("Hello World!");
 		}
 	}
 }

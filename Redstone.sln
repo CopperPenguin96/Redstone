@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redstone", "Redstone\Redstone.csproj", "{ED86C105-9DBE-4A2A-8B4B-4BA0DBC9CCC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolSharp", "ProtocolSharp\ProtocolSharp.csproj", "{F8861752-84F9-411E-BB01-708FB60F4CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedstoneCLI", "RedstoneCLI\RedstoneCLI.csproj", "{DF4FDFED-0130-43A4-B7DE-4113BA82855A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedstoneCore", "RedstoneCore\RedstoneCore.csproj", "{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redstone", "Redstone\Redstone.csproj", "{BE488691-2903-4D25-BD28-EAFF8E543039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedstoneCLI", "RedstoneCLI\RedstoneCLI.csproj", "{714D4AC9-C046-471E-ADA9-986CF50E40D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +17,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ED86C105-9DBE-4A2A-8B4B-4BA0DBC9CCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED86C105-9DBE-4A2A-8B4B-4BA0DBC9CCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED86C105-9DBE-4A2A-8B4B-4BA0DBC9CCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED86C105-9DBE-4A2A-8B4B-4BA0DBC9CCC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF4FDFED-0130-43A4-B7DE-4113BA82855A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF4FDFED-0130-43A4-B7DE-4113BA82855A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF4FDFED-0130-43A4-B7DE-4113BA82855A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF4FDFED-0130-43A4-B7DE-4113BA82855A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8861752-84F9-411E-BB01-708FB60F4CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8861752-84F9-411E-BB01-708FB60F4CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8861752-84F9-411E-BB01-708FB60F4CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8861752-84F9-411E-BB01-708FB60F4CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE488691-2903-4D25-BD28-EAFF8E543039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE488691-2903-4D25-BD28-EAFF8E543039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE488691-2903-4D25-BD28-EAFF8E543039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE488691-2903-4D25-BD28-EAFF8E543039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D3D3F965-AAFA-47C9-B241-7109F297D188}
+		SolutionGuid = {8E25CF27-D2C3-4562-9ED4-7D415CDDC80F}
 	EndGlobalSection
 EndGlobal
