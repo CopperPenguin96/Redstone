@@ -16,6 +16,14 @@ namespace ProtocolSharp.Entities
 			get => _value == null ? DefaultValue : _value;
 			set => _value = value == null ? DefaultValue : value;
 		}
+
+		public EntityMetadata()
+		{
+			if (!(Nullable.GetUnderlyingType(typeof(T)) != null))
+			{
+				Value = DefaultValue;
+			}
+		}
 	}
 
 	public class EntityMetaInt : EntityMetadata<int>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using fNbt;
 using ProtocolSharp.Chat;
+using ProtocolSharp.Entities;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
 
@@ -43,7 +44,7 @@ namespace ProtocolSharp.Entities
 				Value = _motionEffects
 			};
 
-		public EntityMetadata<VarInt> AirTicks =>
+		public EntityMetadata<VarInt> AirTicks =
 			new EntityMetadata<VarInt>
 			{
 				Index = 1,
@@ -55,7 +56,7 @@ namespace ProtocolSharp.Entities
 			AirTicks.Value = ticks;
 		}
 
-		public EntityMetadata<OptChatBuilder> CustomName =>
+		public EntityMetadata<OptChatBuilder> CustomName =
 			new EntityMetadata<OptChatBuilder>
 			{
 				Index = 2,
@@ -113,7 +114,7 @@ namespace ProtocolSharp.Entities
 			return IsCustomNameVisible.Value;
 		}
 
-		public EntityMetaBool IsSilent =>
+		public EntityMetaBool IsSilent =
 			new EntityMetaBool
 			{
 				Index = 4,
@@ -125,7 +126,7 @@ namespace ProtocolSharp.Entities
 			IsSilent.Value = silent;
 		}
 
-		public EntityMetaBool HasNoGravity =>
+		public EntityMetaBool HasNoGravity =
 			new EntityMetaBool
 			{
 				Index = 5,
@@ -137,7 +138,7 @@ namespace ProtocolSharp.Entities
 			HasNoGravity.Value = !gravity; // Set not because original is has NO gravity
 		}
 
-		public EntityMetaPose Pose =>
+		public EntityMetaPose Pose =
 			new EntityMetaPose
 			{
 				Index = 6,
@@ -299,7 +300,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -315,7 +316,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -331,7 +332,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -347,7 +348,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -364,7 +365,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -380,7 +381,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Slot);
 		}
 
-		public EntityMetadata<Slot> Slot =>
+		public EntityMetadata<Slot> Slot =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -396,7 +397,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(SpawnPosition);
 		}
 
-		public EntityMetadata<Position> SpawnPosition =>
+		public EntityMetadata<Position> SpawnPosition =
 			new EntityMetadata<Position>
 			{
 				Index = 7,
@@ -415,7 +416,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Particle);
 		}
 
-		public EntityMetaFloat Radius =>
+		public EntityMetaFloat Radius =
 			new EntityMetaFloat
 			{
 				Index = 7,
@@ -425,7 +426,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Only for mob spell particle
 		/// </summary>
-		public EntityMetadata<VarInt> Color =>
+		public EntityMetadata<VarInt> Color =
 			new EntityMetadata<VarInt>
 			{
 				Index = 8,
@@ -436,14 +437,14 @@ namespace ProtocolSharp.Entities
 		/// When set to true, the client will ignore the radius and
 		/// just show the effect as single point, not area
 		/// </summary>
-		public EntityMetaBool IgnoreRadius =>
+		public EntityMetaBool IgnoreRadius =
 			new EntityMetaBool
 			{
 				Index = 9,
 				DefaultValue = false
 			};
 
-		public EntityMetadata<Particle<object>> Particle =>
+		public EntityMetadata<Particle<object>> Particle =
 			new EntityMetadata<Particle<object>>
 			{
 				Index = 10,
@@ -463,14 +464,14 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Hooked entity ID + 1, or 0 if there is no hooked entity
 		/// </summary>
-		public EntityMetadata<VarInt> HookedID =>
+		public EntityMetadata<VarInt> HookedID =
 			new EntityMetadata<VarInt>
 			{
 				Index = 7,
 				DefaultValue = 0
 			};
 
-		public EntityMetaBool IsCatchable =>
+		public EntityMetaBool IsCatchable =
 			new EntityMetaBool
 			{
 				Index = 8,
@@ -499,7 +500,7 @@ namespace ProtocolSharp.Entities
 				Value = _critNoClip
 			};
 
-		public EntityMetaByte PiercingLevel =>
+		public EntityMetaByte PiercingLevel =
 			new EntityMetaByte
 			{
 				Index = 8,
@@ -555,7 +556,7 @@ namespace ProtocolSharp.Entities
 		/// Used for both tipped and regular arrows. If not tipped, then color is set to -1
 		/// and no tipped arrow particles are used.
 		/// </summary>
-		public EntityMetadata<VarInt> Color =>
+		public EntityMetadata<VarInt> Color =
 			new EntityMetadata<VarInt>
 			{
 				Index = 9,
@@ -577,14 +578,14 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(HasEnchantmentGlint);
 		}
 
-		public EntityMetadata<VarInt> LoyaltyLevel =>
+		public EntityMetadata<VarInt> LoyaltyLevel =
 			new EntityMetadata<VarInt>
 			{
 				Index = 9,
 				DefaultValue = 0
 			};
 
-		public EntityMetaBool HasEnchantmentGlint =>
+		public EntityMetaBool HasEnchantmentGlint =
 			new EntityMetaBool
 			{
 				Index = 10,
@@ -608,49 +609,49 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(SplashTimer);
 		}
 
-		public EntityMetadata<VarInt> TimeSinceLastHit =>
+		public EntityMetadata<VarInt> TimeSinceLastHit =
 			new EntityMetadata<VarInt>
 			{
 				Index = 7,
 				DefaultValue = 0
 			};
 
-		public EntityMetadata<VarInt> ForwardDirection =>
+		public EntityMetadata<VarInt> ForwardDirection =
 			new EntityMetadata<VarInt>
 			{
 				Index = 8,
 				DefaultValue = 1
 			};
 
-		public EntityMetaFloat DamageTaken =>
+		public EntityMetaFloat DamageTaken =
 			new EntityMetaFloat
 			{
 				Index = 9,
 				DefaultValue = 0.0f
 			};
 
-		public EntityMetadata<VarInt> Type =>
+		public EntityMetadata<VarInt> Type =
 			new EntityMetadata<VarInt>
 			{
 				Index = 10,
 				DefaultValue = (int) BoatType.Oak
 			};
 
-		public EntityMetaBool LeftPaddleTurning =>
+		public EntityMetaBool LeftPaddleTurning =
 			new EntityMetaBool
 			{
 				Index = 11,
 				DefaultValue = false
 			};
 
-		public EntityMetaBool RightPaddleTurning =>
+		public EntityMetaBool RightPaddleTurning =
 			new EntityMetaBool
 			{
 				Index = 12,
 				DefaultValue = false
 			};
 
-		public EntityMetadata<VarInt> SplashTimer =>
+		public EntityMetadata<VarInt> SplashTimer =
 			new EntityMetadata<VarInt>
 			{
 				Index = 13,
@@ -674,7 +675,7 @@ namespace ProtocolSharp.Entities
 				DefaultValue = new OptBlockPos(false)
 			};
 
-		public EntityMetaBool ShowBottom =>
+		public EntityMetaBool ShowBottom =
 			new EntityMetaBool
 			{
 				Index = 8,
@@ -696,7 +697,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Item);
 		}
 
-		public EntityMetadata<Slot> Item =>
+		public EntityMetadata<Slot> Item =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -712,7 +713,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Item);
 		}
 
-		public EntityMetadata<Slot> Item =>
+		public EntityMetadata<Slot> Item =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -728,7 +729,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(IsInvulnerable);
 		}
 
-		public EntityMetaBool IsInvulnerable =>
+		public EntityMetaBool IsInvulnerable =
 			new EntityMetaBool
 			{
 				Index = 7,
@@ -747,7 +748,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(IsShotAtAngle);
 		}
 
-		public EntityMetadata<Slot> FireworkInfo =>
+		public EntityMetadata<Slot> FireworkInfo =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -757,7 +758,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Entity ID of entity which used firework (for elytra boosting)
 		/// </summary>
-		public EntityMetadata<OptVarInt> FireworkBoosterEntityID =>
+		public EntityMetadata<OptVarInt> FireworkBoosterEntityID =
 			new EntityMetadata<OptVarInt>
 			{
 				Index = 8,
@@ -767,7 +768,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// True if shot at an angle (from a crossbow)
 		/// </summary>
-		public EntityMetaBool IsShotAtAngle =>
+		public EntityMetaBool IsShotAtAngle =
 			new EntityMetaBool
 			{
 				Index = 9,
@@ -784,14 +785,14 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Rotation);
 		}
 
-		public EntityMetadata<Slot> Item =>
+		public EntityMetadata<Slot> Item =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
 				DefaultValue = new Slot()
 			};
 
-		public EntityMetadata<VarInt> Rotation =>
+		public EntityMetadata<VarInt> Rotation =
 			new EntityMetadata<VarInt>
 			{
 				Index = 8,
@@ -808,7 +809,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Item);
 		}
 
-		public EntityMetadata<Slot> Item =>
+		public EntityMetadata<Slot> Item =
 			new EntityMetadata<Slot>
 			{
 				Index = 7,
@@ -845,7 +846,7 @@ namespace ProtocolSharp.Entities
 				Value = _handState
 			};
 
-		public EntityMetaFloat Health =>
+		public EntityMetaFloat Health =
 			new EntityMetaFloat
 			{
 				Index = 8,
@@ -855,7 +856,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Set to 0 if there is no effect
 		/// </summary>
-		public EntityMetadata<VarInt> PotionEffectColor =>
+		public EntityMetadata<VarInt> PotionEffectColor =
 			new EntityMetadata<VarInt>
 			{
 				Index = 9,
@@ -866,28 +867,28 @@ namespace ProtocolSharp.Entities
 		/// If true, reduces the number of particles generated by
 		/// potions to 1/5 the normal amount
 		/// </summary>
-		public EntityMetaBool IsPotionEffectAmbient =>
+		public EntityMetaBool IsPotionEffectAmbient =
 			new EntityMetaBool
 			{
 				Index = 10,
 				DefaultValue = false
 			};
 
-		public EntityMetadata<VarInt> ArrowsStabbed =>
+		public EntityMetadata<VarInt> ArrowsStabbed =
 			new EntityMetadata<VarInt>
 			{
 				Index = 11,
 				DefaultValue = 0
 			};
 
-		public EntityMetadata<VarInt> HealthAddedByAbsorption =>
+		public EntityMetadata<VarInt> HealthAddedByAbsorption =
 			new EntityMetadata<VarInt>
 			{
 				Index = 12,
 				DefaultValue = 0
 			};
 
-		public EntityMetadata<OptBlockPos> SleepingLocation =>
+		public EntityMetadata<OptBlockPos> SleepingLocation =
 			new EntityMetadata<OptBlockPos>
 			{
 				Index = 13,
@@ -950,14 +951,14 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(RightShoulderData);
 		}
 
-		public EntityMetaFloat AdditionalHearts =>
+		public EntityMetaFloat AdditionalHearts =
 			new EntityMetaFloat
 			{
 				Index = 14,
 				DefaultValue = 0.0f
 			};
 
-		public EntityMetadata<VarInt> Score =>
+		public EntityMetadata<VarInt> Score =
 			new EntityMetadata<VarInt>
 			{
 				Index = 15,
@@ -984,7 +985,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Set to 0 for Left, Set to 1 for Right
 		/// </summary>
-		public EntityMetaByte MainHand =>
+		public EntityMetaByte MainHand =
 			new EntityMetaByte
 			{
 				Index = 17,
@@ -994,7 +995,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Entity data for parrots
 		/// </summary>
-		public EntityMetadata<NbtCompound> LeftShoulderData =>
+		public EntityMetadata<NbtCompound> LeftShoulderData =
 			new EntityMetadata<NbtCompound>
 			{
 				Index = 18,
@@ -1004,7 +1005,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Entity data for parrots
 		/// </summary>
-		public EntityMetadata<NbtCompound> RightShoulderData =>
+		public EntityMetadata<NbtCompound> RightShoulderData =
 			new EntityMetadata<NbtCompound>
 			{
 				Index = 19,
@@ -1115,42 +1116,42 @@ namespace ProtocolSharp.Entities
 			};
 
 
-		public EntityMetadata<Rotation> HeadRotation =>
+		public EntityMetadata<Rotation> HeadRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 15,
 				DefaultValue = new Rotation(0.0f, 0.0f, 0.0f)
 			};
 
-		public EntityMetadata<Rotation> BodyRotation =>
+		public EntityMetadata<Rotation> BodyRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 16,
 				DefaultValue = new Rotation(0.0f, 0.0f, 0.0f)
 			};
 
-		public EntityMetadata<Rotation> LeftArmRotation =>
+		public EntityMetadata<Rotation> LeftArmRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 17,
 				DefaultValue = new Rotation(-10.0f, 0.0f, -10.0f)
 			};
 
-		public EntityMetadata<Rotation> RightArmRotation =>
+		public EntityMetadata<Rotation> RightArmRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 18,
 				DefaultValue = new Rotation(-15.0f, 0.0f, 10.0f)
 			};
 
-		public EntityMetadata<Rotation> LeftLegRotation =>
+		public EntityMetadata<Rotation> LeftLegRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 19,
 				DefaultValue = new Rotation(-1.0f, 0.0f, -1.0f)
 			};
 
-		public EntityMetadata<Rotation> RightLegRotation =>
+		public EntityMetadata<Rotation> RightLegRotation =
 			new EntityMetadata<Rotation>
 			{
 				Index = 20,
@@ -1314,21 +1315,21 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(HasFish);
 		}
 
-		public EntityMetadata<Position> TreasurePosition =>
+		public EntityMetadata<Position> TreasurePosition =
 			new EntityMetadata<Position>
 			{
 				Index = 15,
 				DefaultValue = new Position(0, 0, 0)
 			};
 
-		public EntityMetaBool CanFindTreasure =>
+		public EntityMetaBool CanFindTreasure =
 			new EntityMetaBool
 			{
 				Index = 16,
 				DefaultValue = false
 			};
 
-		public EntityMetaBool HasFish =>
+		public EntityMetaBool HasFish =
 			new EntityMetaBool
 			{
 				Index = 17,
@@ -1344,7 +1345,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(FromBucket);
 		}
 
-		public EntityMetaBool FromBucket =>
+		public EntityMetaBool FromBucket =
 			new EntityMetaBool
 			{
 				Index = 15,
@@ -1368,7 +1369,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Puff State (varies from 0 to 2)
 		/// </summary>
-		public EntityMetadata<VarInt> PuffState =>
+		public EntityMetadata<VarInt> PuffState =
 			new EntityMetadata<VarInt>
 			{
 				Index = 16,
@@ -1389,7 +1390,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(Variant);
 		}
 
-		public EntityMetadata<VarInt> Variant =>
+		public EntityMetadata<VarInt> Variant =
 			new EntityMetadata<VarInt>
 			{
 				Index = 16,
@@ -1405,7 +1406,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(IsBaby);
 		}
 
-		public EntityMetaBool IsBaby =>
+		public EntityMetaBool IsBaby =
 			new EntityMetaBool
 			{
 				Index = 15,
@@ -1443,7 +1444,7 @@ namespace ProtocolSharp.Entities
 				Value = _horseDetails
 			};
 
-		public EntityMetadata<OptObject<JavaUUID>> OwnerUUID =>
+		public EntityMetadata<OptObject<JavaUUID>> OwnerUUID =
 			new EntityMetadata<OptObject<JavaUUID>>
 			{
 				Index = 17,
@@ -1526,7 +1527,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Variant of horse (Color & Style)
 		/// </summary>
-		public EntityMetadata<VarInt> Variant =>
+		public EntityMetadata<VarInt> Variant =
 			new EntityMetadata<VarInt>
 			{
 				Index = 18,
@@ -1552,7 +1553,7 @@ namespace ProtocolSharp.Entities
 			MetaRegistry.Add(HasChest);
 		}
 
-		public EntityMetaBool HasChest =>
+		public EntityMetaBool HasChest =
 			new EntityMetaBool
 			{
 				Index = 18,
@@ -1579,7 +1580,7 @@ namespace ProtocolSharp.Entities
 		/// Strength in relation to number of columns of 3 slots in the llama's inventory
 		/// once a chest is equipped
 		/// </summary>
-		public EntityMetadata<VarInt> Strength =>
+		public EntityMetadata<VarInt> Strength =
 			new EntityMetadata<VarInt>
 			{
 				Index = 19,
@@ -1589,7 +1590,7 @@ namespace ProtocolSharp.Entities
 		/// <summary>
 		/// Carpet color (a dye color, or -1 if no carpet equipped)
 		/// </summary>
-		public EntityMetadata<VarInt> CarpetColor =>
+		public EntityMetadata<VarInt> CarpetColor =
 			new EntityMetadata<VarInt>
 			{
 				Index = 20,
@@ -1600,7 +1601,7 @@ namespace ProtocolSharp.Entities
 		/// Variant of lama;
 		/// 0-3
 		/// </summary>
-		public EntityMetadata<VarInt> Variant =>
+		public EntityMetadata<VarInt> Variant =
 			new EntityMetadata<VarInt>
 			{
 				Index = 21,
@@ -1623,7 +1624,1364 @@ namespace ProtocolSharp.Entities
 
 	}
 
-	
+	public class Fox : Animal // What does a Fox say?
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Type);
+			MetaRegistry.Add(FoxActions);
+			MetaRegistry.Add(FirstUUID);
+			MetaRegistry.Add(SecondUUID);
+		}
+
+		/// <summary>
+		/// Set to 0 for red, set to 1 for snow.
+		/// SetRed() and SetSnow() options available too
+		/// </summary>
+		public EntityMetadata<VarInt> Type =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0 // Red
+			};
+
+		public EntityMetaByte FoxActions =>
+			new EntityMetaByte
+			{
+				Index = 17,
+				DefaultValue = 0,
+				Value = _foxAction
+			};
+
+		public EntityMetadata<OptObject<JavaUUID>> FirstUUID =
+			new EntityMetadata<OptObject<JavaUUID>>
+			{
+				Index = 18,
+				DefaultValue = new OptObject<JavaUUID>(false)
+			};
+
+		public EntityMetadata<OptObject<JavaUUID>> SecondUUID =
+			new EntityMetadata<OptObject<JavaUUID>>
+			{
+				Index = 19,
+				DefaultValue = new OptObject<JavaUUID>(false)
+			};
+
+		private byte _foxAction = 0;
+		private const byte _isSitting = 0x01;
+		private const byte _isCrouching = 0x04;
+		private const byte _isInterested = 0x08;
+		private const byte _isPouncing = 0x10;
+		private const byte _isSleeping = 0x20;
+		private const byte _isFaceplanted = 0x40;
+		private const byte _isDefending = 0x80;
+
+		#region Fox Actions
+
+		public bool IsSitting
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isSitting);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isSitting);
+				else FlagsHelper.Unset(ref _foxAction, _isSitting);
+			}
+		}
+
+		public bool IsCrouching
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isCrouching);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isCrouching);
+				else FlagsHelper.Unset(ref _foxAction, _isCrouching);
+			}
+		}
+
+		public bool IsInterested // Foxy
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isInterested);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isInterested);
+				else FlagsHelper.Unset(ref _foxAction, _isInterested);
+			}
+		}
+
+		public bool IsPouncing
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isPouncing);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isPouncing);
+				else FlagsHelper.Unset(ref _foxAction, _isPouncing);
+			}
+		}
+
+		public bool IsSleeping
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isSleeping);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isSleeping);
+				else FlagsHelper.Unset(ref _foxAction, _isSleeping);
+			}
+		}
+
+		public bool IsFaceplanted
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isFaceplanted);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isFaceplanted);
+				else FlagsHelper.Unset(ref _foxAction, _isFaceplanted);
+			}
+		}
+
+		public bool IsDefending
+		{
+			get => FlagsHelper.IsSet(_foxAction, _isDefending);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _foxAction, _isDefending);
+				else FlagsHelper.Unset(ref _foxAction, _isDefending);
+			}
+		}
+
+		#endregion
+
+		public void SetRed()
+		{
+			Type.Value = 0;
+		}
+
+		public void SetSnow()
+		{
+			Type.Value = 1;
+		}
+
+	}
+
+	public class Ocelot : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsTrusting);
+		}
+
+		public EntityMetaBool IsTrusting =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+	}
+
+	public class Panda : Animal // Express?
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(BreedTimer);
+			MetaRegistry.Add(SneezeTimer);
+			MetaRegistry.Add(EatTimer);
+			MetaRegistry.Add(MainGene);
+			MetaRegistry.Add(HiddenGene);
+			MetaRegistry.Add(PandaAction);
+		}
+
+		/// <summary>
+		/// Set to 32 when something happens, and then count down to 0 again.
+		/// At 29 and 14 (before counting down), will play the
+		/// entity.panda.cant_breed sound event
+		/// </summary>
+		public EntityMetaInt BreedTimer =
+			new EntityMetaInt
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+
+		/// <summary>
+		/// Counts up from 0; when it hits 1 the entity.panda.pre_sneeze event plays
+		/// and when it hits 21 the entity.panda.sneeze event plays
+		/// (then sets back to 0 and the sneeze flag is cleared)
+		/// </summary>
+		public EntityMetaInt SneezeTimer =
+			new EntityMetaInt
+			{
+				Index = 17,
+				DefaultValue = 0
+			};
+
+		/// <summary>
+		/// If non-zero, counts upwards
+		/// </summary>
+		public EntityMetaInt EatTimer =
+			new EntityMetaInt
+			{
+				Index = 18,
+				DefaultValue = 0
+			};
+
+		public EntityMetaByte MainGene =
+			new EntityMetaByte
+			{
+				Index = 19,
+				DefaultValue = 0
+			};
+
+		public EntityMetaByte HiddenGene =
+			new EntityMetaByte
+			{
+				Index = 20,
+				DefaultValue = 0
+			};
+
+		private byte _pandaAction = 0;
+		private const byte _isSneezing = 0x02;
+		private const byte _isRolling = 0x04;
+		private const byte _isSitting = 0x08;
+		private const byte _isOnBack = 0x10;
+
+		public EntityMetaByte PandaAction =>
+			new EntityMetaByte
+			{
+				Index = 21,
+				DefaultValue = 0,
+				Value = _pandaAction
+			};
+
+		#region Panda Actions 
+
+		public bool IsSneezing
+		{
+			get => FlagsHelper.IsSet(_pandaAction, _isSneezing);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _pandaAction, _isSneezing);
+				else FlagsHelper.Unset(ref _pandaAction, _isSneezing);
+			}
+		}
+
+		public bool IsRolling
+		{
+			get => FlagsHelper.IsSet(_pandaAction, _isRolling);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _pandaAction, _isRolling);
+				else FlagsHelper.Unset(ref _pandaAction, _isRolling);
+			}
+		}
+
+		public bool IsSitting
+		{
+			get => FlagsHelper.IsSet(_pandaAction, _isSitting);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _pandaAction, _isSitting);
+				else FlagsHelper.Unset(ref _pandaAction, _isSitting);
+			}
+		}
+
+		public bool IsOnBack
+		{
+			get => FlagsHelper.IsSet(_pandaAction, _isOnBack);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _pandaAction, _isOnBack);
+				else FlagsHelper.Unset(ref _pandaAction, _isOnBack);
+			}
+		}
+
+		#endregion
+	}
+
+	public class Pig : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(HasSaddle);
+			MetaRegistry.Add(CarrotBoostTime);
+		}
+
+		public EntityMetaBool HasSaddle =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+
+		/// <summary>
+		/// Total time to "boost" with a carrot on a stick for
+		/// </summary>
+		public EntityMetadata<VarInt> CarrotBoostTime =
+			new EntityMetadata<VarInt>
+			{
+				Index = 17,
+				DefaultValue = 0
+			};
+	}
+
+	public class Rabbit : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Type);
+		}
+
+		public EntityMetadata<VarInt> Type =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+	}
+
+	public class Turtle : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(HomePos);
+			MetaRegistry.Add(HasEgg);
+			MetaRegistry.Add(IsLayingEgg);
+			MetaRegistry.Add(TravelPos);
+			MetaRegistry.Add(IsGoingHome);
+			MetaRegistry.Add(IsTraveling);
+		}
+
+		public EntityMetadata<Position> HomePos =
+			new EntityMetadata<Position>
+			{
+				Index = 16,
+				DefaultValue = new Position(0, 0, 0)
+			};
+
+		public EntityMetaBool HasEgg =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsLayingEgg =
+			new EntityMetaBool
+			{
+				Index = 18,
+				DefaultValue = false
+			};
+
+		public EntityMetadata<Position> TravelPos =
+			new EntityMetadata<Position>
+			{
+				Index = 19,
+				DefaultValue = new Position(0, 0, 0)
+			};
+
+		public EntityMetaBool IsGoingHome =
+			new EntityMetaBool
+			{
+				Index = 20,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsTraveling =
+			new EntityMetaBool
+			{
+				Index = 21,
+				DefaultValue = false
+			};
+	}
+
+	public class PolarBear : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsStandingUp);
+		}
+
+		public EntityMetaBool IsStandingUp =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+	}
+
+	public class Chicken : Animal // https://www.youtube.com/watch?v=W4WGQmWcrbs
+	{
+
+	}
+
+	public class Cow : Animal
+	{
+
+	}
+
+	public class Hoglin : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsImmuneToZombification);
+		}
+
+		public EntityMetaBool IsImmuneToZombification =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+	}
+
+	public class Mooshroom : Cow
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Variant);
+		}
+
+		/// <summary>
+		/// Either red or brown
+		/// </summary>
+		public EntityMetadata<string> Variant =
+			new EntityMetadata<string>
+			{
+				Index = 16,
+				DefaultValue = "red"
+			};
+
+		public void SetRed()
+		{
+			Variant.Value = "red";
+		}
+
+		public void SetBrown()
+		{
+			Variant.Value = "brown";
+		}
+
+	}
+
+	public class Sheep : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(SheepData);
+		}
+
+		private byte _sheepData = 0;
+		private const byte _colorId = 0x0F;
+		private const byte _isSheared = 0x10;
+
+		public EntityMetaByte SheepData =>
+			new EntityMetaByte
+			{
+				Index = 16,
+				DefaultValue = 0,
+				Value = _sheepData
+			};
+
+		public void SetColor(SheepColor color)
+		{
+			byte c = 0x0F;
+			FlagsHelper.Set(ref c, (byte) color);
+			FlagsHelper.Set(ref _sheepData, c);
+			// TODO ? Is this correct for changing sheep color?
+		}
+
+		public bool IsSheared
+		{
+			get => FlagsHelper.IsSet(_sheepData, _isSheared);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _sheepData, _isSheared);
+				else FlagsHelper.Unset(ref _sheepData, _isSheared);
+			}
+		}
+	}
+
+	public enum SheepColor : byte
+	{
+		White = 0,
+		Orange = 1,
+		Magenta = 2,
+		LightBlue = 3,
+		Yellow = 4,
+		Lime = 5,
+		Pink = 6,
+		Gray = 7,
+		LightGray = 8,
+		Cyan = 9,
+		Purple = 10,
+		Blue = 11,
+		Brown = 12,
+		Green = 13,
+		Red = 14,
+		Black = 15
+	}
+
+	public class Strider : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(BoostTimer);
+			MetaRegistry.Add(IsShaking);
+			MetaRegistry.Add(HasSaddle);
+		}
+
+		/// <summary>
+		/// Total time to "boost" with warped fungus on a stick for
+		/// </summary>
+		public EntityMetadata<VarInt> BoostTimer =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+
+		public EntityMetaBool IsShaking =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool HasSaddle =
+			new EntityMetaBool
+			{
+				Index = 18,
+				DefaultValue = false
+			};
+	}
+
+	public class TameableAnimal : Animal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(AnimalData);
+			MetaRegistry.Add(Owner);
+		}
+
+		private byte _animalData = 0;
+		private const byte _isSitting = 0x01;
+		private const byte _isTamed = 0x04;
+
+		public EntityMetaByte AnimalData =>
+			new EntityMetaByte
+			{
+				Index = 16,
+				DefaultValue = 0,
+				Value = _animalData
+			};
+
+		public EntityMetadata<OptObject<JavaUUID>> Owner =
+			new EntityMetadata<OptObject<JavaUUID>>
+			{
+				Index = 17,
+				DefaultValue = new OptObject<JavaUUID>(false)
+			};
+
+		public bool IsSitting
+		{
+			get => FlagsHelper.IsSet(_animalData, _isSitting);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _animalData, _isSitting);
+				else FlagsHelper.Unset(ref _animalData, _isSitting);
+			}
+		}
+
+		public bool IsTamed
+		{
+			get => FlagsHelper.IsSet(_animalData, _isTamed);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _animalData, _isTamed);
+				else FlagsHelper.Unset(ref _animalData, _isTamed);
+			}
+		}
+	}
+
+	public enum CatType
+	{
+		Tabby = 0,
+		Black = 1,
+		Red = 2,
+		Siamese = 3,
+		BritishShorthair = 4,
+		Calico = 5,
+		Persian = 6,
+		Ragdoll = 7,
+		White = 8,
+		AllBlack = 9
+	}
+
+	public class Cat : TameableAnimal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Type);
+			MetaRegistry.Add(IsLying);
+			MetaRegistry.Add(IsRelaxed);
+			MetaRegistry.Add(CollarColor);
+		}
+
+		public EntityMetadata<VarInt> Type =
+			new EntityMetadata<VarInt>
+			{
+				Index = 18,
+				DefaultValue = 1
+			};
+
+		public EntityMetaBool IsLying =
+			new EntityMetaBool
+			{
+				Index = 19,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsRelaxed =
+			new EntityMetaBool
+			{
+				Index = 20,
+				DefaultValue = false
+			};
+
+		public EntityMetadata<VarInt> CollarColor =
+			new EntityMetadata<VarInt>
+			{
+				Index = 21,
+				DefaultValue = 14
+			};
+	}
+
+	public class Wolf : TameableAnimal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsBegging);
+			MetaRegistry.Add(CollarColor);
+			MetaRegistry.Add(AngerTime);
+		}
+
+		public EntityMetaBool IsBegging =
+			new EntityMetaBool
+			{
+				Index = 18,
+				DefaultValue = false
+			};
+
+		public EntityMetadata<VarInt> CollarColor =
+			new EntityMetadata<VarInt>
+			{
+				Index = 19,
+				DefaultValue = 14
+			};
+
+		public EntityMetadata<VarInt> AngerTime =
+			new EntityMetadata<VarInt>
+			{
+				Index = 20,
+				DefaultValue = 0
+			};
+	}
+
+	public class Parrot : TameableAnimal
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Variant);
+		}
+
+		public EntityMetadata<VarInt> Variant =
+			new EntityMetadata<VarInt>
+			{
+				Index = 18,
+				DefaultValue = (int) ParrotType.RedBlue
+			};
+
+		public void SetType(ParrotType type)
+		{
+			Variant.Value = (int) type;
+		}
+	}
+
+	public enum ParrotType
+	{
+		RedBlue = 0,
+		Blue = 1,
+		Green = 2,
+		YellowBlue = 3,
+		Grey = 4
+	}
+
+	public class AbstractVillager : AgeableMob
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(HeadShakeTimer);
+		}
+
+		/// <summary>
+		/// Starts at 40, decrements each tick
+		/// </summary>
+		public EntityMetadata<VarInt> HeadShakeTimer =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+	}
+
+	public class Villager : AbstractVillager
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(VillagerData);
+		}
+
+		public EntityMetadata<VillagerData> VillagerData =
+			new EntityMetadata<VillagerData>
+			{
+				Index = 17,
+				DefaultValue = new VillagerData(VillagerType.Plains, VillagerJob.None, 1)
+			};
+	}
+
+	public class VillagerData
+	{
+		public VillagerType Type { get; set; }
+		public VillagerJob Job { get; set; }
+		public VarInt Level { get; set; }
+
+		public VillagerData(VillagerType type, VillagerJob job, VarInt level)
+		{
+			Type = type;
+			Job = job;
+			Level = level;
+		}
+	}
+
+	public enum VillagerType
+	{
+		Desert = 0,
+		Jungle = 1,
+		Plains = 2,
+		Savanna = 3,
+		Snow = 4,
+		Swamp = 5,
+		Taiga = 6
+	}
+
+	public enum VillagerJob
+	{
+		None = 0,
+		Armorer = 1,
+		Butcher = 2,
+		Cartographer = 3,
+		Cleric = 4,
+		Farmer = 5,
+		Fisherman = 6,
+		Fletcher = 7,
+		Leatherworker = 8,
+		Librarian = 9,
+		Mason = 10,
+		Nitwit = 11,
+		Shephard = 12,
+		Toolsmith = 13,
+		Weaponsmith = 14
+	}
+
+	public class WanderingTrader : AbstractVillager
+	{
+
+	}
+
+	public class AbstractGolem : PathfinderMob
+	{
+
+	}
+
+	public class IronGolem : AbstractGolem
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(GolemDetails);
+		}
+
+		private byte _golemDetails = 0;
+		private const byte _playerMade = 0x01;
+
+		public EntityMetaByte GolemDetails =>
+			new EntityMetaByte
+			{
+				Index = 15,
+				DefaultValue = 0,
+				Value = _golemDetails
+			};
+
+		public bool IsPlayerCreated
+		{
+			get => FlagsHelper.IsSet(_golemDetails, _playerMade);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _golemDetails, _playerMade);
+				else FlagsHelper.Unset(ref _golemDetails, _playerMade);
+			}
+		}
+	}
+
+	public class Shulker : AbstractGolem
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(AttachFace);
+			MetaRegistry.Add(AttachmentPos);
+			MetaRegistry.Add(ShieldHeight);
+			MetaRegistry.Add(Color);
+		}
+
+		public EntityMetadata<Direction> AttachFace =
+			new EntityMetadata<Direction>
+			{
+				Index = 15,
+				DefaultValue = Direction.Down
+			};
+
+		public EntityMetadata<OptObject<Position>> AttachmentPos =
+			new EntityMetadata<OptObject<Position>>
+			{
+				Index = 16,
+				DefaultValue = new OptObject<Position>(false)
+			};
+
+		public EntityMetaByte ShieldHeight =
+			new EntityMetaByte
+			{
+				Index = 17,
+				DefaultValue = 0
+			};
+
+		public EntityMetaByte Color =
+			new EntityMetaByte
+			{
+				Index = 18,
+				DefaultValue = (byte) SheepColor.Purple
+			};
+	}
+
+	public class Monster : PathfinderMob
+	{
+
+	}
+
+	public class BasePiglin : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsImmuneToZombification);
+		}
+
+		public EntityMetaBool IsImmuneToZombification =
+			new EntityMetaBool
+			{
+				Index = 15,
+				DefaultValue = false
+			};
+	}
+
+	public class Piglin : BasePiglin
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsBaby);
+			MetaRegistry.Add(IsChargingCrossbow);
+			MetaRegistry.Add(IsDancing);
+		}
+
+		public EntityMetaBool IsBaby =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsChargingCrossbow =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsDancing =
+			new EntityMetaBool
+			{
+				Index = 18,
+				DefaultValue = false
+			};
+	}
+
+	public class PiglinBrute : BasePiglin
+	{
+
+	}
+
+	public class Blaze : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsOnFire);
+		}
+
+		private byte _onFire = 0;
+		private const byte _fire = 0x01;
+
+		public EntityMetaByte IsOnFire =>
+			new EntityMetaByte
+			{
+				Index = 15,
+				DefaultValue = 0,
+				Value = _onFire
+			};
+
+		public bool OnFire
+		{
+			get => FlagsHelper.IsSet(_onFire, _fire);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _onFire, _fire);
+				else FlagsHelper.Unset(ref _onFire, _fire);
+			}
+		}
+	}
+
+	public class Creeper : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(State);
+			MetaRegistry.Add(IsCharged);
+			MetaRegistry.Add(IsIgnited);
+		}
+
+		/// <summary>
+		/// -1 for idle and 1 for fuse
+		/// </summary>
+		public EntityMetadata<VarInt> State =
+			new EntityMetadata<VarInt>
+			{
+				Index = 15,
+				DefaultValue = -1
+			};
+
+		public EntityMetaBool IsCharged =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsIgnited =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+	}
+
+	public class Endermite : Monster
+	{
+
+	}
+
+	public class Giant : Monster
+	{
+
+	}
+
+	public class Guardian : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsRetractingSpikes);
+			MetaRegistry.Add(TargetEID);
+		}
+
+		public EntityMetaBool IsRetractingSpikes =
+			new EntityMetaBool
+			{
+				Index = 15,
+				DefaultValue = false
+			};
+
+		public EntityMetadata<VarInt> TargetEID =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+	}
+
+	public class ElderGuardian : Guardian
+	{
+	}
+
+	public class Silverfish : Monster
+	{
+	}
+
+	public class Raider : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsCelebrating);
+		}
+
+		public EntityMetaBool IsCelebrating =
+			new EntityMetaBool
+			{
+				Index = 15, // Celebrate good times come on!
+				DefaultValue = false
+			};
+	}
+
+	public class AbstractIllager : Raider
+	{
+
+	}
+
+	public class Vindicator : AbstractIllager
+	{
+
+	}
+
+	public class Pillager : AbstractIllager
+	{
+	}
+
+	public enum IllagerSpell
+	{
+		None = 0,
+		SummonVex = 1,
+		Attack = 2,
+		Wololo = 3,
+		Disappear = 4,
+		Blindess = 5
+	}
+
+	public class SpellcasterIllager : AbstractIllager
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Spell);
+		}
+
+		public EntityMetaByte Spell =
+			new EntityMetaByte
+			{
+				Index = 16,
+				DefaultValue = (byte) IllagerSpell.None
+			};
+	}
+
+	public class Evoker : SpellcasterIllager
+	{}
+
+	public class Illusioner : SpellcasterIllager
+	{
+	}
+
+	public class Ravager : Raider
+	{
+	}
+
+	public class Witch : Raider
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsDrinkingPotion);
+		}
+
+		public EntityMetaBool IsDrinkingPotion =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+	}
+
+	public class EvokerFangs : Entity
+	{
+
+	}
+
+	public class Vex : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(VexAction);
+		}
+
+		private byte _vexAction = 0;
+		private const byte _isAttacking = 0x01;
+
+		public EntityMetaByte VexAction =>
+			new EntityMetaByte
+			{
+				Index = 15,
+				DefaultValue = 0,
+				Value = _vexAction
+			};
+
+		public bool IsAttacking
+		{
+			get => FlagsHelper.IsSet(_vexAction, _isAttacking);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _vexAction, _isAttacking);
+				else FlagsHelper.Unset(ref _vexAction, _isAttacking);
+			}
+		}
+	}
+
+	public class AbstractSkeleton : Monster
+	{
+
+	}
+
+	public class Skeleton : AbstractSkeleton
+	{
+	}
+
+	public class WitherSkeleton : AbstractSkeleton
+	{
+	}
+
+	public class Stray : AbstractSkeleton
+	{
+	}
+
+	public class Spider : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(SpiderAction);
+		}
+
+		private byte _spiderAction = 0;
+		private const byte _isClimbing = 0x01;
+
+		public EntityMetaByte SpiderAction =>
+			new EntityMetaByte
+			{
+				Index = 15,
+				DefaultValue = 0,
+				Value = _spiderAction
+			};
+
+		public bool IsClimbing
+		{
+			get => FlagsHelper.IsSet(_spiderAction, _isClimbing);
+			set
+			{
+				if (value) FlagsHelper.Set(ref _spiderAction, _isClimbing);
+				else FlagsHelper.Unset(ref _spiderAction, _isClimbing);
+			}
+		}
+	}
+
+	public class Wither : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(CenterHeadTarget);
+			MetaRegistry.Add(LeftHeadTarget);
+			MetaRegistry.Add(RightHeadTarget);
+			MetaRegistry.Add(InvulnerableTime);
+		}
+
+		public EntityMetadata<VarInt> CenterHeadTarget =
+			new EntityMetadata<VarInt>
+			{
+				Index = 15,
+				DefaultValue = 0
+			};
+
+		public EntityMetadata<VarInt> LeftHeadTarget =
+			new EntityMetadata<VarInt>
+			{
+				Index = 16,
+				DefaultValue = 0
+			};
+
+		public EntityMetadata<VarInt> RightHeadTarget =
+			new EntityMetadata<VarInt>
+			{
+				Index = 17,
+				DefaultValue = 0
+			};
+
+		public EntityMetadata<VarInt> InvulnerableTime =
+			new EntityMetadata<VarInt>
+			{
+				Index = 18,
+				DefaultValue = 0
+			};
+	}
+
+	public class Zoglin : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsBaby);
+		}
+
+		public EntityMetaBool IsBaby =
+			new EntityMetaBool
+			{
+				Index = 15,
+				DefaultValue = false
+			};
+
+	}
+
+	public class Zombie : Monster // Like some of you in the morning
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsBaby);
+			MetaRegistry.Add(IsBecomingDrowned);
+		}
+
+		public EntityMetaBool IsBaby =
+			new EntityMetaBool
+			{
+				Index = 15,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsBecomingDrowned =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+	}
+
+	public class ZombieVillager : Zombie
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsConverting);
+			MetaRegistry.Add(VillagerData);
+		}
+
+		public EntityMetaBool IsConverting =
+			new EntityMetaBool
+			{
+				Index = 18,
+				DefaultValue = false
+			};
+
+		public EntityMetadata<VillagerData> VillagerData =
+			new EntityMetadata<VillagerData>
+			{
+				Index = 19,
+				DefaultValue = new VillagerData(VillagerType.Plains, VillagerJob.None, 1)
+			};
+	}
+
+	public class Husk : Zombie
+	{
+	}
+
+	public class Drowned : Zombie
+	{
+	}
+
+	public class ZombifiedPiglin : Zombie
+	{
+	}
+
+	public class Enderman : Monster
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(CarriedBlock);
+			MetaRegistry.Add(IsScreaming);
+			MetaRegistry.Add(IsStaring);
+		}
+
+		public EntityMetadata<OptObject<VarInt>> CarriedBlock =
+			new EntityMetadata<OptObject<VarInt>>
+			{
+				Index = 15,
+				DefaultValue = new OptObject<VarInt>(false)
+			};
+
+		public EntityMetaBool IsScreaming =
+			new EntityMetaBool
+			{
+				Index = 16,
+				DefaultValue = false
+			};
+
+		public EntityMetaBool IsStaring =
+			new EntityMetaBool
+			{
+				Index = 17,
+				DefaultValue = false
+			};
+	}
+
+	public class EnderDragon : Mob
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(DragonPhase);
+		}
+
+		public EntityMetadata<VarInt> DragonPhase =
+			new EntityMetadata<VarInt>
+			{
+				Index = 15,
+				DefaultValue = 10 // hover
+			};
+	}
 	#endregion
 }
 
