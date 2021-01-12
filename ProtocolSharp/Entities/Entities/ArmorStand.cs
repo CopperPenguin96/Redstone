@@ -5,6 +5,8 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class ArmorStand : LivingEntity
 	{
+		public override EntityType Type => EntityType.ArmorStand;
+
 		public override float BoundingBoxX
 		{
 			get

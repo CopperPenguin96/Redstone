@@ -5,10 +5,20 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Fox : Animal // What does a Fox say?
 	{
+		public override EntityType Type => EntityType.Fox;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 0.7f;
+
+		public override Identifier ID => new Identifier("fox");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();
-			MetaRegistry.Add(Type);
+			MetaRegistry.Add(FurType);
 			MetaRegistry.Add(FoxActions);
 			MetaRegistry.Add(FirstUUID);
 			MetaRegistry.Add(SecondUUID);
@@ -18,7 +28,7 @@ namespace ProtocolSharp.Entities.Entities
 		/// Set to 0 for red, set to 1 for snow.
 		/// SetRed() and SetSnow() options available too
 		/// </summary>
-		public EntityMetadata<VarInt> Type =
+		public EntityMetadata<VarInt> FurType =
 			new EntityMetadata<VarInt>
 			{
 				Index = 16,
@@ -132,12 +142,12 @@ namespace ProtocolSharp.Entities.Entities
 
 		public void SetRed()
 		{
-			Type.Value = 0;
+			FurType.Value = 0;
 		}
 
 		public void SetSnow()
 		{
-			Type.Value = 1;
+			FurType.Value = 1;
 		}
 
 	}

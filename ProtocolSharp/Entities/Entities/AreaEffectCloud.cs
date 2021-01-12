@@ -4,6 +4,8 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class AreaEffectCloud : Entity
 	{
+		public override EntityType Type => EntityType.AreaEffectCloud;
+
 		public override float BoundingBoxX => 2.0f * Radius.Value;
 
 		public override float BoundingBoxY => 0.5f;

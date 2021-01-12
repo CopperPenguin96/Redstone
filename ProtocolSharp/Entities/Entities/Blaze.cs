@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class Blaze : Monster
 	{
+		public override EntityType Type => EntityType.Blaze;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 1.8f;
+
+		public override Identifier ID => new Identifier("blaze");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

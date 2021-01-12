@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Dolphin : WaterAnimal
 	{
+		public override EntityType Type => EntityType.Dolphin;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 0.6f;
+
+		public override Identifier ID => new Identifier("dolphin");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

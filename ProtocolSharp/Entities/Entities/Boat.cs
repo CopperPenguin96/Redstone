@@ -4,13 +4,23 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Boat : Entity
 	{
+		public override EntityType Type => EntityType.Boat;
+
+		public override float BoundingBoxX => 1.375f;
+
+		public override float BoundingBoxY => 0.5625f;
+
+		public override Identifier ID => new Identifier("boat");
+
+		public override bool UseWithSpawnObject => true;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();
 			MetaRegistry.Add(TimeSinceLastHit);
 			MetaRegistry.Add(ForwardDirection);
 			MetaRegistry.Add(DamageTaken);
-			MetaRegistry.Add(Type);
+			MetaRegistry.Add(WoodType);
 			MetaRegistry.Add(LeftPaddleTurning);
 			MetaRegistry.Add(RightPaddleTurning);
 			MetaRegistry.Add(SplashTimer);
@@ -37,7 +47,7 @@ namespace ProtocolSharp.Entities.Entities
 				DefaultValue = 0.0f
 			};
 
-		public EntityMetadata<VarInt> Type =
+		public EntityMetadata<VarInt> WoodType =
 			new EntityMetadata<VarInt>
 			{
 				Index = 10,

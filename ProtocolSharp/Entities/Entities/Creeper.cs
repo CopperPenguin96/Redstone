@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Creeper : Monster
 	{
+		public override EntityType Type => EntityType.Creeper;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 1.7f;
+
+		public override Identifier ID => new Identifier("creeper");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

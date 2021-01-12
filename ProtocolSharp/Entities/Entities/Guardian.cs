@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Guardian : Monster
 	{
+		public override EntityType Type => EntityType.Guardian;
+
+		public override float BoundingBoxX => 0.85f;
+
+		public override float BoundingBoxY => 0.85f;
+
+		public override Identifier ID => new Identifier("guardian");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

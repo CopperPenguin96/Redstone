@@ -4,16 +4,26 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Cat : TameableAnimal
 	{
+		public override EntityType Type => EntityType.Cat;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 0.7f;
+
+		public override Identifier ID => new Identifier("cat");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();
-			MetaRegistry.Add(Type);
+			MetaRegistry.Add(CatType);
 			MetaRegistry.Add(IsLying);
 			MetaRegistry.Add(IsRelaxed);
 			MetaRegistry.Add(CollarColor);
 		}
 
-		public EntityMetadata<VarInt> Type =
+		public EntityMetadata<VarInt> CatType =
 			new EntityMetadata<VarInt>
 			{
 				Index = 18,

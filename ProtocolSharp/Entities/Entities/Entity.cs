@@ -7,7 +7,7 @@ namespace ProtocolSharp.Entities.Entities
 	/// <summary>
 	/// Base entity
 	/// </summary>
-	public class Entity
+	public class Entity : IEntity
 	{
 		public MetaRegistry MetaRegistry = new MetaRegistry();
 

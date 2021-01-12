@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Enderman : Monster
 	{
+		public override EntityType Type => EntityType.Enderman;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 2.9f;
+
+		public override Identifier ID => new Identifier("enderman");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

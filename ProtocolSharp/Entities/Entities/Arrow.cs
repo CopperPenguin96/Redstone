@@ -4,6 +4,8 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Arrow : AbstractArrow
 	{
+		public override EntityType Type => EntityType.Arrow;
+
 		public override float BoundingBoxX => 0.5f;
 
 		public override float BoundingBoxY => 0.5f;

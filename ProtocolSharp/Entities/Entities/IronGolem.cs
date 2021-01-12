@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class IronGolem : AbstractGolem
 	{
+		public override EntityType Type => EntityType.IronGolem;
+
+		public override float BoundingBoxX => 1.4f;
+
+		public override float BoundingBoxY => 2.7f;
+
+		public override Identifier ID => new Identifier("iron_golem");
+
+		public override bool UseWithSpawnObject => true;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();
