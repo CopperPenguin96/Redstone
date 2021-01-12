@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using fNbt;
 using ProtocolSharp.Chat;
@@ -2967,6 +2968,21 @@ namespace ProtocolSharp.Entities
 			};
 	}
 
+	public enum DragonPhase
+	{
+		Circling = 0,
+		Strafing = 1, // Preparing to shoot a fireball
+		FlyingToThePortalToLand = 2, // Part of transition to landed state
+		LandingOnPortal = 3,
+		TakingOffFromPortal = 4,
+		LandedBreathAttack = 5,
+		LandedLookingForPlayer = 6,
+		LandedRoar = 7,
+		ChargingPlayer = 8,
+		FlyingToPortalToDie = 9,
+		HoveringNoAI = 10 // Default when using the /summon command
+	}
+
 	public class EnderDragon : Mob
 	{
 		public override void RegisterMetadata()
@@ -2979,9 +2995,208 @@ namespace ProtocolSharp.Entities
 			new EntityMetadata<VarInt>
 			{
 				Index = 15,
-				DefaultValue = 10 // hover
+				DefaultValue = (int) Entities.DragonPhase.HoveringNoAI
 			};
 	}
+
+	public class Flying : Monster
+	{
+	}
+
+	public class Ghast : Flying
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(IsAttacking);
+		}
+
+		public EntityMetaBool IsAttacking =
+			new EntityMetaBool
+			{
+				Index = 15,
+				DefaultValue = false
+			};
+	}
+
+	public class Phantom : Flying
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Size);
+		}
+
+		/// <summary>
+		/// Hitbox size is determined by horizontal = 0.9 + 0.2 * size and vertical = 0.5 + 0.1 * i
+		/// </summary>
+		public EntityMetadata<VarInt> Size =
+			new EntityMetadata<VarInt>
+			{
+				Index = 15,
+				DefaultValue = 0
+			};
+	}
+
+	public class Slime : Mob
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Size);
+		}
+
+		public EntityMetadata<VarInt> Size =
+			new EntityMetadata<VarInt>
+			{
+				Index = 15,
+				DefaultValue = 1
+			};
+	}
+
 	#endregion
+
+	public class LlamaSpit : Entity
+	{
+	} // Why tf?
+
+	public class AbstractMinecart : Entity
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(ShakingPower);
+			MetaRegistry.Add(ShakingDirection);
+			MetaRegistry.Add(ShakingMultiplier);
+			MetaRegistry.Add(CustomBlockIDAndDamage);
+			MetaRegistry.Add(BlockYPos);
+			MetaRegistry.Add(ShowCustomBlock);
+		}
+
+		public EntityMetadata<VarInt> ShakingPower =
+			new EntityMetadata<VarInt>
+			{
+				Index = 7,
+				DefaultValue = 0
+			};
+
+		public EntityMetadata<VarInt> ShakingDirection =
+			new EntityMetadata<VarInt>
+			{
+				Index = 8,
+				DefaultValue = 1
+			};
+
+		public EntityMetaFloat ShakingMultiplier =
+			new EntityMetaFloat
+			{
+				Index = 9,
+				DefaultValue = 0.0f
+			};
+
+		public EntityMetadata<VarInt> CustomBlockIDAndDamage =
+			new EntityMetadata<VarInt>
+			{
+				Index = 10,
+				DefaultValue = 0
+			};
+
+		/// <summary>
+		/// Custom Y POS (in 16ths of a block)
+		/// </summary>
+		public EntityMetadata<VarInt> BlockYPos =
+			new EntityMetadata<VarInt>
+			{
+				Index = 11,
+				DefaultValue = 6
+			};
+
+		public EntityMetaBool ShowCustomBlock =
+			new EntityMetaBool
+			{
+				Index = 12,
+				DefaultValue = false
+			};
+	}
+
+	public class Minecart : AbstractMinecart
+	{
+	}
+
+	public class AbstractMinecartContainer : AbstractMinecart
+	{
+	}
+
+	public class MinecartHopper : AbstractMinecartContainer
+	{
+	}
+
+	public class MinecartCheset : AbstractMinecartContainer
+	{
+	}
+
+	public class MinecartFurnace : AbstractMinecart
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(HasFuel);
+		}
+
+		public EntityMetaBool HasFuel =
+			new EntityMetaBool
+			{
+				Index = 13,
+				DefaultValue = false
+			};
+	}
+
+	public class MinecartWithExplosive : AbstractMinecart
+	{
+	}
+
+	public class MinecartSpawner : AbstractMinecart
+	{
+	}
+
+	public class MinecartCommandBlock : AbstractMinecart
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(Command);
+			MetaRegistry.Add(LastOutput);
+		}
+
+		public EntityMetadata<string> Command =
+			new EntityMetadata<string>
+			{
+				Index = 13,
+				DefaultValue = ""
+			};
+
+		public EntityMetadata<ChatBuilder> LastOutput =
+			new EntityMetadata<ChatBuilder>
+			{
+				Index = 14,
+				DefaultValue = ChatMessage.BlankMessage
+			};
+	}
+
+	public class PrimedExplosive : Entity
+	{
+		public override void RegisterMetadata()
+		{
+			base.RegisterMetadata();
+			MetaRegistry.Add(FuseTime);
+		}
+
+		public EntityMetadata<VarInt> FuseTime =
+			new EntityMetadata<VarInt>
+			{
+				Index = 7,
+				DefaultValue = 80
+			};
+	}
 }
 

@@ -6,6 +6,15 @@ namespace ProtocolSharp.Chat
 {
 	public class ChatMessage
 	{
+		public static ChatBuilder BlankMessage
+		{
+			get
+			{
+				ChatBuilder b = new ChatBuilder();
+				b.Add(new ChatPart { Text = "" });
+				return b;
+			}
+		}
 	}
 
 	public enum ChatActionType

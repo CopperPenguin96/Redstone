@@ -33,25 +33,11 @@ namespace ProtocolSharp.Entities
 		public override int Value { get; set; }
 	}
 
-	public class EntityMetaShort : EntityMetadata<short>
-	{
-		public override short DefaultValue { get; set; }
-
-		public override short Value { get; set; }
-	}
-
 	public class EntityMetaFloat : EntityMetadata<float>
 	{
 		public override float DefaultValue { get; set; }
 
 		public override float Value { get; set; }
-	}
-
-	public class EntityMetaLong : EntityMetadata<long>
-	{
-		public override long DefaultValue { get; set; }
-
-		public override long Value { get; set; }
 	}
 
 	public class EntityMetaBool : EntityMetadata<bool>
