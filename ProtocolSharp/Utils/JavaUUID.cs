@@ -18,5 +18,12 @@ namespace ProtocolSharp.Utils
 			string hex = BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
 			return hex.Insert(8, "-").Insert(13, "-").Insert(18, "-").Insert(23, "-");
 		}
+
+		public string Value { get; }
+
+		public JavaUUID(string str)
+		{
+			Value = Generate(str.ToBytes());
+		}
 	}
 }
