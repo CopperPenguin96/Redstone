@@ -1,11 +1,11 @@
-﻿using ProtocolSharp.Types;
+﻿using Org.BouncyCastle.Ocsp;
+using ProtocolSharp.Types;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class ItemFrame : Entity
 	{
 		public override EntityType Type => EntityType.ItemFrame;
-
 		public override float BoundingBoxX => 0.75f;
 
 		public override float BoundingBoxY => 0.75f;
@@ -13,6 +13,10 @@ namespace ProtocolSharp.Entities.Entities
 		public override Identifier ID => new Identifier("item_frame");
 
 		public override bool UseWithSpawnObject => true;
+
+		public Direction Orientation { get; set; }
+
+		public override int Data => (int) Orientation.Value.Value;
 
 		public override void RegisterMetadata()
 		{

@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Shulker : AbstractGolem
 	{
+		public override EntityType Type => EntityType.Shulker;
+
+		public override float BoundingBoxX => 1.0f;
+
+		public override float BoundingBoxY => 1.0f;
+
+		public override Identifier ID => new Identifier("shulker");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

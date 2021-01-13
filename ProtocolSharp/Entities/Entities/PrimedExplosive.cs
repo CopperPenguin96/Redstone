@@ -2,19 +2,18 @@
 
 namespace ProtocolSharp.Entities.Entities
 {
-	#region Arrows/Tridents
-
-	#endregion
-
-
-	#region Living Entities
-
-	#endregion
-
-	// Why tf?
-
 	public class PrimedExplosive : Entity
 	{
+		public override EntityType Type => EntityType.PrimedExplosive;
+
+		public override float BoundingBoxX => 0.98f;
+
+		public override float BoundingBoxY => 0.98f;
+
+		public override Identifier ID => new Identifier("tnt");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

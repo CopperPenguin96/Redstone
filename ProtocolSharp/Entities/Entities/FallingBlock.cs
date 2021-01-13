@@ -14,6 +14,10 @@ namespace ProtocolSharp.Entities.Entities
 
 		public override bool UseWithSpawnObject => true;
 
+		public VarInt BlockID { get; set; }
+
+		public override int Data => (int) BlockID.Value;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

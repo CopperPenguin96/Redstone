@@ -17,6 +17,8 @@ namespace ProtocolSharp.Entities.Entities
 			MetaRegistry.Add(SleepingLocation);
 		}
 
+		public byte HeadPitch { get; set; }
+
 		private byte _handState = 0;
 		private const byte _isHandActive = 0x01;
 		private const byte _activeHand = 0x02; // Unset for main, set for offhand
@@ -120,5 +122,6 @@ namespace ProtocolSharp.Entities.Entities
 				}
 			}
 		}
+
 	}
 }

@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Wither : Monster
 	{
+		public override EntityType Type => EntityType.Wither;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 3.5f;
+
+		public override Identifier ID => new Identifier("wither");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

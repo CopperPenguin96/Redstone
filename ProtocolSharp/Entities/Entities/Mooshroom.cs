@@ -1,7 +1,19 @@
-﻿namespace ProtocolSharp.Entities.Entities
+﻿using ProtocolSharp.Types;
+
+namespace ProtocolSharp.Entities.Entities
 {
 	public class Mooshroom : Cow
 	{
+		public override EntityType Type => EntityType.Mushroom;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 1.4f;
+
+		public override Identifier ID => new Identifier("mooshroom");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

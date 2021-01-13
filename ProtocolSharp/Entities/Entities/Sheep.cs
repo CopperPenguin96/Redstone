@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class Sheep : Animal
 	{
+		public override EntityType Type => EntityType.Sheep;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 1.3f;
+
+		public override Identifier ID => new Identifier("sheep");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

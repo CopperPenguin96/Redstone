@@ -1,4 +1,5 @@
-﻿using ProtocolSharp.Chat;
+﻿using System.Linq;
+using ProtocolSharp.Chat;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
 
@@ -29,6 +30,21 @@ namespace ProtocolSharp.Entities.Entities
 		public virtual EntityType Type { get; set; }
 
 		public Position Position { get; set; }
+
+		public Position Velocity { get; set; }
+
+		public virtual int Data { get; set; }
+
+		public bool HasSpecialUsePacket()
+		{
+			EntityType[] types =
+			{
+				EntityType.ExperienceOrb, EntityType.Painting,
+				EntityType.PrimedExplosive, EntityType.Player
+			};
+
+			return types.Contains(Type);
+		}
 
 		public Entity()
 		{

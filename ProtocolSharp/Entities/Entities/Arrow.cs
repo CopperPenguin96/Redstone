@@ -12,7 +12,20 @@ namespace ProtocolSharp.Entities.Entities
 
 		public override Identifier ID => new Identifier("arrow");
 
+		public override int Data => (int) ShooterID.Value + 1;
+
 		public override bool UseWithSpawnObject => true;
+
+		public VarInt ShooterID { get; private set; }
+
+		/// <summary>
+		/// Shoots the arrow
+		/// </summary>
+		/// <param name="eid">EID of the shooter</param>
+		public void Shoot(VarInt eid)
+		{
+			ShooterID = eid;
+		}
 
 		public override void RegisterMetadata()
 		{

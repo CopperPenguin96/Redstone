@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Wolf : TameableAnimal
 	{
+		public override EntityType Type => EntityType.Wolf;
+
+		public override float BoundingBoxX => 0.6f;
+
+		public override float BoundingBoxY => 0.85f;
+
+		public override Identifier ID => new Identifier("wolf");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

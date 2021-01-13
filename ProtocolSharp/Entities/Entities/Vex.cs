@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class Vex : Monster
 	{
+		public override EntityType Type => EntityType.Vex;
+
+		public override float BoundingBoxX => 0.4f;
+
+		public override float BoundingBoxY => 0.8f;
+
+		public override Identifier ID => new Identifier("vex");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

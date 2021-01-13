@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Strider : Animal
 	{
+		public override EntityType Type => EntityType.Strider;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 1.7f;
+
+		public override Identifier ID => new Identifier("strider");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

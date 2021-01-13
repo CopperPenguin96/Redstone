@@ -10,6 +10,35 @@ namespace ProtocolSharp.Types
 		public int Y { get; set; }
 		public int Z { get; set; }
 
+		private byte _pitch;
+		public byte Pitch
+		{
+			get => _pitch;
+			set
+			{
+				if (value < 1 || value > 255)
+				{
+					throw new IndexOutOfRangeException();
+				}
+
+				_pitch = value;
+			}
+		}
+
+		private byte _yaw;
+		public byte Yaw
+		{
+			get => _yaw;
+			set
+			{
+				if (value < 1 || value > 255)
+				{
+					throw new IndexOutOfRangeException();
+				}
+
+				_yaw = value;
+			}
+		}
 		public Position(int x, int y, int z)
 		{
 			X = x;

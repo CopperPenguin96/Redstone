@@ -6,11 +6,11 @@ namespace ProtocolSharp.Entities.Entities
 	{
 		public override EntityType Type => EntityType.Horse;
 
-		public override float BoundingBoxX => 0.5f;
+		public override float BoundingBoxX => 1.39648f;
 
-		public override float BoundingBoxY => 0.9f;
+		public override float BoundingBoxY => 1.6f;
 
-		public override Identifier ID => new Identifier("bat");
+		public override Identifier ID => new Identifier("horse");
 
 		public override bool UseWithSpawnObject => false;
 

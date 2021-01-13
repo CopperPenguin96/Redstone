@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class PufferFish : AbstractFish
 	{
+		public override EntityType Type => EntityType.Pufferfish;
+
+		public override float BoundingBoxX => 0.7f;
+
+		public override float BoundingBoxY => 0.7f;
+
+		public override Identifier ID => new Identifier("pufferfish");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

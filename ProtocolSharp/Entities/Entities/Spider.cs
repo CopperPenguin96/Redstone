@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class Spider : Monster
 	{
+		public override EntityType Type => EntityType.Spider;
+
+		public override float BoundingBoxX => 1.4f;
+
+		public override float BoundingBoxY => 0.9f;
+
+		public override Identifier ID => new Identifier("spider");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

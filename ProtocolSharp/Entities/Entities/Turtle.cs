@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Turtle : Animal
 	{
+		public override EntityType Type => EntityType.Turtle;
+
+		public override float BoundingBoxX => 1.2f;
+
+		public override float BoundingBoxY => 0.4f;
+
+		public override Identifier ID => new Identifier("turtle");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

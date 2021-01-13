@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class ThrownTrident : AbstractArrow
 	{
+		public override EntityType Type => EntityType.ThrownTrident;
+
+		public override float BoundingBoxX => 0.5f;
+
+		public override float BoundingBoxY => 0.5f;
+
+		public override Identifier ID => new Identifier("trident");
+
+		public override bool UseWithSpawnObject => true;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

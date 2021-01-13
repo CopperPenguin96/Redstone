@@ -4,6 +4,16 @@ namespace ProtocolSharp.Entities.Entities
 {
 	public class Llama : ChestedHorse
 	{
+		public override EntityType Type => EntityType.Llama;
+
+		public override float BoundingBoxX => 0.9f;
+
+		public override float BoundingBoxY => 1.87f;
+
+		public override Identifier ID => new Identifier("llama");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();

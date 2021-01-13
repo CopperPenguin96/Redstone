@@ -1,9 +1,20 @@
-﻿using ProtocolSharp.Utils;
+﻿using ProtocolSharp.Types;
+using ProtocolSharp.Utils;
 
 namespace ProtocolSharp.Entities.Entities
 {
 	public class Panda : Animal // Express?
 	{
+		public override EntityType Type => EntityType.Panda;
+
+		public override float BoundingBoxX => 1.3f;
+
+		public override float BoundingBoxY => 1.25f;
+
+		public override Identifier ID => new Identifier("panda");
+
+		public override bool UseWithSpawnObject => false;
+
 		public override void RegisterMetadata()
 		{
 			base.RegisterMetadata();
