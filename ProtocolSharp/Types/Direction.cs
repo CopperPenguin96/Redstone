@@ -5,6 +5,14 @@ using System.Text;
 
 namespace ProtocolSharp.Types
 {
+	public enum PaintingDirection
+	{
+		North = 2,
+		South = 0,
+		West = 1,
+		East = 3
+	}
+
 	public sealed class Direction
 	{
 		public VarInt Value { get; set; }

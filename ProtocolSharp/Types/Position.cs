@@ -79,5 +79,10 @@ namespace ProtocolSharp.Types
 
 			return new Position((int) x, (int) y, (int) z);
 		}
+
+		public int GetStreamData()
+		{
+			return ((X & 0x3FFFFFF) << 38) | ((Z & 0x3FFFFFF) << 12) | (Y & 0xFFF);
+		}
 	}
 }
