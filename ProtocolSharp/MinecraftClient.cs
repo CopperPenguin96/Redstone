@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using ProtocolSharp.Network;
+using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
 
 namespace ProtocolSharp
@@ -38,6 +39,10 @@ namespace ProtocolSharp
 		[JsonIgnore] internal byte[] SharedToken { get; set; }
 
 		public string Locale { get; set; }
+
+		public Position DiggingLocation { get; set; }
+
+		public Block
 
 		public void Disconnect(string reason = "Client Quit")
 		{

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolSharp", "ProtocolSharp\ProtocolSharp.csproj", "{F8861752-84F9-411E-BB01-708FB60F4CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProtocolSharp", "ProtocolSharp\ProtocolSharp.csproj", "{F8861752-84F9-411E-BB01-708FB60F4CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedstoneCore", "RedstoneCore\RedstoneCore.csproj", "{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedstoneCore", "RedstoneCore\RedstoneCore.csproj", "{0F0B4DE4-D961-4457-B054-EE820CE3C8B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redstone", "Redstone\Redstone.csproj", "{BE488691-2903-4D25-BD28-EAFF8E543039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redstone", "Redstone\Redstone.csproj", "{BE488691-2903-4D25-BD28-EAFF8E543039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedstoneCLI", "RedstoneCLI\RedstoneCLI.csproj", "{714D4AC9-C046-471E-ADA9-986CF50E40D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedstoneCLI", "RedstoneCLI\RedstoneCLI.csproj", "{714D4AC9-C046-471E-ADA9-986CF50E40D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockUpdater", "BlockUpdater\BlockUpdater.csproj", "{0472ACE3-7B73-4B39-AA0E-39831000D55F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{714D4AC9-C046-471E-ADA9-986CF50E40D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
