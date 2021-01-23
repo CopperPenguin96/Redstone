@@ -13,7 +13,7 @@ namespace ProtocolSharp.Packets.Play.Client
 		
 		public void Send(ref MinecraftClient client, GameStream stream)
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

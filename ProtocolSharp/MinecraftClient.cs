@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using ProtocolSharp.Entities;
 using ProtocolSharp.Network;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
+using ProtocolSharp.Worlds;
 
 namespace ProtocolSharp
 {
@@ -40,9 +42,11 @@ namespace ProtocolSharp
 
 		public string Locale { get; set; }
 
-		public Position DiggingLocation { get; set; }
+		[JsonIgnore] public Position DiggingLocation { get; set; }
 
-		public Block
+		[JsonIgnore] public Block BlockLookingAt { get; set; }
+
+		[JsonIgnore] public EntityDiggingStatus DiggingStatus { get; set; }
 
 		public void Disconnect(string reason = "Client Quit")
 		{
