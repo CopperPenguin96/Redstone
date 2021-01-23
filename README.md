@@ -9,6 +9,8 @@ Redstone is a custom 1.16.4 Minecraft JAVA EDITION server written entirely in C#
   - Will update with each new version
   - Extensible with plugins and mods
   - Easier to modify or extend the leading Minecraft server choices such a Bukkit.
+  
+  
 **You can also:** (Soon)
   - Opt in to let BEDROCK players connect
   - Opt in to let CONSOLE players connect
