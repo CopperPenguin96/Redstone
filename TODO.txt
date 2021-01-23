@@ -1,0 +1,8 @@
+=-=-=REDSTONE TODO=-=-=
+
+- Protocal Sharp
+- Config
+- Initial Server
+- Config GUI
+- Server GUI/CLI
+- Plugin/Mod support
