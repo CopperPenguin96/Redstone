@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Newtonsoft.Json.Linq;
+using ProtocolSharp.Packets.Play.Client.BlockEntityData;
 using ProtocolSharp.Types;
-using Redstone;
 
-namespace ProtocolSharp.Worlds
+namespace ProtocolSharp.Worlds.Blocks
 {
 	public class Block
 	{
 		public Identifier Id { get; set; }
 
+		public VarInt State { get; set; }
+
+		/// <summary>
+		/// Certain blocks have different things happen, protocol uses this packet here
+		/// </summary>
+		public BlockEntityData EntityDataPacket { get; set; }
+
+		public List<BlockData> Data { get; set; }
+
+		public byte DestroyStage { get; set; }
+
 		public bool IsCustom { get; }
 
 		private string _name;
+
 		public string Name
 		{
 			get => IsCustom ? _name : FindVanillaBlock(Id.Name).Name;
@@ -22,6 +32,7 @@ namespace ProtocolSharp.Worlds
 		}
 
 		private Identifier _legacy;
+
 		public Identifier LegacyId
 		{
 			get => IsCustom ? _legacy : FindVanillaBlock(Id.Name).LegacyId;
@@ -29,6 +40,7 @@ namespace ProtocolSharp.Worlds
 		}
 
 		private int _type;
+
 		public int Type
 		{
 			get => IsCustom ? _type : FindVanillaBlock(Id.Name).Type;
@@ -36,13 +48,14 @@ namespace ProtocolSharp.Worlds
 		}
 
 		private int _meta;
+
 		public int Meta
 		{
 			get => IsCustom ? _type : FindVanillaBlock(Id.Name).Meta;
 			set => _meta = value;
 		}
 
-	
+
 		/// <summary>
 		/// Use only for defining custom blocks. Should NOT be used to define vanilla blocks
 		/// </summary>
@@ -202,7 +215,13 @@ namespace ProtocolSharp.Worlds
 		public static Block Obsidian = new Block("obsidian");
 		public static Block Torch = new Block("torch");
 		public static Block Fire = new Block("fire");
-		public static Block MonsterSpawner = new Block("spawner");
+
+
+		public static Block MonsterSpawner = new Block("spawner")
+		{
+
+		};
+
 		public static Block OakWoodStairs = new Block("oak_stairs");
 		public static Block Chest = new Block("chest");
 		public static Block RedstoneWire = new Block("redstone_wire");
@@ -320,8 +339,35 @@ namespace ProtocolSharp.Worlds
 		public static Block SpruceWoodStairs = new Block("spruce_stairs");
 		public static Block BirchWoodStairs = new Block("birch_stairs");
 		public static Block JungleWoodStairs = new Block("jungle_stairs");
-		public static Block CommandBlock = new Block("command_block");
-		public static Block Beacon = new Block("beacon");
+
+		public static Block CommandBlock = new Block("command_block")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("CustomName", ""),
+				new BlockData("Command", ""),
+				new BlockData("SuccessCount", 0),
+				new BlockData("LastOutput", ""),
+				new BlockData("TrackOutput", false),
+				new BlockData("powered", false),
+				new BlockData("auto", false),
+				new BlockData("conditionMet", false),
+				new BlockData("UpdateLastExecution", false),
+				new BlockData("LastExecution", 0)
+			}
+		};
+
+		public static Block Beacon = new Block("beacon")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("Lock", ""),
+				new BlockData("Levels", 0),
+				new BlockData("Primary", 0),
+				new BlockData("Secondary", 0)
+			}
+		};
+
 		public static Block CobblestoneWall = new Block("cobblestone_wall");
 		public static Block MossyCobblestoneWall = new Block("mossy_cobblestone_wall");
 		public static Block FlowerPot = new Block("flower_pot");

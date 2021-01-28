@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using fNbt;
 using ProtocolSharp.Entities;
 using ProtocolSharp.Network;
 using ProtocolSharp.Packets;
@@ -14,7 +15,9 @@ namespace ProtocolSharp
 	public class Protocol
 	{
 		protected internal static RSACryptoServiceProvider CryptoServerProvider { get; set; }
-		
+
+		public static List<MinecraftClient> ConnectedClients = new List<MinecraftClient>();
+
 		protected internal static RSAParameters Key { get; set; }
 
 		public static bool AuthRequired { get; private set; }
@@ -131,6 +134,8 @@ namespace ProtocolSharp
 					return vI.Length;
 				case byte[] b:
 					return b.Length;
+				case NbtFile file:
+					return file.BufferSize;
 			}
 
 			throw new Exception("Unknown data type");

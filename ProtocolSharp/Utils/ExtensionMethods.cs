@@ -61,4 +61,12 @@ namespace ProtocolSharp.Utils
 			return GetString((Image)bitmap);
 		}
 	}
+
+	public static class ByteUtil
+	{
+		public static byte ToByte(this bool b)
+		{
+			return b ? (byte) 1 : (byte) 0;
+		}
+	}
 }

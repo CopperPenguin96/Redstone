@@ -5,15 +5,19 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using ProtocolSharp.Entities;
+using ProtocolSharp.Entities.Entities;
 using ProtocolSharp.Network;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
 using ProtocolSharp.Worlds;
+using ProtocolSharp.Worlds.Blocks;
 
 namespace ProtocolSharp
 {
 	public class MinecraftClient
 	{
+		public Entity Entity { get; set; }
+
 		public DateTime LoginTime { get; set; }
 
 		public DateTime LastActiveTime { get; set; }

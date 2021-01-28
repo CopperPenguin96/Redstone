@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using fNbt;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
 
@@ -463,6 +464,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
         }
 
+        public void WriteNbtFile(NbtFile nbt)
+        {
+	        if (nbt == null) throw new ArgumentNullException(nameof(nbt));
+
+	        nbt.SaveToStream(this, NbtCompression.None);
+        }
+
         public override long Position { get; set; }
 
         public void Write(object o)
@@ -508,6 +516,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 case float ft:
                     WriteFloat(ft);
                     break;
+                case NbtTag tag:
+	                NbtFile file = new NbtFile();
+	                NbtCompound comp = new NbtCompound(new [] {tag});
+	                file.RootTag = comp;
+	                WriteNbtFile(file);
+	                break;
             }
 
         }
