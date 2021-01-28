@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProtocolSharp.Entities.Entities;
 using ProtocolSharp.Packets.Play.Client.BlockEntityData;
 using ProtocolSharp.Types;
 
@@ -18,6 +19,19 @@ namespace ProtocolSharp.Worlds.Blocks
 		public BlockEntityData EntityDataPacket { get; set; }
 
 		public List<BlockData> Data { get; set; }
+
+		public object this[string name]
+		{
+			get
+			{
+				foreach (var data in Data.Where(data => string.Equals(data.Name, name, StringComparison.CurrentCultureIgnoreCase)))
+				{
+					return data.Value;
+				}
+
+				throw new IndexOutOfRangeException(nameof(name));
+			}
+		}
 
 		public byte DestroyStage { get; set; }
 
@@ -219,7 +233,18 @@ namespace ProtocolSharp.Worlds.Blocks
 
 		public static Block MonsterSpawner = new Block("spawner")
 		{
-
+			Data = new List<BlockData>
+			{
+				new BlockData(SpawnerEntityData.EntityName, new Entity()),
+				new BlockData(SpawnerEntityData.WeightName, 0),
+				new BlockData(SpawnerEntityData.SpawnCountName, 0),
+				new BlockData(SpawnerEntityData.SpawnRangeName, 4),
+				new BlockData(SpawnerEntityData.DelayName, 0),
+				new BlockData(SpawnerEntityData.MinSpawnName, 0),
+				new BlockData(SpawnerEntityData.MaxSpawnName, 0),
+				new BlockData(SpawnerEntityData.MaxNearbyEntitiesName, 0),
+				new BlockData(SpawnerEntityData.RequiredPlayerName, 0)
+			}
 		};
 
 		public static Block OakWoodStairs = new Block("oak_stairs");
@@ -344,16 +369,16 @@ namespace ProtocolSharp.Worlds.Blocks
 		{
 			Data = new List<BlockData>
 			{
-				new BlockData("CustomName", ""),
-				new BlockData("Command", ""),
-				new BlockData("SuccessCount", 0),
-				new BlockData("LastOutput", ""),
-				new BlockData("TrackOutput", false),
-				new BlockData("powered", false),
-				new BlockData("auto", false),
-				new BlockData("conditionMet", false),
-				new BlockData("UpdateLastExecution", false),
-				new BlockData("LastExecution", 0)
+				new BlockData(CommandBlockEntityData.CustomNameName, ""),
+				new BlockData(CommandBlockEntityData.CommandName, ""),
+				new BlockData(CommandBlockEntityData.SuccessCountName, 0),
+				new BlockData(CommandBlockEntityData.LastOutputName, ""),
+				new BlockData(CommandBlockEntityData.TrackOutputName, false),
+				new BlockData(CommandBlockEntityData.PoweredName, false),
+				new BlockData(CommandBlockEntityData.AutoName, false),
+				new BlockData(CommandBlockEntityData.ConditionMetName, false),
+				new BlockData(CommandBlockEntityData.UpdateLastName, false),
+				new BlockData(CommandBlockEntityData.LastName, 0)
 			}
 		};
 
@@ -361,10 +386,10 @@ namespace ProtocolSharp.Worlds.Blocks
 		{
 			Data = new List<BlockData>
 			{
-				new BlockData("Lock", ""),
-				new BlockData("Levels", 0),
-				new BlockData("Primary", 0),
-				new BlockData("Secondary", 0)
+				new BlockData(BeaconEntityData.LockName, ""),
+				new BlockData(BeaconEntityData.LevelsName, 0),
+				new BlockData(BeaconEntityData.PrimaryName, 0),
+				new BlockData(BeaconEntityData.SecondaryName, 0)
 			}
 		};
 

@@ -6,6 +6,8 @@ namespace ProtocolSharp.Entities
 {
 	public class EntityMetadata<T>
 	{
+		public string Name { get; set; }
+
 		public int Index { get; set; }
 
 		public virtual T DefaultValue { get; set; }
@@ -17,8 +19,9 @@ namespace ProtocolSharp.Entities
 			set => _value = value == null ? DefaultValue : value;
 		}
 
-		public EntityMetadata()
+		public EntityMetadata(string name)
 		{
+			if (name == null) throw new ArgumentNullException(nameof(name));
 			if (!(Nullable.GetUnderlyingType(typeof(T)) != null))
 			{
 				Value = DefaultValue;

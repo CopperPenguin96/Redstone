@@ -10,42 +10,42 @@ namespace ProtocolSharp.Packets.Play.Client.BlockEntityData
 {
 	public class CommandBlockEntityData : BlockEntityData
 	{
-		public bool HasCustomName => (string) ParentBlock.Data[0].Value != "";
+		public bool HasCustomName => (string) ParentBlock[CustomNameName] != "";
 
-		public string CustomName => (string) ParentBlock.Data[0].Value;
+		public string CustomName => (string) ParentBlock[CustomNameName];
 
-		public string Command => (string) ParentBlock.Data[1].Value;
+		public string Command => (string) ParentBlock[CommandName];
 
-		public int SuccessCount => (int) ParentBlock.Data[2].Value;
+		public int SuccessCount => (int) ParentBlock[SuccessCountName];
 
-		public string LastOutput => (string) ParentBlock.Data[3].Value;
+		public string LastOutput => (string) ParentBlock[LastOutputName];
 
-		public bool TrackOutput => (bool) ParentBlock.Data[4].Value;
+		public bool TrackOutput => (bool) ParentBlock[TrackOutputName];
 
-		public bool Powered => (bool) ParentBlock.Data[5].Value;
+		public bool Powered => (bool) ParentBlock[PoweredName];
 
-		public bool Auto => (bool) ParentBlock.Data[6].Value;
+		public bool Auto => (bool) ParentBlock[AutoName];
 
-		public bool ConditionMet => (bool) ParentBlock.Data[7].Value;
+		public bool ConditionMet => (bool) ParentBlock[ConditionMetName];
 
-		public bool UpdateLastExecution => (bool) ParentBlock.Data[8].Value;
+		public bool UpdateLastExecution => (bool) ParentBlock[UpdateLastName];
 
-		public long LastExecution => (long) ParentBlock.Data[9].Value;
+		public long LastExecution => (long) ParentBlock[LastName];
 
 		public new void Send(ref MinecraftClient client, GameStream stream)
 		{
 			NbtCompound nbt = new NbtCompound(
 				new NbtTag[]
 				{
-					new NbtString("Command", Command), 
-					new NbtInt("SuccessCount", SuccessCount),
-					new NbtString("LastOutput", LastOutput),
-					new NbtByte("TrackOutput", TrackOutput.ToByte()),
-					new NbtByte("powered", Powered.ToByte()), 
-					new NbtByte("auto", Auto.ToByte()), 
-					new NbtByte("conditionMet", ConditionMet.ToByte()), 
-					new NbtByte("UpdateLastExecution", UpdateLastExecution.ToByte()), 
-					new NbtLong("LastExecution", LastExecution)
+					new NbtString(CommandName, Command), 
+					new NbtInt(SuccessCountName, SuccessCount),
+					new NbtString(LastOutputName, LastOutput),
+					new NbtByte(TrackOutputName, TrackOutput.ToByte()),
+					new NbtByte(PoweredName, Powered.ToByte()), 
+					new NbtByte(AutoName, Auto.ToByte()), 
+					new NbtByte(ConditionMetName, ConditionMet.ToByte()), 
+					new NbtByte(UpdateLastName, UpdateLastExecution.ToByte()), 
+					new NbtLong(LastName, LastExecution)
 				});
 
 			if (HasCustomName) nbt.Add(new NbtString("CustomName", CustomName));
@@ -58,5 +58,20 @@ namespace ProtocolSharp.Packets.Play.Client.BlockEntityData
 		public CommandBlockEntityData(Block parent) : base(parent)
 		{
 		}
+
+		#region Constants
+
+		public const string CustomNameName = "CustomName";
+		public const string CommandName = "Command";
+		public const string SuccessCountName = "SuccessCount";
+		public const string LastOutputName = "LastOutput";
+		public const string TrackOutputName = "TrackOutput";
+		public const string PoweredName = "powered";
+		public const string AutoName = "auto";
+		public const string ConditionMetName = "conditionMet";
+		public const string UpdateLastName = "UpdateLastExecution";
+		public const string LastName = "LastExecution";
+
+		#endregion
 	}
 }

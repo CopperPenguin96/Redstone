@@ -10,8 +10,19 @@ namespace ProtocolSharp.Entities.Entities
 	/// </summary>
 	public class Entity : IEntity
 	{
+		/// <summary>
+		/// Basic Entity object
+		/// </summary>
+		public static readonly Entity Basic = new Entity();
+
+		/// <summary>
+		/// Registry for all Entity Metadata
+		/// </summary>
 		public MetaRegistry MetaRegistry = new MetaRegistry();
 
+		/// <summary>
+		/// Entity ID
+		/// </summary>
 		public VarInt EID { get; set; }
 
 		public JavaUUID UniqueID { get; internal set; }
@@ -48,7 +59,7 @@ namespace ProtocolSharp.Entities.Entities
 
 		public Entity()
 		{
-			UniqueID = new JavaUUID(ID.ToString());
+			UniqueID = new JavaUUID();
 		}
 
 		/// <summary>
