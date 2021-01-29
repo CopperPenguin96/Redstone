@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using fNbt;
 using ProtocolSharp.Chat;
 using ProtocolSharp.Types;
 using ProtocolSharp.Utils;
@@ -45,6 +46,66 @@ namespace ProtocolSharp.Entities.Entities
 		public Position Velocity { get; set; }
 
 		public virtual int Data { get; set; }
+
+		/// <summary>
+		/// Distance the entity has fallen. Larger values cause more damage when the entity lands
+		/// </summary>
+		public float FallDistance { get; set; }
+
+		/// <summary>
+		/// Number of ticks before the fire is put out. Negative values reflect how long the
+		/// entity can stand in fire before burning. Default -20 when not on fire
+		/// </summary>
+		public short FireTicks { get; set; } = -20;
+
+		public bool OnGround { get; set; }
+
+		public virtual bool Invulnerable { get; set; }
+
+		public int PortalCooldown { get; set; } = 300;
+
+		private NbtCompound _nbt = new NbtCompound();
+		public virtual NbtCompound Nbt
+		{
+			get
+			{
+				_nbt = new NbtCompound
+				{
+					new NbtString("id", EID.Value.ToString()),
+					new NbtList("Pos",
+						new []
+						{
+							new NbtDouble("X", Position.X), 
+							new NbtDouble("Y", Position.Y),
+							new NbtDouble("Z", Position.Z)
+						}),
+					new NbtList("Motion",
+						new []
+						{
+							new NbtDouble("dX", Velocity.X),
+							new NbtDouble("dY", Velocity.Y),
+							new NbtDouble("dZ", Velocity.Z)
+						}),
+					new NbtList("Rotation",
+						new[]
+						{
+							new NbtFloat("yaw", Position.Yaw),
+							new NbtFloat("pitch", Position.Pitch)
+						}),
+					new NbtFloat("FallDistance", FallDistance),
+					new NbtShort("Fire", FireTicks),
+					new NbtShort("Air", (short) AirTicks.Value.Value),
+					new NbtByte("OnGround", OnGround.ToByte()),
+					new NbtByte("NoGravity", HasNoGravity.Value.ToByte()),
+					new NbtByte("Invulnerable", Invulnerable.ToByte()),
+					new NbtInt("PortalCooldown", PortalCooldown),
+					// TODO : convert UUID to 4 32-bit integers... how?
+				};
+				
+
+				return t;
+			}
+		}
 
 		public bool HasSpecialUsePacket()
 		{

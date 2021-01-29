@@ -36,5 +36,6 @@ namespace ProtocolSharp.Entities.Entities
 				DefaultValue = false
 			};
 
+		public override bool Invulnerable => IsInvulnerable.Value;
 	}
 }
