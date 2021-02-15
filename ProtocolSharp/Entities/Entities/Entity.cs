@@ -64,6 +64,10 @@ namespace ProtocolSharp.Entities.Entities
 
 		public int PortalCooldown { get; set; } = 300;
 
+		public Entity Rider { get; set; }
+
+		public NbtList ScoreboardTags { get; set; }
+
 		private NbtCompound _nbt = new NbtCompound();
 		public virtual NbtCompound Nbt
 		{
@@ -98,12 +102,35 @@ namespace ProtocolSharp.Entities.Entities
 					new NbtByte("OnGround", OnGround.ToByte()),
 					new NbtByte("NoGravity", HasNoGravity.Value.ToByte()),
 					new NbtByte("Invulnerable", Invulnerable.ToByte()),
-					new NbtInt("PortalCooldown", PortalCooldown),
-					// TODO : convert UUID to 4 32-bit integers... how?
+					new NbtIntArray("UUID", UniqueID.Get()),
+					new NbtByte("Silent", IsSilent.Value.ToByte()),
+					new NbtByte("Glowing", HasGlowingEffect.ToByte()),
+					ScoreboardTags
 				};
-				
 
-				return t;
+				if (CustomNameVisible())
+				{
+					_nbt.Add(new NbtString("CustomName",
+						CustomName.Value.Chat.FullObject.ToString()));
+					_nbt.Add(new NbtByte("CustomNameVisible", 1));
+				}
+				else
+				{
+					_nbt.Add(new NbtByte("CustomNameVisible", 0));
+				}
+
+				if (Rider != null)
+				{
+					NbtList riderData = new NbtList("Passengers");
+					foreach (NbtTag tag in Rider.Nbt)
+					{
+						riderData.Add(tag);
+					}
+
+					_nbt.Add(riderData);
+				}
+
+				return _nbt;
 			}
 		}
 

@@ -5262,5 +5262,35 @@
     "name": "red_banner",
     "text_type": "red_banner",
     "legacy_type": null
+  },
+  {
+    "type": 700,
+    "meta": 0, 
+    "name": "Bamboo",
+    "text_type": "bamboo"
+  },
+  {
+    "type": 701,
+    "meta": 0,
+    "name": "Bamboo Shoot",
+    "text_type": "bambo_sapling"
+  },
+  {
+    "type": 702,
+    "meta": 0,
+    "name": "Barrel",
+    "text_type": "barrel"
+  },
+  {
+    "type": 703,
+    "meta": 0,
+    "name": "Beehive",
+    "text_type": "beehive"
+  },
+  {
+    "type": 704,
+    "meta": 0,
+    "name": "Bell",
+    "text_type": "bell" 
   }
 ]

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProtocolSharp.Entities;
 using ProtocolSharp.Entities.Entities;
 using ProtocolSharp.Packets.Play.Client.BlockEntityData;
 using ProtocolSharp.Types;
+using ProtocolSharp.Worlds.Blocks.States;
 
 namespace ProtocolSharp.Worlds.Blocks
 {
@@ -17,6 +19,8 @@ namespace ProtocolSharp.Worlds.Blocks
 		/// Certain blocks have different things happen, protocol uses this packet here
 		/// </summary>
 		public BlockEntityData EntityDataPacket { get; set; }
+
+		public int Hardness { get; set; }
 
 		public List<BlockData> Data { get; set; }
 
@@ -95,6 +99,22 @@ namespace ProtocolSharp.Worlds.Blocks
 			if (id == null) throw new ArgumentNullException(nameof(id));
 			Id = new Identifier("minecraft", id);
 			IsCustom = false;
+			FillData();
+		}
+
+		/// <summary>
+		/// Updates all data with data found in json.
+		/// Used for when the constructor is called with just the ID
+		/// </summary>
+		private void FillData()
+		{
+			foreach (var b in BlockRegistry.Blocks.Where(b => b.Id == Id))
+			{
+				LegacyId = b.LegacyId;
+				Meta = b.Meta;
+				Type = b.Type;
+				Name = b.Name;
+			}
 		}
 
 		public static Block FindVanillaBlock(string id)
@@ -393,14 +413,33 @@ namespace ProtocolSharp.Worlds.Blocks
 			}
 		};
 
-		public static Block CobblestoneWall = new Block("cobblestone_wall");
-		public static Block MossyCobblestoneWall = new Block("mossy_cobblestone_wall");
+		public class Wall : Block
+		{
+			public Wall(string id) : base(id)
+			{
+				Data = new List<BlockData>
+				{
+					new BlockData("facing", Direction.North)
+				};
+			}
+		}
+
+		public static Wall CobblestoneWall = new Wall("cobblestone_wall");
+		public static Wall MossyCobblestoneWall = new Wall("mossy_cobblestone_wall");
 		public static Block FlowerPot = new Block("flower_pot");
 		public static Block Carrots = new Block("carrots");
 		public static Block Potatoes = new Block("potatoes");
 		public static Block WoodenButton = new Block("oak_button");
 		public static Block MobHead = new Block("skull");
-		public static Block Anvil = new Block("anvil");
+
+		public static Block Anvil = new Block("anvil")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("facing", Direction.North)
+			}
+		};
+
 		public static Block TrappedChest = new Block("trapped_chest");
 		public static Block WeightedPressurePlateLight = new Block("light_weighted_pressure_plate");
 		public static Block WeightedPressurePlateHeavy = new Block("heavy_weighted_pressure_plate");
@@ -520,7 +559,15 @@ namespace ProtocolSharp.Worlds.Blocks
 		public static Block PurpurDoubleSlab = new Block("purpur_double_slab");
 		public static Block PurpurSlab = new Block("purpur_slab");
 		public static Block EndStoneBricks = new Block("end_stone_bricks");
-		public static Block BeetrootBlock = new Block("beetroots");
+
+		public static Block BeetrootBlock = new Block("beetroots")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("age", BeetrootAge.New)
+			}
+		};
+
 		public static Block GrassPath = new Block("grass_path");
 		public static Block EndGateway = new Block("end_gateway");
 		public static Block RepeatingCommandBlock = new Block("repeating_command_block");
@@ -786,7 +833,7 @@ namespace ProtocolSharp.Worlds.Blocks
 		public static Block SpawnParrot = new Block("spawn_egg");
 		public static Block SpawnVillager = new Block("villager_spawn_egg");
 		public static Block BottleEnchanting = new Block("experience_bottle");
-public static Block FireCharge = new Block("fire_charge");
+		public static Block FireCharge = new Block("fire_charge");
 		public static Block BookandQuill = new Block("writable_book");
 		public static Block WrittenBook = new Block("written_book");
 		public static Block Emerald = new Block("emerald");
@@ -841,7 +888,7 @@ public static Block FireCharge = new Block("fire_charge");
 		public static Block BeetrootSeeds = new Block("beetroot_seeds");
 		public static Block BeetrootSoup = new Block("beetroot_soup");
 		public static Block DragonsBreath = new Block("dragon_breath");
-public static Block SplashPotion = new Block("splash_potion");
+		public static Block SplashPotion = new Block("splash_potion");
 		public static Block SpectralArrow = new Block("spectral_arrow");
 		public static Block TippedArrow = new Block("tipped_arrow");
 		public static Block LingeringPotion = new Block("lingering_potion");
@@ -871,6 +918,20 @@ public static Block SplashPotion = new Block("splash_potion");
 		public static Block SmoothStone = new Block("smooth_stone");
 		public static Block ChippedAnvil = new Block("chipped_anvil");
 		public static Block DamagedAnvil = new Block("damaged_anvil");
+
+		public class BaseBed : Block
+		{
+			public BaseBed(string id) : base(id)
+			{
+				Data = new List<BlockData>
+				{
+					new BlockData("facing", Direction.North),
+					new BlockData("occupied", false),
+					new BlockData("part", SkinPart.Foot)
+				};
+			}
+		}
+
 		public static Block OrangeBed = new Block("orange_bed");
 		public static Block MagentaBed = new Block("magenta_bed");
 		public static Block LightBlueBed = new Block("light_blue_bed");
@@ -886,23 +947,80 @@ public static Block SplashPotion = new Block("splash_potion");
 		public static Block GreenBed = new Block("green_bed");
 		public static Block RedBed = new Block("red_bed");
 		public static Block BlackBed = new Block("black_bed");
-		public static Block WhiteBanner = new Block("white_banner");
-		public static Block OrangeBanner = new Block("orange_banner");
-		public static Block MagnetaBanner = new Block("magneta_banner");
-		public static Block LightBlueBanner = new Block("light_blue_banner");
-		public static Block YellowBanner = new Block("yellow_banner");
-		public static Block LimeBanner = new Block("lime_banner");
-		public static Block PinkBanner = new Block("pink_banner");
-		public static Block GrayBanner = new Block("gray_banner");
-		public static Block LightGrayBanner = new Block("light_gray_banner");
-		public static Block CyanBanner = new Block("cyan_banner");
-		public static Block PurpleBanner = new Block("purple_banner");
-		public static Block BlueBanner = new Block("blue_banner");
-		public static Block BrownBanner = new Block("brown_banner");
-		public static Block GreenBanner = new Block("green_banner");
-		public static Block RedBanner = new Block("red_banner");
 
+		public class BaseBanner : Block
+		{
+			public BaseBanner(string id) : base(id)
+			{
+				Data = new List<BlockData>
+				{
+					new BlockData("rotation", BannerRotation.South)
+				};
+			}
+		}
 
+		public static BaseBanner WhiteBanner = new BaseBanner("white_banner");
+		public static BaseBanner OrangeBanner = new BaseBanner("orange_banner");
+		public static BaseBanner MagnetaBanner = new BaseBanner("magneta_banner");
+		public static BaseBanner LightBlueBanner = new BaseBanner("light_blue_banner");
+		public static BaseBanner YellowBanner = new BaseBanner("yellow_banner");
+		public static BaseBanner LimeBanner = new BaseBanner("lime_banner");
+		public static BaseBanner PinkBanner = new BaseBanner("pink_banner");
+		public static BaseBanner GrayBanner = new BaseBanner("gray_banner");
+		public static BaseBanner LightGrayBanner = new BaseBanner("light_gray_banner");
+		public static BaseBanner CyanBanner = new BaseBanner("cyan_banner");
+		public static BaseBanner PurpleBanner = new BaseBanner("purple_banner");
+		public static BaseBanner BlueBanner = new BaseBanner("blue_banner");
+		public static BaseBanner BrownBanner = new BaseBanner("brown_banner");
+		public static BaseBanner GreenBanner = new BaseBanner("green_banner");
+		public static BaseBanner RedBanner = new BaseBanner("red_banner");
+
+		public static Block Bamboo = new Block("bamboo")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("age", 0),
+				new BlockData("leaves", BambooLeaves.None),
+				new BlockData("stage", 0)
+			}
+		};
+
+		public static Block BambooShoot = new Block("bamboo_sapling")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("age_bit", false),
+				new BlockData("sapling_type", SaplingType.Oak)
+			}
+		};
+
+		public static Block Barrel = new Block("barrel")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("facing", Direction.North),
+				new BlockData("open", false)
+			}
+		};
+
+		public static Block Beehive = new Block("beehive")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("facing", Direction.North),
+				new BlockData("honey_level", 0)
+			}
+		};
+
+		public static Block Bell = new Block("bell")
+		{
+			Data = new List<BlockData>
+			{
+				new BlockData("attachment", BellAttachment.Floor),
+				new BlockData("facing", Direction.North),
+				new BlockData("powered", false)
+			}
+		};
 		#endregion
 	}
 }

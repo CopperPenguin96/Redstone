@@ -19,14 +19,6 @@ namespace ProtocolSharp.Entities
 			set => _value = value == null ? DefaultValue : value;
 		}
 
-		public EntityMetadata(string name)
-		{
-			if (name == null) throw new ArgumentNullException(nameof(name));
-			if (!(Nullable.GetUnderlyingType(typeof(T)) != null))
-			{
-				Value = DefaultValue;
-			}
-		}
 	}
 
 	public class EntityMetaInt : EntityMetadata<int>
@@ -34,10 +26,6 @@ namespace ProtocolSharp.Entities
 		public override int DefaultValue { get; set; }
 
 		public override int Value { get; set; }
-
-		public EntityMetaInt(string name) : base(name)
-		{
-		}
 	}
 
 	public class EntityMetaFloat : EntityMetadata<float>
@@ -45,10 +33,6 @@ namespace ProtocolSharp.Entities
 		public override float DefaultValue { get; set; }
 
 		public override float Value { get; set; }
-
-		public EntityMetaFloat(string name) : base(name)
-		{
-		}
 	}
 
 	public class EntityMetaBool : EntityMetadata<bool>
@@ -56,10 +40,6 @@ namespace ProtocolSharp.Entities
 		public override bool DefaultValue { get; set; }
 
 		public override bool Value { get; set; }
-
-		public EntityMetaBool(string name) : base(name)
-		{
-		}
 	}
 
 	public class EntityMetaByte : EntityMetadata<byte>
@@ -67,10 +47,6 @@ namespace ProtocolSharp.Entities
 		public override byte DefaultValue { get; set; }
 
 		public override byte Value { get; set; }
-
-		public EntityMetaByte(string name) : base(name)
-		{
-		}
 	}
 
 	public class EntityMetaPose : EntityMetadata<EntityPose>
@@ -78,10 +54,20 @@ namespace ProtocolSharp.Entities
 		public override EntityPose DefaultValue { get; set; }
 
 		public override EntityPose Value { get; set; }
+	}
 
-		public EntityMetaPose(string name) : base(name)
-		{
-		}
+	public class EntityMetaShort : EntityMetadata<short>
+	{
+		public override short DefaultValue { get; set; }
+
+		public override short Value { get; set; }
+	}
+
+	public class EntityMetaLong : EntityMetadata<long>
+	{
+		public override long DefaultValue { get; set; }
+
+		public override long Value { get; set; }
 	}
 }
 

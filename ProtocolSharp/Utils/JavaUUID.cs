@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using ProtocolSharp.Network;
 
 namespace ProtocolSharp.Utils
 {
@@ -30,6 +32,22 @@ namespace ProtocolSharp.Utils
 		public static JavaUUID Create(string str)
 		{
 			return new JavaUUID {Bytes = Generate(str.ToBytes())};
+		}
+
+		/// <summary>
+		/// NBT requires a 4 integer array representation of the UUID.
+		/// </summary>
+		/// <returns>A 4 integer array representing the UUID</returns>
+		public int[] Get()
+		{
+			GameStream stream = new GameStream(new MemoryStream(Bytes));
+			return new[] // Utilize GameStream to read a UUID as an int[]
+			{
+				stream.ReadInt(),
+				stream.ReadInt(),
+				stream.ReadInt(),
+				stream.ReadInt()
+			};
 		}
 
 		public Guid ToGuid()
