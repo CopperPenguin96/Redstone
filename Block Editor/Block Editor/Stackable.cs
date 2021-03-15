@@ -8,13 +8,24 @@ namespace Block_Editor
 {
 	public class Stackable
 	{
+		public const short Max = 64;
 		public bool Is { get; set; }
 
 		private short _count = 1;
 		public short Count
 		{
-			get => Is ? _count : (short) -1;
-			set => _count = value;
+			get
+			{
+				if (Is)
+				{
+					return _count > Max ? Max : _count;
+				}
+				else
+				{
+					return (short) -1;
+				}
+			}
+			set => _count = value > 64 ? (short) 64 : value;
 		}
 
 		public Stackable(bool stackable, short count)

@@ -6,16 +6,5 @@ using System.Threading.Tasks;
 
 namespace Block_Editor
 {
-	public enum ToolType
-	{
-		Default,
-		Wooden,
-		Stone,
-		Iron,
-		Diamond,
-		Netherite,
-		Golden,
-		Shears,
-		Sword
-	}
+	public enum ToolForm { Hand, Axe, Pickaxe, Hoe, Shovel }
 }

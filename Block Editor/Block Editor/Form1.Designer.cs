@@ -60,7 +60,6 @@
 			this.btnSpot1 = new System.Windows.Forms.Button();
 			this.cboLavaFlam = new System.Windows.Forms.CheckBox();
 			this.cboFlammable = new System.Windows.Forms.CheckBox();
-			this.cboTransparent = new System.Windows.Forms.CheckBox();
 			this.cboLum = new System.Windows.Forms.CheckBox();
 			this.numHardness = new System.Windows.Forms.NumericUpDown();
 			this.lblHardness = new System.Windows.Forms.Label();
@@ -92,6 +91,8 @@
 			this.cboStackable = new System.Windows.Forms.CheckBox();
 			this.txtName = new System.Windows.Forms.TextBox();
 			this.lblName = new System.Windows.Forms.Label();
+			this.cboTransparency = new System.Windows.Forms.ComboBox();
+			this.lblTransparency = new System.Windows.Forms.Label();
 			this.gboBlockEditor.SuspendLayout();
 			this.gboCraftRecipe.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -156,6 +157,8 @@
 			// 
 			// gboBlockEditor
 			// 
+			this.gboBlockEditor.Controls.Add(this.lblTransparency);
+			this.gboBlockEditor.Controls.Add(this.cboTransparency);
 			this.gboBlockEditor.Controls.Add(this.chkBaseType);
 			this.gboBlockEditor.Controls.Add(this.lblBase);
 			this.gboBlockEditor.Controls.Add(this.cboBaseType);
@@ -168,7 +171,6 @@
 			this.gboBlockEditor.Controls.Add(this.gboCraftRecipe);
 			this.gboBlockEditor.Controls.Add(this.cboLavaFlam);
 			this.gboBlockEditor.Controls.Add(this.cboFlammable);
-			this.gboBlockEditor.Controls.Add(this.cboTransparent);
 			this.gboBlockEditor.Controls.Add(this.cboLum);
 			this.gboBlockEditor.Controls.Add(this.numHardness);
 			this.gboBlockEditor.Controls.Add(this.lblHardness);
@@ -437,20 +439,10 @@
 			this.cboFlammable.Text = "Flammable";
 			this.cboFlammable.UseVisualStyleBackColor = true;
 			// 
-			// cboTransparent
-			// 
-			this.cboTransparent.AutoSize = true;
-			this.cboTransparent.Location = new System.Drawing.Point(326, 219);
-			this.cboTransparent.Name = "cboTransparent";
-			this.cboTransparent.Size = new System.Drawing.Size(83, 17);
-			this.cboTransparent.TabIndex = 19;
-			this.cboTransparent.Text = "Transparent";
-			this.cboTransparent.UseVisualStyleBackColor = true;
-			// 
 			// cboLum
 			// 
 			this.cboLum.AutoSize = true;
-			this.cboLum.Location = new System.Drawing.Point(251, 219);
+			this.cboLum.Location = new System.Drawing.Point(435, 242);
 			this.cboLum.Name = "cboLum";
 			this.cboLum.Size = new System.Drawing.Size(69, 17);
 			this.cboLum.TabIndex = 18;
@@ -747,6 +739,27 @@
 			this.lblName.TabIndex = 0;
 			this.lblName.Text = "Name";
 			// 
+			// cboTransparency
+			// 
+			this.cboTransparency.FormattingEnabled = true;
+			this.cboTransparency.Items.AddRange(new object[] {
+            "True",
+            "False",
+            "Partial"});
+			this.cboTransparency.Location = new System.Drawing.Point(340, 216);
+			this.cboTransparency.Name = "cboTransparency";
+			this.cboTransparency.Size = new System.Drawing.Size(147, 21);
+			this.cboTransparency.TabIndex = 32;
+			// 
+			// lblTransparency
+			// 
+			this.lblTransparency.AutoSize = true;
+			this.lblTransparency.Location = new System.Drawing.Point(249, 221);
+			this.lblTransparency.Name = "lblTransparency";
+			this.lblTransparency.Size = new System.Drawing.Size(52, 13);
+			this.lblTransparency.TabIndex = 33;
+			this.lblTransparency.Text = "Hardness";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -822,7 +835,6 @@
 		private System.Windows.Forms.Label lblBlast;
 		private System.Windows.Forms.NumericUpDown numHardness;
 		private System.Windows.Forms.Label lblHardness;
-		private System.Windows.Forms.CheckBox cboTransparent;
 		private System.Windows.Forms.CheckBox cboLum;
 		private System.Windows.Forms.CheckBox cboFlammable;
 		private System.Windows.Forms.CheckBox cboLavaFlam;
@@ -849,6 +861,8 @@
 		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Button btnAddRecipe;
 		private System.Windows.Forms.Button btnDeleteRecipe;
+		private System.Windows.Forms.Label lblTransparency;
+		private System.Windows.Forms.ComboBox cboTransparency;
 	}
 }
 

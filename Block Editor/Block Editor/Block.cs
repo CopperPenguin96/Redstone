@@ -14,7 +14,9 @@ namespace Block_Editor
 
 		public virtual bool IsBaseType { get; set; }
 
-		public virtual Form1.ToolForm ToolRequired { get; set; }
+		public virtual ToolForm ToolRequired { get; set; }
+
+		public virtual ToolType[] DoesNotDrop { get; set; }
 
 		public virtual List<BreakingTime> BreakingTimes { get; set; }
 
@@ -24,11 +26,15 @@ namespace Block_Editor
 
 		public virtual bool Luminant { get; set; }
 
-		public virtual bool Transparent { get; set; }
+		public virtual Transparency Transparent { get; set; }
 
 		public virtual bool Flammable { get; set; }
 
+		public virtual bool NetherFlammable { get; set; }
+
 		public virtual bool LavaFlammable { get; set; }
+
+		public virtual bool NetherLavaFlammable { get; set; }
 
 		public virtual List<string[,]> CraftRecipe { get; set; }
 

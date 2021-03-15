@@ -32,6 +32,24 @@ namespace Block_Editor
 					cboBaseType.Items.Add(b.Name);                       
 				}
 			}
+
+			if (!File.Exists("last_block.txt"))
+			{
+				var writer = File.CreateText("last_block.txt");
+				writer.Write("None");
+				writer.Flush();
+				writer.Close();
+			}
+			else
+			{
+				string lastBlock = File.ReadAllLines("last_block.txt")[0];
+				if (lastBlock != "None")
+				{
+					MessageBox.Show("Last Block edited: " + lastBlock);
+				}
+			}
+
+			cboTransparency.SelectedIndex = 1;
 		}
 		
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -117,7 +135,18 @@ namespace Block_Editor
 			numBlast.Value = (decimal) block.BlastResistance;
 			numHardness.Value = (decimal) block.Hardness;
 			cboLum.Checked = block.Luminant;
-			cboTransparent.Checked = block.Transparent;
+			switch (block.Transparent.Value)
+			{
+				case "True":
+					cboTransparency.SelectedIndex = 0;
+					break;
+				case "False":
+					cboTransparency.SelectedIndex = 1;
+					break;
+				case "Partial":
+					cboTransparency.SelectedIndex = 2;
+					break;
+			}
 			cboFlammable.Checked = block.Flammable;
 			cboLavaFlam.Checked = block.LavaFlammable;
 			chkBaseType.Checked = block.IsBaseType;
@@ -165,7 +194,7 @@ namespace Block_Editor
 			numBlast.Value = 0;
 			numHardness.Value = 0;
 			cboLum.Checked = false;
-			cboTransparent.Checked = false;
+			cboTransparency.SelectedIndex = 1;
 			cboFlammable.Checked = false;
 			cboLavaFlam.Checked = false;
 			txtID.ResetText();
@@ -195,8 +224,6 @@ namespace Block_Editor
 				}
 			}
 		}
-
-		public enum ToolForm { Hand, Axe, Pickaxe, Hoe, Shovel }
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
@@ -233,7 +260,7 @@ namespace Block_Editor
 				BlastResistance = (int) numBlast.Value,
 				Hardness = (int) numHardness.Value,
 				Luminant = cboLum.Checked,
-				Transparent = cboTransparent.Checked,
+				Transparent = new Transparency {Value = cboTransparency.SelectedText},
 				Flammable = cboFlammable.Checked,
 				LavaFlammable = cboLavaFlam.Checked,
 				CraftRecipe = allRecipes(),
