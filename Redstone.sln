@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedstoneCLI", "RedstoneCLI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockUpdater", "BlockUpdater\BlockUpdater.csproj", "{0472ACE3-7B73-4B39-AA0E-39831000D55F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Block Editor", "Block Editor\Block Editor\Block Editor.csproj", "{4581C556-6B6B-4EC6-9369-495E9EDC7A8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0472ACE3-7B73-4B39-AA0E-39831000D55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4581C556-6B6B-4EC6-9369-495E9EDC7A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4581C556-6B6B-4EC6-9369-495E9EDC7A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4581C556-6B6B-4EC6-9369-495E9EDC7A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4581C556-6B6B-4EC6-9369-495E9EDC7A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

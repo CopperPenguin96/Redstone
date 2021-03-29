@@ -28,6 +28,34 @@ namespace Block_Editor
 			return bt;
 		}
 
+		public static readonly Block Planks = new Block(true)
+		{
+			Renewable = true,
+			IsStackable = new Stackable(true, Stackable.Max),
+			ToolRequired = ToolForm.Axe,
+			BreakingTimes = Bt(3, 1.5, 0.75, 0.5, 0.4, 0.35, 0.25),
+			BlastResistance = 3,
+			Hardness = 2,
+			Luminant = false,
+			Transparent = false,
+			Flammable = true,
+			NetherFlammable = true,
+			LavaFlammable = true,
+			NetherLavaFlammable = true,
+			ID = "base_plank",
+			CraftRecipe = new List<string[,]>
+			{
+				new string[,]
+				{
+					{
+						"base_bed", "bleach"
+					},
+					{
+						"air", "air"
+					}
+				},
+		};
+
 		public static readonly Block Log = new Block(true)
 		{
 			Renewable = true,
@@ -187,6 +215,15 @@ namespace Block_Editor
 				new string[,]
 				{
 					{
+						"base_bed", "bleach"
+					},
+					{
+						"air", "air"
+					}
+				},
+				new string[,]
+				{
+					{
 						"air", "air", "air"
 					},
 					{
@@ -204,16 +241,8 @@ namespace Block_Editor
 					{
 						"air", "air"
 					}
-				},
-				new string[,]
-				{
-					{
-						"base_bed", "bleach"
-					},
-					{
-						"air", "air"
-					}
-				},
+				}
+				
 			}
 		};
 	}
