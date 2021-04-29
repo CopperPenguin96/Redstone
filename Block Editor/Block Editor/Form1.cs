@@ -24,6 +24,7 @@ namespace Block_Editor
 		{
 			if (File.Exists("blocks.json"))
 			{
+
 				Blocks = JsonConvert.DeserializeObject<List<Block>>("blocks.json");
 				UpdateListView();
 
@@ -50,6 +51,11 @@ namespace Block_Editor
 			}
 
 			cboTransparency.SelectedIndex = 1;
+
+            foreach (Block b in BaseBlocks.Bases)
+            {
+                cboBaseType.Items.Add(b.ID);
+            }
 		}
 		
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -74,9 +80,9 @@ namespace Block_Editor
 			}
 		}
 
-		private void FillInfo(int index)
+		private void FillInfo(int index, bool isBase = false)
 		{
-			block = Blocks[index];
+            block = isBase ? BaseBlocks.Bases[index] : Blocks[index];
 			txtName.Text = block.Name;
 			cboStackable.Checked = block.IsStackable.Is;
 			if (block.IsStackable == true)
@@ -149,8 +155,9 @@ namespace Block_Editor
 			}
 			cboFlammable.Checked = block.Flammable;
 			cboLavaFlam.Checked = block.LavaFlammable;
-			chkBaseType.Checked = block.IsBaseType;
-			numericUpDown1.Maximum = block.CraftRecipe.Count - 1;
+
+			if (block.CraftRecipe != null)
+                numericUpDown1.Maximum = block.CraftRecipe.Count - 1;
 
 			FillCraft(0);
 
@@ -264,7 +271,6 @@ namespace Block_Editor
 				Flammable = cboFlammable.Checked,
 				LavaFlammable = cboLavaFlam.Checked,
 				CraftRecipe = allRecipes(),
-				IsBaseType = chkBaseType.Checked
 			};
 
 			if (radHand.Checked) block.ToolRequired = ToolForm.Hand;
@@ -394,7 +400,8 @@ namespace Block_Editor
 				chosen = val == word ? word : val;
 
 				foreach (Control c in gboCraftRecipe.Controls)
-				{
+                {
+                    if (c.GetType() != typeof(Button)) continue;
 					Button b = (Button)c;
 					if (b.Name == "btnSpot" + spot)
 					{
@@ -408,12 +415,12 @@ namespace Block_Editor
 		{
 			if (cboBaseType.SelectedIndex > -1)
 			{
-				for (var index = 0; index < Blocks.Count; index++)
+				for (var index = 0; index < BaseBlocks.Bases.Length; index++)
 				{
-					Block b = Blocks[index];
-					if (b.Name == cboBaseType.SelectedText && b.IsBaseType)
+					Block b = BaseBlocks.Bases[index];
+					if (b.ID == cboBaseType.SelectedItem.ToString() && b.IsBaseType)
 					{
-						FillInfo(index);
+						FillInfo(index, true);
 					}
 				}
 			}
@@ -436,32 +443,40 @@ namespace Block_Editor
 
 		private void FillCraft(int recipe)
 		{
-			string empty = "{Empty}";
-			string[,] rec = allRecipes()[recipe];
-			if (rec.Length == 4)
-			{
-				btnSpot3.Text = empty;
-				btnSpot6.Text = empty;
-				btnSpot7.Text = empty;
-				btnSpot8.Text = empty;
-				btnSpot9.Text = empty;
-				btnSpot4.Text = rec[0, 0];
-				btnSpot5.Text = rec[0, 1];
-				btnSpot1.Text = rec[1, 0];
-				btnSpot2.Text = rec[1, 1];
+            try
+            {
+                string empty = "{Empty}";
+                string[,] rec = allRecipes()[recipe];
+                if (rec.Length == 4)
+                {
+                    btnSpot3.Text = empty;
+                    btnSpot6.Text = empty;
+                    btnSpot7.Text = empty;
+                    btnSpot8.Text = empty;
+                    btnSpot9.Text = empty;
+                    btnSpot4.Text = rec[0, 0];
+                    btnSpot5.Text = rec[0, 1];
+                    btnSpot1.Text = rec[1, 0];
+                    btnSpot2.Text = rec[1, 1];
+                }
+                else
+                {
+                    btnSpot7.Text = rec[0, 0];
+                    btnSpot8.Text = rec[0, 1];
+                    btnSpot9.Text = rec[0, 2];
+                    btnSpot4.Text = rec[1, 0];
+                    btnSpot5.Text = rec[1, 1];
+                    btnSpot6.Text = rec[1, 2];
+                    btnSpot1.Text = rec[2, 0];
+                    btnSpot2.Text = rec[2, 1];
+                    btnSpot3.Text = rec[2, 2];
+                }
 			}
-			else
-			{
-				btnSpot7.Text = rec[0, 0];
-				btnSpot8.Text = rec[0, 1];
-				btnSpot9.Text = rec[0, 2];
-				btnSpot4.Text = rec[1, 0];
-				btnSpot5.Text = rec[1, 1];
-				btnSpot6.Text = rec[1, 2];
-				btnSpot1.Text = rec[2, 0];
-				btnSpot2.Text = rec[2, 1];
-				btnSpot3.Text = rec[2, 2];
-			}
+            catch (ArgumentOutOfRangeException e)
+            {
+				// Do nothing. Means that there are no recipes yet
+            }
+			
 		}
 
 		private void btnAddRecipe_Click(object sender, EventArgs e)
@@ -494,5 +509,24 @@ namespace Block_Editor
 			FillCraft(0);
 			numericUpDown1.Value = 0;
 		}
-	}
+
+        private void chkBaseType_CheckedChanged(object sender, EventArgs e)
+        {
+            cboBaseType.Items.Clear();
+			if (chkBaseType.Checked)
+            {
+                foreach (Block b in BaseBlocks.Bases)
+                {
+                    cboBaseType.Items.Add(b.ID);
+                }
+            }
+            else
+            {
+                foreach (Block b in Blocks)
+                {
+                    cboBaseType.Items.Add(b.ID);
+                }
+            }
+        }
+    }
 }

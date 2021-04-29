@@ -9,6 +9,7 @@ using ProtocolSharp.Network;
 using ProtocolSharp.Packets;
 using ProtocolSharp.Packets.Login;
 using ProtocolSharp.Types;
+using ProtocolSharp.Worlds.Blocks;
 
 namespace ProtocolSharp
 {
@@ -39,8 +40,8 @@ namespace ProtocolSharp
 			}
 
 			ServerID = serverID;
-			EntityManager.Init();
-			LibraryInit = true;
+            BlockRegistry.Init();
+            LibraryInit = true;
 		}
 
 		/// <summary>

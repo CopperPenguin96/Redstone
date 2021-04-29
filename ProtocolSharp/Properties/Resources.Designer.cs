@@ -61,12 +61,30 @@ namespace ProtocolSharp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to {
+        ///  &quot;minecraft:air&quot;: {
+        ///    &quot;id&quot;: 0,
+        ///    &quot;explosion_resistance&quot;: 0.0,
+        ///    &quot;item&quot;: 0,
+        ///    &quot;default_state&quot;: 0,
+        ///    &quot;class&quot;: &quot;AirBlock&quot;,
+        ///    &quot;tint&quot;: &quot;minecraft:water_tint&quot;,
+        ///    &quot;states&quot;: {
+        ///      &quot;0&quot;: {
+        ///        &quot;sound_type_volume&quot;: 1.0,
+        ///        &quot;break_sound_type&quot;: 816,
+        ///        &quot;step_sound_type&quot;: 824,
+        ///        &quot;place_sound_type&quot;: 821,
+        ///        &quot;hit_sound_type&quot;: 820,
+        ///        &quot;fall_sound_type&quot;: 819,
+        ///        &quot;is_opaque&quot;: false,
+        ///        &quot;material&quot;: &quot;minecraft:air&quot;,
+        ///        &quot;render&quot;: {
+        ///          &quot;mode [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] blocks {
+        internal static string blocks {
             get {
-                object obj = ResourceManager.GetObject("blocks", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("blocks", resourceCulture);
             }
         }
     }

@@ -28,6 +28,105 @@ namespace Block_Editor
 			return bt;
 		}
 
+        
+
+        public static readonly Block Slab = new Block(true)
+        {
+			Renewable = true,
+			IsStackable = new Stackable(true, Stackable.Max),
+			ToolRequired = ToolForm.Axe,
+			BlastResistance = 6,
+			Hardness = 3.5,
+			Luminant = false,
+			Transparent = Transparency.Partial,
+			Flammable = false,
+			LavaFlammable = false,
+			NetherFlammable = false,
+			NetherLavaFlammable = false,
+			BreakingTimes = Bt(17.5, 2.65, 1.35, 0.9, 0.7, 0.6, 0.45),
+			ID = "base_slab",
+            CraftRecipe = new List<string[,]>
+            {
+                new string[,]
+                {
+                    {
+						"air", "air", "air"
+					},
+                    {
+						"air", "air", "air"
+					},
+                    {
+						"base_plank", "base_plank", "base_plank"
+					}
+                },
+            }
+		};
+
+        public static readonly Block Sign = new Block(true)
+        {
+			Renewable = true,
+			IsStackable = new Stackable(true, 16),
+			ToolRequired = ToolForm.Hand,
+			BlastResistance = 1,
+			Hardness = 1,
+			Luminant = false,
+			Transparent = true,
+			Flammable = false,
+			LavaFlammable = false,
+			NetherFlammable = false,
+			NetherLavaFlammable = false,
+			BreakingTimes = Bt(1.5, 0.75, 0.4, 0.25, 0.2, 0.2, 0.15),
+			ID = "base_sign",
+            CraftRecipe = new List<string[,]>
+            {
+                new string[,]
+                {
+                    {
+                        "base_plank", "base_plank", "base_plank"
+                    },
+                    {
+                        "base_plank", "base_plank", "base_plank"
+                    },
+                    {
+                        "air", "stick", "air"
+                    }
+                },
+            }
+		};
+
+        public static readonly Block Sapling = new Block(true)
+        {
+			Renewable = true,
+			IsStackable = new Stackable(true, Stackable.Max),
+			ToolRequired = ToolForm.Hand,
+			BlastResistance = 0,
+			Hardness = 0,
+			Luminant = false,
+			Transparent = true,
+			Flammable = false,
+			LavaFlammable = false,
+			NetherFlammable = false,
+			NetherLavaFlammable = false,
+			ID = "base_sapling"
+        };
+
+        public static readonly Block PressurePlate = new Block(true)
+        {
+			Renewable = true,
+			IsStackable = new Stackable(true, Stackable.Max),
+			ToolRequired = ToolForm.Axe,
+			BlastResistance = 0.5,
+			Hardness = 0.5,
+			Luminant = false,
+			Transparent = Transparency.False,
+			Flammable = false,
+			LavaFlammable = true,
+			NetherFlammable = false,
+			NetherLavaFlammable = false,
+			BreakingTimes = Bt(0.75, 0.4, 0.2, 0.15, 0.1, 0.1, 0.1),
+			ID = "base_pressure_plate"
+        };
+
 		public static readonly Block Planks = new Block(true)
 		{
 			Renewable = true,
@@ -44,16 +143,17 @@ namespace Block_Editor
 			NetherLavaFlammable = true,
 			ID = "base_plank",
 			CraftRecipe = new List<string[,]>
-			{
-				new string[,]
-				{
-					{
-						"base_bed", "bleach"
-					},
-					{
-						"air", "air"
-					}
-				},
+            {
+                new string[,]
+                {
+                    {
+                        "base_bed", "bleach"
+                    },
+                    {
+                        "air", "air"
+                    }
+                }
+            }
 		};
 
 		public static readonly Block Log = new Block(true)
@@ -245,5 +345,12 @@ namespace Block_Editor
 				
 			}
 		};
+
+        public static readonly Block[] Bases =
+        {
+            Bed, Button, Door, Fence, Gate, Leaves,
+            Log, Planks, PressurePlate, Sapling,
+            Sign, Slab
+        };
 	}
 }
