@@ -10,6 +10,13 @@ namespace ProtocolSharp.Utils
 {
 	public static class StringUtil
 	{
+        public static string Base64Encode(this string original)
+        {
+            if (original == null) throw new ArgumentNullException(nameof(original));
+            byte[] plainBytes = Encoding.UTF8.GetBytes(original);
+            return System.Convert.ToBase64String(plainBytes);
+        }
+
 		public static byte[] ToBytes(this string str, Encoding encoding)
 		{
 			return encoding.GetBytes(str);

@@ -89,7 +89,7 @@ namespace ProtocolSharp.Utils
             SamplePlayer p = new SamplePlayer
             {
                 Name = "alexpotter96",
-                Id = JavaUUID.Generate("alexpotter96".ToBytes())
+                Id = JavaUUID.Generate("alexpotter96".ToBytes()).ToString()
             };
             Players = new[] { p };
         }

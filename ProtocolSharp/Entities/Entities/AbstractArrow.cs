@@ -50,7 +50,7 @@ namespace ProtocolSharp.Entities.Entities
 				bs.Add(new NbtString("SoundEvent", SoundEvent));
 
 				NbtCompound inBlockState = new NbtCompound("inBlockState");
-				inBlockState.Add(new NbtString("Name", BlockStuckIn.Id.ToString()));
+				inBlockState.Add(new NbtString("Name", BlockStuckIn.ID.ToString()));
 				
 				return bs;
 			}
