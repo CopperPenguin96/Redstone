@@ -4,13 +4,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using fNbt;
 using ProtocolSharp.Network;
+using ProtocolSharp.Worlds.Blocks;
 
 namespace ProtocolSharp.Packets.Play.Client.BlockEntityData
 {
     public class ConduitEntityData : BlockEntityData
-    { // int[] target the uuid of the hostile mob the conduit is currently
-        // attacking, stored as 4 ints. May not be present
-
+    {
         public int[] Target => (int[]) ParentBlock["Target"];
 
         public new void Send(ref MinecraftClient client, GameStream stream)
@@ -23,6 +22,10 @@ namespace ProtocolSharp.Packets.Play.Client.BlockEntityData
             );
 
             base.Send(ref client, stream, (int) BlockEntityDataAction.DeclareConduit, nbt);
+        }
+
+        public ConduitEntityData(Block parent) : base(parent)
+        {
         }
     }
 }

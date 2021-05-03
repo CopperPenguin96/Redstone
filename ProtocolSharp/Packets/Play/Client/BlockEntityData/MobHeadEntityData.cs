@@ -43,7 +43,7 @@ namespace ProtocolSharp.Packets.Play.Client.BlockEntityData
             return jObj.ToString().Base64Encode();
         }
 
-        public new void send(ref MinecraftClient client, GameStream stream)
+        public new void Send(ref MinecraftClient client, GameStream stream)
         {
             NbtCompound nbt = new NbtCompound(
                 new NbtTag[]
