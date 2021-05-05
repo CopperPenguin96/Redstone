@@ -55,6 +55,15 @@ namespace ProtocolSharp.Worlds.Blocks
             ID = id ?? throw new ArgumentNullException(nameof(id));
         }
 
+        public Block(string id) : this(new Identifier(id))
+        {
+        }
+
+        protected Block()
+        {
+            throw new NotImplementedException();
+        }
+
         public int NumericID => LocateBlock().GetProperty("id").GetInt32();
 
         public double BlastResistance => LocateBlock().GetProperty("explosion_resistance").GetDouble();
@@ -73,6 +82,24 @@ namespace ProtocolSharp.Worlds.Blocks
             }
 
             throw new Exception();
+        }
+
+        public static VarInt FindIDByIdentif(Identifier id)
+        {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
+            JsonElement root = BlockRegistry.Doc.RootElement;
+            for (int x = 0; x < root.GetArrayLength(); x++)
+            {
+                JsonElement blockEntry = root[x];
+                JsonProperty blk = blockEntry.EnumerateObject().Current;
+                if (id.ToString() == blk.Name)
+                {
+                    return blockEntry.GetProperty("id").GetInt32();
+                }
+            }
+
+            throw new Exception($"Block does not exist. (ID: {id})");
         }
 	}
 }

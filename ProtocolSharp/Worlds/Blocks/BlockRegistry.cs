@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
+using ProtocolSharp.Types;
 
 namespace ProtocolSharp.Worlds.Blocks
 {
@@ -30,5 +31,20 @@ namespace ProtocolSharp.Worlds.Blocks
             Doc = JsonDocument.Parse(_json);
             
         }
+
+        #region Blocks
+
+        public static Block NoteBlock = new Block("note_block");
+        public static Block Piston = new Block("piston");
+        public static Block StickyPiston = new Block("sticky_piston");
+        public static Block Chest = new Chest();
+        public static Block EnderChest = new EnderChest();
+        public static Block Beacon = new Block("beacon");
+        public static Block Spawner = new Block("spawner");
+        public static Block EndGateway = new Block("end_gateway");
+        public static Block ShulkerBox = new ShulkerBox();
+        public static Block Bell = new Block("bell");
+
+        #endregion
     }
 }
