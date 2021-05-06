@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Packets\Play\Client\BlockChange.cs~RFb26fe4b.TMP" />
     <None Remove="Worlds\Blocks\Block.cs~RF2413e19e.TMP" />
   </ItemGroup>
 

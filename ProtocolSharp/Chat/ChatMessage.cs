@@ -15,7 +15,14 @@ namespace ProtocolSharp.Chat
 				return b;
 			}
 		}
-	}
+
+		public ChatBuilder Builder { get; set; }
+
+        public override string ToString()
+        {
+            return Builder.FullObject.ToString();
+        }
+    }
 
 	public enum ChatActionType
 	{
