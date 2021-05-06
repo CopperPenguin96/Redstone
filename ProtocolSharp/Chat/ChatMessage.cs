@@ -16,12 +16,23 @@ namespace ProtocolSharp.Chat
 			}
 		}
 
+		public string SenderID { get; set; }
+
 		public ChatBuilder Builder { get; set; }
+
+        public ChatPosition Position { get; set; } = ChatPosition.ChatBox;
 
         public override string ToString()
         {
             return Builder.FullObject.ToString();
         }
+    }
+
+    public enum ChatPosition : byte
+    {
+		ChatBox = 0,
+		SystemMessageChatBox = 1,
+		HotBarGameInfo = 2
     }
 
 	public enum ChatActionType

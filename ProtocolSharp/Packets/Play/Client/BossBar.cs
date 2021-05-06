@@ -33,7 +33,7 @@ namespace ProtocolSharp.Packets.Play.Client
         /// <param name="div">The divisions are "notches" of the boss bar.</param>
         /// <param name="flags"></param>
         public void SendAdd(ref MinecraftClient client, GameStream stream,
-            ChatMessage title, float health, BossBarColor color, BossBarDivision div,
+            Chat.ChatMessage title, float health, BossBarColor color, BossBarDivision div,
             params BossBarFlags[] flags)
         {
             if (title == null) throw new ArgumentNullException(nameof(title));
@@ -85,7 +85,7 @@ namespace ProtocolSharp.Packets.Play.Client
         /// <param name="client"></param>
         /// <param name="stream"></param>
         /// <param name="title"></param>
-        public void SendUpdateTitle(ref MinecraftClient client, GameStream stream, ChatMessage title)
+        public void SendUpdateTitle(ref MinecraftClient client, GameStream stream, Chat.ChatMessage title)
         {
             if (title == null) throw new ArgumentNullException(nameof(title));
 
