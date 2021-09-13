@@ -1,0 +1,17 @@
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.csproj.ResolveComReference.cache
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.AssemblyInfoInputs.cache
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.AssemblyInfo.cs
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.ImplicitNamespaceImports.cs
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.csproj.CoreCompileInputs.cache
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\RedstoneLib.deps.json
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\RedstoneLib.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\ref\RedstoneLib.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\RedstoneLib.pdb
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\JetBrains.Annotations.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\Version Management.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\bin\Debug\net6.0\Version Management.pdb
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\ref\RedstoneLib.dll
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.pdb
+C:\Users\super\source\repos\Redstone\RedstoneLib\obj\Debug\net6.0\RedstoneLib.csproj.AssemblyReference.cache

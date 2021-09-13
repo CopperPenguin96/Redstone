@@ -1,0 +1,14 @@
+B:\My Docs\Programming\Redstone\ProtocolSharp\bin\Debug\net6.0\ProtocolSharp.deps.json
+B:\My Docs\Programming\Redstone\ProtocolSharp\bin\Debug\net6.0\ProtocolSharp.dll
+B:\My Docs\Programming\Redstone\ProtocolSharp\bin\Debug\net6.0\ref\ProtocolSharp.dll
+B:\My Docs\Programming\Redstone\ProtocolSharp\bin\Debug\net6.0\ProtocolSharp.pdb
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.csproj.AssemblyReference.cache
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.GeneratedMSBuildEditorConfig.editorconfig
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.AssemblyInfoInputs.cache
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.AssemblyInfo.cs
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.ImplicitNamespaceImports.cs
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.csproj.CoreCompileInputs.cache
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.dll
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ref\ProtocolSharp.dll
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.pdb
+B:\My Docs\Programming\Redstone\ProtocolSharp\obj\Debug\net6.0\ProtocolSharp.csproj.ResolveComReference.cache
