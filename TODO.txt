@@ -1,7 +1,10 @@
 =-=-=REDSTONE TODO=-=-=
 
 - Login Protocol
+-- Set Compression (future release?)
+
 - Play Protocol
+
 - World Loading/Saving
 - Plugin/Mod support
 - Config GUI

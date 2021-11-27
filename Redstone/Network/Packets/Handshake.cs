@@ -19,12 +19,7 @@ namespace Redstone.Network.Packets
             string serverAddress = stream.ReadString();
             ushort port = stream.ReadShort();
             VarInt nextState = stream.ReadVarInt();
-
-            if (protocolVersion != MinecraftVersion.Current.Protocol)
-            {
-                // todo - kick client
-            }
-
+            
             if (nextState == 1)
             {
                 client.State = ConnectionState.Status;

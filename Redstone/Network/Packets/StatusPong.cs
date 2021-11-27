@@ -11,7 +11,7 @@ namespace Redstone.Network.Packets
         public Packet Packet => Packet.Pong;
         public string Name => "Status Pong";
 
-        private long _ping;
+        private readonly long _ping;
         public StatusPong(long ping)
         {
             _ping = ping;

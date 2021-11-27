@@ -9,7 +9,7 @@ using Redstone.Configuration;
 
 namespace Redstone.Players
 {
-    public class PlayerList
+    public class PlayerList : List<Player>
     {
         public static int MaxPlayers => Config.MaxPlayers;
         

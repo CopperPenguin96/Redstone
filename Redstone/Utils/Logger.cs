@@ -110,11 +110,30 @@ namespace Redstone.Utils
             }
         }
 
-        
         public static void Log(string message, LogLevel level = LogLevel.Normal)
         {
             if (message == null) throw new ArgumentNullException(nameof(message));
             Log(new Log(message, level));
+        }
+
+        public static void LogWarning(string message)
+        {
+            Log(message, LogLevel.Warning);
+        }
+
+        public static void LogError(string message)
+        {
+            Log(message, LogLevel.Error);
+        }
+
+        public static void LogFatal(string message)
+        {
+            Log(message, LogLevel.Fatal);
+        }
+
+        public static void LogChat(string message)
+        {
+            Log(message, LogLevel.Chat);
         }
     }
 

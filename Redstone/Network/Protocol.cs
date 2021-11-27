@@ -34,6 +34,12 @@ namespace Redstone.Network
             ServerID = serverId;
         }
 
+        public static void LoginDisconnect(MinecraftClient client, GameStream stream, string reason)
+        {
+            new LoginDisconnect(reason).Send(ref client, stream);
+            client.Client.Close();
+        }
+
         public static void Receive(ref MinecraftClient client, GameStream stream)
         {
             VarInt id = stream.ReadVarInt();
@@ -47,6 +53,8 @@ namespace Redstone.Network
                     if (id == (byte) Packet.Request) new Request().Receive(ref client, stream);
                     break;
                 case ConnectionState.Login:
+                    if (id == (byte) Packet.LoginStart) new LoginStart().Receive(ref client, stream);
+                    if (id == (byte) Packet.EncryptionResponse) new EncryptionResponse().Receive(ref client, stream);
                     break;
                 case ConnectionState.Play:
                     break;

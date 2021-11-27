@@ -13,7 +13,6 @@ namespace Redstone.Network.Packets
 
         public void Receive(ref MinecraftClient client, GameStream stream)
         {
-            // todo send response
             new Response().Send(ref client, stream);
         }
     }

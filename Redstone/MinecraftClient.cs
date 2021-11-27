@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Redstone.Network;
-using Redstone.Types;
+using Redstone.Players;
 using Redstone.Utils;
-using Redstone.Worlds;
 
 namespace Redstone
 { 
@@ -17,45 +11,35 @@ namespace Redstone
     {
         //public Entity Entity { get; set; }
 
-        public DateTime LoginTime { get; set; }
+        public Player Player { get; set; }
 
-        public DateTime LastActiveTime { get; set; }
+        public string Username => Player.Username;
 
-        public string Username { get; set; }
-
-        [JsonIgnore] public bool EncryptionEnabled { get; set; }
-
-        public string UniqueID { get; internal set; }
-
-        [JsonIgnore] public TcpClient Client { get; set; }
-
-        [JsonIgnore] public IPEndPoint Sender { get; set; }
-
-        [JsonIgnore] internal GameStream Stream { get; set; }
-
-        public IPAddress IP { get; set; }
-
-        [JsonIgnore] public ConnectionState State { get; set; }
-
-        [JsonIgnore] public long PayLoad { get; set; }
-
-        [JsonIgnore] internal byte[] VerifyToken { get; set; }
-
-        [JsonIgnore] internal byte[] SharedToken { get; set; }
-
-        public string Locale { get; set; }
-
-        [JsonIgnore] public Position DiggingLocation { get; set; }
-
-        [JsonIgnore] public Block BlockLookingAt { get; set; }
+        public string UniqueId => Player.UniqueId;
         
+        public TcpClient Client { get; set; }
+        
+
+        internal GameStream Stream { get; set; }
+
+        public ConnectionState State { get; set; }
+        
+        internal byte[] VerifyToken { get; set; }
+
+        internal byte[] SharedToken { get; set; }
+
+        public bool EncryptionPassed { get; set; }
+
         public void Disconnect(string reason = "Client Quit")
         {
             Logger.Log($"{Username} was disconnected. ({reason})");
             if (State == ConnectionState.Login)
             {
-                MinecraftClient client = this;
-                //Protocol.LoginDisconnect(ref client, Stream, reason);
+                Protocol.LoginDisconnect(this, Stream, reason);
+            }
+            else if (State == ConnectionState.Play)
+            {
+                //
             }
         }
 
@@ -63,12 +47,5 @@ namespace Redstone
         {
             Client = client;
         }
-
-        internal MinecraftClient(TcpClient client, string username, string uuid) : this(client)
-        {
-            Username = username ?? throw new ArgumentNullException(nameof(username));
-            UniqueID = uuid ?? throw new ArgumentNullException(nameof(uuid));
-            IP = IPAddress.Loopback;
-        }
-	}
+    }
 }

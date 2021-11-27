@@ -44,6 +44,12 @@ namespace Redstone.Configuration
 
         #endregion
 
+        #region Security
+
+        public static bool EnableEncryption { get; set; }
+
+        #endregion
+
         #region Saving
 
         private static readonly JsonObject SaveObject = new();
@@ -58,6 +64,7 @@ namespace Redstone.Configuration
             SaveGeneral();
             SaveLogging();
             SaveMisc();
+            SaveSecurity();
 
             string json = SaveObject.ToString();
             object o = JsonConvert.DeserializeObject(json)!;
@@ -94,6 +101,11 @@ namespace Redstone.Configuration
             SaveObject.Add(IconName, IconFile);
         }
 
+        private static void SaveSecurity()
+        {
+            SaveObject.Add(EnableEncrName, EnableEncryption);
+        }
+
         #endregion
 
         #region Loading
@@ -108,6 +120,7 @@ namespace Redstone.Configuration
                 LoadGeneral(true);
                 LoadLogging(true);
                 LoadMisc(true);
+                LoadSecurity(true);
                 Save();
                 Loaded = true;
             }
@@ -127,6 +140,7 @@ namespace Redstone.Configuration
                     LoadGeneral(defaults);
                     LoadLogging(defaults);
                     LoadMisc(defaults);
+                    LoadSecurity(defaults);
                     Loaded = true;
                 }
                 catch (Exception e)
@@ -191,6 +205,18 @@ namespace Redstone.Configuration
             }
         }
 
+        private static void LoadSecurity(bool defaults)
+        {
+            if (defaults)
+            {
+                EnableEncryption = true;
+            }
+            else
+            {
+                EnableEncryption = _obj[EnableEncrName].Value<bool>();
+            }
+        }
+
         #endregion
 
         #region Constants
@@ -214,6 +240,9 @@ namespace Redstone.Configuration
 
         // Misc
         private const string IconName = "listIcon";
+
+        // Security
+        private const string EnableEncrName = "enableEncryption";
 
         #endregion
     }

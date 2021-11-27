@@ -14,6 +14,7 @@ namespace Redstone.ChatSystem
     {
         public static string Format(string rawMessage, Player? player)
         {
+            return "";
             if (player != null)
             {
                 rawMessage = rawMessage.Replace("$name", player.DisplayName);
@@ -67,69 +68,93 @@ namespace Redstone.ChatSystem
 
             // todo caps
             // todo swears
-            string[] split = rawMessage.Split("&");
-            ChatBuilder chatBuilder = new();
-            char[] availableChars =
+
+            List<string> componentList = new();
+            bool nextChanged = false;
+
+            string color = "reset";
+            bool bold = false;
+            bool italic = false;
+            bool underlined = false;
+            bool strikethrough = false;
+            bool obfuscated = false;
+            Dictionary<char, string> colorCodes = new()
             {
-                'a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3', '4', '5',
-                '6', '7', '8', '9', '0', 'l', 'n', 'o', 'k', 'm', 'r'
+                {'0', "black"},
+                {'1', "dark_blue"},
+                {'2', "dark_green"},
+                {'3', "dark_cyan"},
+                {'4', "dark_red"},
+                {'5', "dark_purple"},
+                {'6', "dark_purple"},
+                {'7', "gray"},
+                {'8', "dark_gray"},
+                {'9', "blue"},
+                {'a', "green"},
+                {'b', "aqua"},
+                {'c', "red"},
+                {'d', "light_purple"},
+                {'e', "yellow"},
+                {'f', "white"},
+                {'k', "obfuscated"},
+                {'l', "bold"},
+                {'m', "strikethrough"},
+                {'n', "underlined"},
+                {'o', "italic"},
+                {'r', "reset"},
+                {'&', "&"}
             };
-
-            string currentList = "";
-            foreach (string str in split)
+            string text = "";
+            while (rawMessage != "")
             {
-                ChatPart part = new() {Text = str.Substring(1)};
-                char first = str.ToCharArray()[0];
-                if (availableChars.Contains(first))
+                char currentChar = rawMessage[0];
+                if (nextChanged)
                 {
-                    if (str.Length < 2)
-                    {
-                        currentList += first;
-                        continue;
-                    }
+                    bool val = colorCodes.TryGetValue(currentChar, out string newColor);
 
-                    foreach (char c in currentList)
+                    if (val)
                     {
-                        part.Formatting = c;
-                        switch (c)
+                        if (newColor == "bold") bold = true;
+
+                        if (newColor == "strikethrough") strikethrough = true;
+                        if (newColor == "underlined") underlined = true;
+                        if (newColor == "italic") italic = true;
+                        if (newColor == "obfuscated") obfuscated = true;
+                        if (newColor == "&") text += "&";
+
+                        if (newColor == "reset")
                         {
-                            case 'l':
-                                part.IsBold = true;
-                                break;
-                            case 'n':
-                                part.IsUnderlined = true;
-                                break;
-                            case 'o':
-                                part.IsItalics = true;
-                                break;
-                            case 'k':
-                                part.IsObfuscated = true;
-                                break;
-                            case 'm':
-                                part.IsStriked = true;
-                                break;
-                            case 'r':
-                                part.IsBold = false;
-                                part.IsUnderlined = false;
-                                part.IsItalics = false;
-                                part.IsObfuscated = false;
-                                part.IsStriked = false;
-                                part.Formatting = MinecraftFormatting.Reset;
-                                break;
+                            strikethrough = false;
+                            bold = false;
+                            underlined = false;
+                            obfuscated = false;
+                            italic = false;
+                            color = "reset";
                         }
-                        chatBuilder.Add(part);
-                        currentList = "";
+                        else
+                        {
+                            color = newColor;
+                        }
+                    }
+                    else if (currentChar == '&')
+                    {
+                        if (nextChanged)
+                        {
+                            text += "&";
+                            nextChanged = false;
+                        }
+                        else
+                        {
+                            nextChanged = true;
+                            // createJsonComponent todo
+                        }
+                    }
+                    else
+                    {
+                        text += currentChar;
                     }
                 }
-                else
-                {
-                    part.Text = "&" + str; // Code is invalid. Represent as typed
-                    currentList = "";
-                }
-                
             }
-
-            return rawMessage;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Redstone
         public const string Path = "Redstone/";
         public static readonly Version Version = new Version(1, 0);
 
-        public static List<Player> Online = new();
+        public static PlayerList Online = new();
         public static DateTime StartTime { get; private set; }
 
         public static Thread? Thread { get; private set; }
@@ -32,7 +32,7 @@ namespace Redstone
         public static bool IsShuttingDown { get; internal set; }
 
         public static bool IsRestarting { get; internal set; }
-        
+
         public static void Start()
         {
             Console.WriteLine(@"                  
@@ -64,6 +64,13 @@ namespace Redstone
             try
             {
                 Config.Load();
+
+                if (!Config.EnableEncryption)
+                {
+                    Logger.Log(
+                        "It is not recommended decision to leave off Encryption. This highly impacts the security of your server. " +
+                        "It is recommended you turn this on in the configuration.", LogLevel.Warning);
+                }
             }
             catch (Exception e)
             {
