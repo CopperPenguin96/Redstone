@@ -1,8 +1,9 @@
 =-=-=REDSTONE TODO=-=-=
 
-- Protocal Sharp
-- Config
-- Initial Server
+- Login Protocol
+- Play Protocol
+- World Loading/Saving
+- Plugin/Mod support
 - Config GUI
 - Server GUI/CLI
-- Plugin/Mod support
+
