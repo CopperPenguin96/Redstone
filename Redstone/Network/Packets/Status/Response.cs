@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.ChatSystem;
+﻿using Redstone.ChatSystem;
 using Redstone.Configuration;
 using Redstone.Players;
 using Redstone.Utils;
 
-namespace Redstone.Network.Packets
+namespace Redstone.Network.Packets.Status
 {
     internal class Response : ISendingPacket
     {

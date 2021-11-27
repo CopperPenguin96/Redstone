@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 using Newtonsoft.Json;
 using Redstone.Configuration;
 using Redstone.Players;
 using Redstone.Utils;
 
-namespace Redstone.Network.Packets
+namespace Redstone.Network.Packets.Login
 {
     internal class LoginStart : IReceivingPacket
     {

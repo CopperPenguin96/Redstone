@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Redstone.Network.Packets
+﻿namespace Redstone.Network.Packets.Status
 {
-    internal class StatusPong : ISendingPacket
+    internal class Pong : ISendingPacket
     {
         public Packet Packet => Packet.Pong;
         public string Name => "Status Pong";
 
         private readonly long _ping;
-        public StatusPong(long ping)
+        public Pong(long ping)
         {
             _ping = ping;
         }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.ChatSystem;
+﻿using Redstone.ChatSystem;
 
-namespace Redstone.Network.Packets
+namespace Redstone.Network.Packets.Login
 {
     internal class LoginDisconnect : ISendingPacket
     {

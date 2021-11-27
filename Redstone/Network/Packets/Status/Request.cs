@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Redstone.Network.Packets
+﻿namespace Redstone.Network.Packets.Status
 {
     internal class Request : IReceivingPacket
     {

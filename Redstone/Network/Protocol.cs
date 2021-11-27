@@ -5,6 +5,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Redstone.Network.Packets;
+using Redstone.Network.Packets.Login;
+using Redstone.Network.Packets.Status;
 using Redstone.Types;
 using SmartNbt;
 
@@ -49,7 +51,7 @@ namespace Redstone.Network
                     if (id == (byte) Packet.Handshaking) new Handshake().Receive(ref client, stream);
                     break;
                 case ConnectionState.Status:
-                    if (id == (byte) Packet.Ping) new StatusPing().Receive(ref client, stream);
+                    if (id == (byte) Packet.Ping) new Ping().Receive(ref client, stream);
                     if (id == (byte) Packet.Request) new Request().Receive(ref client, stream);
                     break;
                 case ConnectionState.Login:
