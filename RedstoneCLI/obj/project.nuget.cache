@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "KVKTUKpB3HTEkIk+QhdOeVavqJk6asZPFMCDRIW2P8QwryE95OPM2zrWFNueSUHrgdo72s2iovunD0kxQykVlQ==",
+  "success": true,
+  "projectFilePath": "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\super\\.nuget\\packages\\bouncycastle.netcore\\1.8.10\\bouncycastle.netcore.1.8.10.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\jetbrains.annotations\\2021.3.0\\jetbrains.annotations.2021.3.0.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
