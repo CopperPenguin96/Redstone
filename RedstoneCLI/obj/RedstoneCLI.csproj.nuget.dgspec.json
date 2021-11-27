@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj": {}
+    "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj": {
+    "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
+        "projectUniqueName": "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
         "projectName": "RedstoneCLI",
-        "projectPath": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
+        "projectPath": "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
         "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneCLI\\obj\\",
+        "outputPath": "A:\\Programming\\Redstone\\RedstoneCLI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files\\x86\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\RedstoneLib.csproj": {
-                "projectPath": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\RedstoneLib.csproj"
+              "A:\\Programming\\Redstone\\Redstone\\Redstone.csproj": {
+                "projectPath": "A:\\Programming\\Redstone\\Redstone\\Redstone.csproj"
               }
             }
           }
@@ -62,25 +58,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\RedstoneLib.csproj": {
+    "A:\\Programming\\Redstone\\Redstone\\Redstone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\RedstoneLib.csproj",
-        "projectName": "RedstoneLib",
-        "projectPath": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\RedstoneLib.csproj",
+        "projectUniqueName": "A:\\Programming\\Redstone\\Redstone\\Redstone.csproj",
+        "projectName": "Redstone",
+        "projectPath": "A:\\Programming\\Redstone\\Redstone\\Redstone.csproj",
         "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\super\\source\\repos\\Redstone\\RedstoneLib\\obj\\",
+        "outputPath": "A:\\Programming\\Redstone\\Redstone\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "A:\\Program Files\\x86\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\super\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,23 +100,19 @@
           "dependencies": {
             "BouncyCastle.NetCore": {
               "target": "Package",
-              "version": "[1.8.8, )"
+              "version": "[1.8.10, )"
+            },
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2021.3.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "SmartNbt": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
             "System.Drawing.Common": {
               "target": "Package",
-              "version": "[5.0.2, )"
-            },
-            "ZKWeb.System.Drawing": {
-              "target": "Package",
-              "version": "[4.0.1, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -142,7 +130,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
