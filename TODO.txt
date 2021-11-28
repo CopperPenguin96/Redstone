@@ -4,6 +4,7 @@
 -- Set Compression (future release?)
 
 - Play Protocol
+-- Keep working on entities/particles
 
 - World Loading/Saving
 - Plugin/Mod support
