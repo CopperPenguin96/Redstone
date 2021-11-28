@@ -51,5 +51,12 @@ namespace Redstone.Types
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
+
+        public static implicit operator Identifier(string name)
+        {
+            if (name == null) throw new NullReferenceException(nameof(name));
+
+            return new(name);
+        }
     }
 }

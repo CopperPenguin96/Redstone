@@ -13,10 +13,4 @@ namespace Redstone.Entities
 
         public virtual Identifier Name { get; }
     }
-
-    public class AmbientEntityEffect : Particle
-    {
-        public override VarInt Id => 0;
-        public override Identifier Name => new("ambient_entity_effect");
-    }
 }
