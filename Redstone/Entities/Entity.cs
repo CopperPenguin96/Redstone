@@ -9,7 +9,7 @@ using Redstone.Utils;
 
 namespace Redstone.Entities
 {
-    internal class Entity
+    public class Entity
     {
         public virtual string Name => "Entity";
 
