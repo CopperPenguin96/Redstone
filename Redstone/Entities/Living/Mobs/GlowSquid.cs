@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Redstone.Types;
 
-namespace Redstone.Entities.Living.Monsters
+namespace Redstone.Entities.Living.Mobs
 {
-    public class Evoker : SpellCasterIllager
+    public class GlowSquid : Squid
     {
-        public override string Name => "Evoker";
+        public override string Name => "Glow Squid";
 
         internal override bool UseSpawnEntityOnly => false;
 
@@ -19,8 +19,8 @@ namespace Redstone.Entities.Living.Monsters
 
         internal override bool AllowedSpawn => true;
 
-        public override BoundingBox BoundingBox => new(0.6, 1.95, 0.6);
+        public override BoundingBox BoundingBox => new(0.8, 0.8, 0.8);
 
-        public override Identifier Identifier => "evoker";
+        public override Identifier Identifier => new("glow_squid");
     }
 }

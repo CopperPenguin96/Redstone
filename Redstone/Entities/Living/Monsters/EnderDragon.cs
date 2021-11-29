@@ -10,6 +10,20 @@ namespace Redstone.Entities.Living.Monsters
 {
     public class EnderDragon : Mob
     {
+        public override string Name => "Ender Dragon";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new (16.0, 8.0, 16.0);
+
+        public override Identifier Identifier => "ender_dragon";
+
         public DragonPhase Phase { get; set; } = DragonPhase.HoveringNoAi;
     }
 

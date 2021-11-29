@@ -13,6 +13,14 @@ namespace Redstone.Entities
     {
         public virtual string Name => "Entity";
 
+        internal virtual bool UseSpawnEntityOnly { get; }
+
+        internal virtual bool UseSpawnPaintingOnly { get; }
+
+        internal virtual bool UseSpawnXpOnly { get; }
+
+        internal virtual bool AllowedSpawn { get; }
+
         public virtual BoundingBox BoundingBox { get; }
 
         public virtual Identifier Identifier { get; }

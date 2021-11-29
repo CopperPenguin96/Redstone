@@ -9,6 +9,20 @@ namespace Redstone.Entities
 {
     public class FireworkRocketEntity : Entity
     {
+        public override string Name => "Firework Rocket Entity";
+
+        internal override bool UseSpawnEntityOnly => true;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.25, 0.25, 0.25);
+
+        public override Identifier Identifier => new("firework_rocket");
+
         public Slot Info { get; set; }
 
         /// <summary>

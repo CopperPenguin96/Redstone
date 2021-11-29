@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace Redstone.Entities.Living.Mobs
 {
-    public class AbstractFish : WaterAnimal
+    public abstract class AbstractFish : WaterAnimal
     {
+        public override string Name => "Abstract Fish";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => false;
+
         public bool FromBucket { get; set; } = false;
     }
 }

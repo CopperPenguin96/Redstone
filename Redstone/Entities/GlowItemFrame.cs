@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Redstone.Types;
 
-namespace Redstone.Entities.Arrows
+namespace Redstone.Entities
 {
-    public class Arrow : AbstractArrow
+    public class GlowItemFrame : Entity
     {
-        public override string Name => "Arrow";
+        public override string Name => "Glow Item Frame";
 
         internal override bool UseSpawnEntityOnly => true;
 
@@ -19,13 +19,8 @@ namespace Redstone.Entities.Arrows
 
         internal override bool AllowedSpawn => true;
 
-        public override BoundingBox BoundingBox => new(0.5, 0.5, 0.5);
+        public override BoundingBox BoundingBox => new(0.75, 0.75, 0.75);
 
-        public override Identifier Identifier => "arrow";
-
-        /// <summary>
-        /// Color, -1 for no particles
-        /// </summary>
-        public VarInt Color { get; set; } = -1;
+        public override Identifier Identifier => new("glow_item_frame");
     }
 }

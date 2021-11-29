@@ -10,6 +10,20 @@ namespace Redstone.Entities
 {
     public class Boat : Entity
     {
+        public override string Name => "Boat";
+
+        internal override bool UseSpawnEntityOnly => true;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(1.375, 0.5625, 1.375);
+
+        public override Identifier Identifier => "boat";
+
         public VarInt TimeSinceLastHit { get; set; } = 0;
 
         public VarInt ForwardDirection { get; set; } = 1;

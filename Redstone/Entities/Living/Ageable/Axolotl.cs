@@ -1,7 +1,23 @@
-﻿namespace Redstone.Entities.Living.Ageable
+﻿using Redstone.Types;
+
+namespace Redstone.Entities.Living.Ageable
 {
     public class Axolotl : Animal // This legit sounds like when I stuff a hot pizza roll in my mouth
     {
+        public override string Name => "Axolotl";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(1.3, 0.6, 1.3);
+
+        public override Identifier Identifier => "axolotl";
+
         public AxolotlVariant Variant { get; set; } = 0;
 
         public bool IsPlayingDead { get; set; } = false;

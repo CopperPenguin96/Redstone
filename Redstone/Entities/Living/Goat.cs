@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Redstone.Types;
 
-namespace Redstone.Entities.Living.Monsters
+namespace Redstone.Entities.Living
 {
-    public class Evoker : SpellCasterIllager
+    public class Goat : LivingEntity
     {
-        public override string Name => "Evoker";
+        public override string Name => "Goat";
 
         internal override bool UseSpawnEntityOnly => false;
 
@@ -19,8 +19,8 @@ namespace Redstone.Entities.Living.Monsters
 
         internal override bool AllowedSpawn => true;
 
-        public override BoundingBox BoundingBox => new(0.6, 1.95, 0.6);
+        public override BoundingBox BoundingBox => new(1.3, 0.9, 1.3);
 
-        public override Identifier Identifier => "evoker";
+        public override Identifier Identifier => new("goat");
     }
 }

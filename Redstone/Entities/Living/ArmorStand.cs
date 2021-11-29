@@ -10,6 +10,29 @@ namespace Redstone.Entities.Living
 {
     public class ArmorStand : LivingEntity
     {
+        public override string Name => "Armor Stand";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox
+        {
+            get
+            {
+                if (!IsMarker && !IsSmall) return new(0.5, 1.975, 0.5);
+                if (IsMarker && !IsSmall) return new(0.0, 0.0, 0.0);
+                if (!IsMarker && IsSmall) return new(0.25, 0.9875, 0.25);
+                throw new Exception("Invalid Armor Stand");
+            }
+        }
+
+        public override Identifier Identifier => "armor_stand";
+        
         private byte _mask = 0;
 
         public bool IsSmall
@@ -64,4 +87,5 @@ namespace Redstone.Entities.Living
 
         public Rotation RightLegRotation { get; set; } = new(1.0f, 0.0f, 1.0f);
     }
+    
 }

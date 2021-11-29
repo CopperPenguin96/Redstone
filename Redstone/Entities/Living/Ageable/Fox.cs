@@ -5,6 +5,20 @@ namespace Redstone.Entities.Living.Ageable
 {
     public class Fox : Animal
     {
+        public override string Name => "Fox";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.6, 0.7, 0.6);
+
+        public override Identifier Identifier => new("fox");
+
         public VarInt Type { get; set; } = 0;
 
         private byte _fox;

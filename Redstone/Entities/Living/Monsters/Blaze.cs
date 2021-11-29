@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Flags;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Monsters
 {
     public class Blaze : Monster
     {
+        public override string Name => "Blaze";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.6, 1.8, 0.6);
+
+        public override Identifier Identifier => "blaze";
+
         private byte _blaze;
 
         public bool IsOnFire
@@ -20,10 +36,5 @@ namespace Redstone.Entities.Living.Monsters
                 else FlagsHelper.Unset(ref _blaze, (byte) BlazeFlag.OnFire);
             }
         }
-    }
-
-    public enum BlazeFlag
-    {
-        OnFire = 0x01
     }
 }

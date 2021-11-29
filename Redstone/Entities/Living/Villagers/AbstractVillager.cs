@@ -9,8 +9,18 @@ using Redstone.Types;
 
 namespace Redstone.Entities.Living.Villagers
 {
-    public class AbstractVillager : AgeableMob
+    public abstract class AbstractVillager : AgeableMob
     {
+        public override string Name => "Abstract Villager";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => false;
+
         /// <summary>
         /// Starts at 40, decrements each tick
         /// </summary>

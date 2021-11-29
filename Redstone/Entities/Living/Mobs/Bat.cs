@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Flags;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Mobs
 {
     public class Bat : AmbientCreature
     {
+        public override string Name => "Bat";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.5, 0.9, 0.5);
+
+        public override Identifier Identifier => "bat";
+
         private byte _hanging = 0;
         public bool IsHanging
         {

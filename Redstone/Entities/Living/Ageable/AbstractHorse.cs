@@ -1,11 +1,21 @@
-﻿using Redstone.Entities.Living.Mobs;
+﻿using Redstone.Entities.Flags;
+using Redstone.Entities.Living.Mobs;
 using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Ageable
 {
-    public class AbstractHorse : Animal
+    public abstract class AbstractHorse : Animal
     {
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => false;
+        
+        public override Identifier Identifier => new("falling_block");
         private byte _flags = 0;
 
         public bool IsTame

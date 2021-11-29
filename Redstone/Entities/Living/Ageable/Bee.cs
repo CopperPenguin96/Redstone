@@ -1,4 +1,5 @@
-﻿using Redstone.Entities.Living.Mobs;
+﻿using Redstone.Entities.Flags;
+using Redstone.Entities.Living.Mobs;
 using Redstone.Types;
 using Redstone.Utils;
 
@@ -6,6 +7,20 @@ namespace Redstone.Entities.Living.Ageable
 {
     public class Bee : Animal
     {
+        public override string Name => "Bee";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.7, 0.6, 0.7);
+
+        public override Identifier Identifier => "bee";
+
         private byte _beeFlags = 0;
 
         public bool IsAngry

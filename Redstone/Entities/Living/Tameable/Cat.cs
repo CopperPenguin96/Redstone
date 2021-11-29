@@ -9,6 +9,20 @@ namespace Redstone.Entities.Living.Tameable
 {
     public class Cat : TameableAnimal
     {
+        public override string Name => "Cat";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.6, 0.7, 0.6);
+
+        public override Identifier Identifier => "cat";
+
         public VarInt Type { get; set; } = 1;
 
         public bool IsLying { get; set; } = false;

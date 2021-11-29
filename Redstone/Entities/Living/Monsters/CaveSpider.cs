@@ -7,9 +7,9 @@ using Redstone.Types;
 
 namespace Redstone.Entities.Living.Monsters
 {
-    public class Enderman : Monster
+    public class CaveSpider : Spider
     {
-        public override string Name => "Enderman";
+        public override string Name => "Cave Spider";
 
         internal override bool UseSpawnEntityOnly => false;
 
@@ -19,14 +19,8 @@ namespace Redstone.Entities.Living.Monsters
 
         internal override bool AllowedSpawn => true;
 
-        public override BoundingBox BoundingBox => new(0.6, 2.9, 0.6);
+        public override BoundingBox BoundingBox => new(0.7, 0.5, 0.7);
 
-        public override Identifier Identifier => "enderman";
-
-        public OptObject<VarInt> CarriedBlock { get; set; }
-
-        public bool IsScreaming { get; set; } = false;
-
-        public bool IsStaring { get; set; } = false;
+        public override Identifier Identifier => "cave_spider";
     }
 }

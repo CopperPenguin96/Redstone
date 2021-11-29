@@ -12,11 +12,19 @@ namespace Redstone.Entities
     {
         public override string Name => "Area Effect Cloud";
 
-        // todo ? look into radius?
+        internal override bool UseSpawnEntityOnly => true;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
         public override BoundingBox BoundingBox => new(2.0, 0.5, 2.0);
 
-        public override Identifier Identifier => new("area_effect_cloud");
+        public override Identifier Identifier => "area_effect_cloud";
 
+        // todo ? look into radius?
         public float Radius { get; set; } = 0.5f;
 
         /// <summary>
