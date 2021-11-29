@@ -7,10 +7,10 @@ using Redstone.Types;
 
 namespace Redstone.Entities.Particles
 {
-    public class Sneeze : Particle
+    public class SmallFlame : Particle
     {
-        public override VarInt Id => 48;
+        public override VarInt Id => 77;
 
-        public override Identifier Name => "sneeze";
+        public override Identifier Name => "small_flame";
     }
 }
