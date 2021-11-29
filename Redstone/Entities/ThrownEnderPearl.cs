@@ -11,6 +11,14 @@ namespace Redstone.Entities
     {
         public override string Name => "Thrown Ender Pearl";
 
+        internal override bool UseSpawnEntityOnly => true;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
         public override BoundingBox BoundingBox => new(0.25, 0.25, 0.25);
 
         public override Identifier Identifier => new("ender_pearl");

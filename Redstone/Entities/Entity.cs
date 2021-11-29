@@ -21,7 +21,7 @@ namespace Redstone.Entities
 
         internal virtual bool AllowedSpawn { get; }
 
-        public virtual BoundingBox BoundingBox { get; }
+        public virtual BoundingBox BoundingBox { get; set; }
 
         public virtual Identifier Identifier { get; }
 

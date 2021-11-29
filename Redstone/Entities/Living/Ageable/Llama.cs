@@ -4,6 +4,20 @@ namespace Redstone.Entities.Living.Ageable
 {
     public class Llama : ChestedHorse
     {
+        public override string Name => "Llama";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.9, 1.87, 0.9);
+
+        public override Identifier Identifier => new("llama");
+
         /// <summary>
         /// Number of columns of 3 slots in the llama's inventory
         /// once a chest is equipped

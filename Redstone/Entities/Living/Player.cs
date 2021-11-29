@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities;
 using Redstone.Entities.Living;
 using Redstone.Types;
 using Redstone.Utils;
@@ -13,6 +14,20 @@ namespace Redstone.Players
 {
     public partial class Player : LivingEntity
     {
+        public override string Name => "Player";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => false;
+
+        public override BoundingBox BoundingBox => new(0.6, 1.8, 0.6);
+
+        public override Identifier Identifier => new("player");
+
         public float AdditionalHearts { get; set; } = 0.0f;
 
         public VarInt Score { get; set; } = 0;

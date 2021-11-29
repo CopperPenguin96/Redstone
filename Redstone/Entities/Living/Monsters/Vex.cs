@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Flags;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Monsters
 {
     public class Vex : Monster
     {
+        public override string Name => "Vex";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.4, 0.8, 0.4);
+
+        public override Identifier Identifier => new("vex");
+
         private byte _vex = 0;
 
         public bool IsAttacking
@@ -20,10 +36,5 @@ namespace Redstone.Entities.Living.Monsters
                 else FlagsHelper.Unset(ref _vex, (byte) VexFlag.Attacking);
             }
         }
-    }
-
-    public enum VexFlag
-    {
-        Attacking = 0x01
     }
 }

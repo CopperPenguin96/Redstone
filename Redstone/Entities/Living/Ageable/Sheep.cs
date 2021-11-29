@@ -1,9 +1,25 @@
-﻿using Redstone.Utils;
+﻿using Redstone.Entities.Flags;
+using Redstone.Types;
+using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Ageable
 {
-    public class Sheep
+    public class Sheep : Animal
     {
+        public override string Name => "Sheep";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.9, 1.3, 0.9);
+
+        public override Identifier Identifier => new("sheep");
+
         private byte _sheep = 0;
 
         public bool IsSheared
@@ -62,12 +78,6 @@ namespace Redstone.Entities.Living.Ageable
                 FlagsHelper.Set(ref _sheep, _color);
             }
         }
-    }
-
-    public enum SheepFlag
-    {
-        Color = 0x0F,
-        Sheared = 0x10
     }
 
     public enum SheepColor : byte

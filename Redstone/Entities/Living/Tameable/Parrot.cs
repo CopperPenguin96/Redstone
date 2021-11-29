@@ -9,6 +9,20 @@ namespace Redstone.Entities.Living.Tameable
 {
     public class Parrot : TameableAnimal
     {
+        public override string Name => "Parrot";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.5, 0.9, 0.5);
+
+        public override Identifier Identifier => new("parrot");
+
         public VarInt Variant { get; set; } = 0;
     }
 

@@ -4,6 +4,20 @@ namespace Redstone.Entities.Living.Ageable
 {
     public class Strider : Animal
     {
+        public override string Name => "Strider";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.9, 1.7, 0.9);
+
+        public override Identifier Identifier => new("strider");
+
         /// <summary>
         /// Total time to "boost" with warped fungus on a stick for
         /// </summary>

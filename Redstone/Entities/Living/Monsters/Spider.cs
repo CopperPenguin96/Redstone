@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Flags;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Monsters
 {
     public class Spider : Monster
     {
+        public override string Name => "Spider";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(1.4, 0.9, 1.4);
+
+        public override Identifier Identifier => new("spider");
+
         private byte _spider = 0;
 
         public bool IsClimbing
@@ -20,10 +36,5 @@ namespace Redstone.Entities.Living.Monsters
                 else FlagsHelper.Unset(ref _spider, (byte) SpiderFlag.Climbing);
             }
         }
-    }
-
-    public enum SpiderFlag : byte
-    {
-        Climbing = 0x01
     }
 }

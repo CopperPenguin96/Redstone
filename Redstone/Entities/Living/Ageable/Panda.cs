@@ -1,9 +1,25 @@
-﻿using Redstone.Utils;
+﻿using Redstone.Entities.Flags;
+using Redstone.Types;
+using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Ageable
 {
     public class Panda : Animal
     {
+        public override string Name => "Panda";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(1.3, 1.25, 1.3);
+
+        public override Identifier Identifier => new("panda");
+
         /// <summary>
         /// More information is needed here.
         /// Set to 32 when something happens, and then down at 0 again.
@@ -66,14 +82,5 @@ namespace Redstone.Entities.Living.Ageable
                 else FlagsHelper.Unset(ref _panda, (byte)PandaFlag.OnBack);
             }
         }
-    }
-
-    public enum PandaFlag
-    {
-        Unused = 0x01,
-        Sneezing = 0x02,
-        Rolling = 0x04,
-        Sitting = 0x08,
-        OnBack = 0x10
     }
 }

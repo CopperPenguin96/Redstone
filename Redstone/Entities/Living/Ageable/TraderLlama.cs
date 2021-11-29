@@ -1,6 +1,21 @@
-﻿namespace Redstone.Entities.Living.Ageable
+﻿using Redstone.Types;
+
+namespace Redstone.Entities.Living.Ageable
 {
     public class TraderLlama : Llama
     {
+        public override string Name => "Trader Llama";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.9, 1.87, 0.9);
+
+        public override Identifier Identifier => new("trader_llama");
     }
 }

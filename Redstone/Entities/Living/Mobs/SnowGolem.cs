@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Flags;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Mobs
 {
     public class SnowGolem : AbstractGolem
     {
+        public override string Name => "Snow Golem";
+
+        internal override bool UseSpawnEntityOnly => false;
+
+        internal override bool UseSpawnPaintingOnly => false;
+
+        internal override bool UseSpawnXpOnly => false;
+
+        internal override bool AllowedSpawn => true;
+
+        public override BoundingBox BoundingBox => new(0.7, 1.9, 0.7);
+
+        public override Identifier Identifier => new("snow_golem");
+
         private byte _hat = 0x10;
 
         public bool HasPumpkinHat
@@ -20,11 +36,5 @@ namespace Redstone.Entities.Living.Mobs
                 else FlagsHelper.Unset(ref _hat, (byte) SnowGolemFlag.HasHat);
             }
         }
-    }
-
-    public enum SnowGolemFlag : byte
-    {
-        NoHat = 0x00,
-        HasHat = 0x10
     }
 }
