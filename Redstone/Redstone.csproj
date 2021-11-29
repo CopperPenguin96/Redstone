@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Living\" />
+    <Folder Include="Entities\Living\Tameable\" />
   </ItemGroup>
 
 </Project>

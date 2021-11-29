@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Redstone.Players
 {
-    public class Player
+    public partial class Player
     {
         public string Username { get; set; }
 
