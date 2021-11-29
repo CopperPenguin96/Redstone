@@ -28,6 +28,5 @@ namespace Redstone.Entities
         /// </summary>
         public bool IgnoreRadiusShowEffectSinglePoint { get; set; } = false;
 
-        public 
     }
 }

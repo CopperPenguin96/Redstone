@@ -49,6 +49,10 @@ namespace Redstone.Types
             Z = z;
         }
 
+        protected Position()
+        {
+        }
+
         public byte Encode()
         {
             return (byte)(((X & 67108863)
