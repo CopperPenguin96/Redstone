@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Redstone.Entities.Living.Mobs;
+using Redstone.Types;
 
 namespace Redstone.Entities.Living.Monsters
 {
-    public class Monster : PathFinderMob
+    public class Guardian : Monster
     {
+        public bool IsRetractingSpikes { get; set; } = false;
+
+        public VarInt Target { get; set; }
     }
 }
