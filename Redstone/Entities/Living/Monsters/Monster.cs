@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Redstone.Entities.Living.Mobs
+namespace Redstone.Entities.Living.Monsters
 {
-    public class AgeableMob : PathFinderMob
+    internal class Monster
     {
-        public bool IsBaby { get; set; } = false;
     }
 }

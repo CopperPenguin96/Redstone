@@ -13,8 +13,4 @@ foreach (string file in Directory.GetFiles("Redstone/"))
     Console.WriteLine(file);
 }
 
-DrippingHoney honey = new DrippingHoney();
-Particle particle = (Particle) honey;
-Console.WriteLine("Honey: " + honey.Name);
-Console.WriteLine("Particle: " + particle.Name);
 Console.ReadLine();
