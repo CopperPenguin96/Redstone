@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities.Particles;
 using Redstone.Types;
 
 namespace Redstone.Entities
@@ -28,5 +29,6 @@ namespace Redstone.Entities
         /// </summary>
         public bool IgnoreRadiusShowEffectSinglePoint { get; set; } = false;
 
+        public Particle Particle { get; set; } = new Effect();
     }
 }
