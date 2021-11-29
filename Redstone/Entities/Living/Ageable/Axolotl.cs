@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Redstone.Entities.Living.Mobs
+﻿namespace Redstone.Entities.Living.Ageable
 {
     public class Axolotl : Animal // This legit sounds like when I stuff a hot pizza roll in my mouth
     {

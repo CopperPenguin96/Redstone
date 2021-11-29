@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.Types;
+﻿using Redstone.Types;
 using Redstone.Utils;
 
-namespace Redstone.Entities.Living.Mobs
+namespace Redstone.Entities.Living.Ageable
 {
     public class Fox : Animal
     {
