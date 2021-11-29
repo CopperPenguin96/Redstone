@@ -14,6 +14,13 @@ namespace Redstone.Entities.Living.Villagers
         public VillagerJob Job { get; set; }
 
         public VarInt Level { get; set; }
+
+        public VillagerData(VillagerType type, VillagerJob job, VarInt level)
+        {
+            Type = type;
+            Job = job;
+            Level = level;
+        }
     }
 
     public enum VillagerType
