@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Mobs
     {
         public override string Name => "Dolphin";
 
+        public override VarInt Type => 14;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -11,6 +11,12 @@ namespace Redstone.Entities
 {
     public class Entity
     {
+        public VarInt Id { get; set; }
+
+        public virtual VarInt Type { get; }
+
+        public JavaUUID UniqueId { get; set; }
+
         public virtual string Name => "Entity";
 
         internal virtual bool UseSpawnEntityOnly { get; }
@@ -20,6 +26,12 @@ namespace Redstone.Entities
         internal virtual bool UseSpawnXpOnly { get; }
 
         internal virtual bool AllowedSpawn { get; }
+
+        public Position Velocity { get; set; }
+
+        public PosDouble Position { get; set; }
+
+        public byte HeadPitch { get; set; }
 
         public virtual BoundingBox BoundingBox { get; set; }
 

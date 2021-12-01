@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Wither Skeleton";
 
+        public override VarInt Type => 103;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

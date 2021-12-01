@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Shulker Bullet";
 
+        public override VarInt Type => 76;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

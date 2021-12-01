@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Llama Spit";
 
+        public override VarInt Type => 47;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

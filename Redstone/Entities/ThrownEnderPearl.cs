@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Thrown Ender Pearl";
 
+        public override VarInt Type => 90;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

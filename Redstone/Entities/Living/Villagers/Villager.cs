@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Villagers
     {
         public override string Name => "Villager";
 
+        public override VarInt Type => 98;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

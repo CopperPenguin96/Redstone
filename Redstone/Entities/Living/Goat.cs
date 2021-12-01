@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living
     {
         public override string Name => "Goat";
 
+        public override VarInt Type => 34;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

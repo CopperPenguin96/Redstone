@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Mobs
     {
         public override string Name => "Pufferfish";
 
+        public override VarInt Type => 70;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

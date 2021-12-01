@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Drowned";
 
+        public override VarInt Type => 17;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Thrown Egg";
 
+        public override VarInt Type => 89;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;
@@ -20,13 +22,7 @@ namespace Redstone.Entities
         internal override bool AllowedSpawn => true;
 
         public override BoundingBox BoundingBox => new(0.25, 0.25, 0.25);
-
-        public override Identifier Identifier => new("snowball");
-
         
-
-        
-
         public override Identifier Identifier => new("egg");
 
         /// <summary>

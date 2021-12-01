@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Fishing Hook";
 
+        public override VarInt Type => 112;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

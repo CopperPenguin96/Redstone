@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Glow Item Frame";
 
+        public override VarInt Type => 32;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

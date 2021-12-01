@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Thrown Experience Bottle";
 
+        public override VarInt Type => 91;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

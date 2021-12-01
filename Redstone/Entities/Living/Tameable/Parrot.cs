@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Tameable
     {
         public override string Name => "Parrot";
 
+        public override VarInt Type => 62;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

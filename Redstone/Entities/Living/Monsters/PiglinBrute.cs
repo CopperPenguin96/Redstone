@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Piglin Brute";
 
+        public override VarInt Type => 66; // 66? Order 66?
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

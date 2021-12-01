@@ -6,6 +6,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Zombie Horse";
 
+        public override VarInt Type => 108;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

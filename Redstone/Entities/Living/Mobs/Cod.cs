@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Mobs
     {
         public override string Name => "Cod";
 
+        public override VarInt Type => 11;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

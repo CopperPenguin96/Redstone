@@ -13,6 +13,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Spider";
 
+        public override VarInt Type => 85;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

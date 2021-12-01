@@ -5,7 +5,9 @@ namespace Redstone.Entities.Living.Ageable
     public class Mooshroom : Cow
     {
         public override string Name => "Mooshroom";
-        
+
+        public override VarInt Type => 58;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

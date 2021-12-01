@@ -6,6 +6,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Axolotl";
 
+        public override VarInt Type => 3;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

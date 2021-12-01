@@ -13,6 +13,8 @@ namespace Redstone.Entities.Living.Mobs
     {
         public override string Name => "Snow Golem";
 
+        public override VarInt Type => 82;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Snowball";
 
+        public override VarInt Type => 83;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

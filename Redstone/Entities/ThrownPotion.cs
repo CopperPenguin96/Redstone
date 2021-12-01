@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Thrown Potion";
 
+        public override VarInt Type => 92;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

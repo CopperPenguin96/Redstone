@@ -12,6 +12,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Slime";
 
+        public override VarInt Type => 80;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -9,6 +9,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Donkey";
 
+        public override VarInt Type => 15;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

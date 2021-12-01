@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Primed TNT";
 
+        public override VarInt Type => 69; // nice
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

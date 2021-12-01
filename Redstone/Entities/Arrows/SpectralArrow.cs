@@ -11,6 +11,8 @@ namespace Redstone.Entities.Arrows
     {
         public override string Name => "Spectral Arrow";
 
+        public override VarInt Type => 84;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

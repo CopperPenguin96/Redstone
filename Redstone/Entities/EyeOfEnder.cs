@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Eye of Ender";
 
+        public override VarInt Type => 26;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

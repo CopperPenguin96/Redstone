@@ -12,6 +12,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Boat";
 
+        public override VarInt Type => 7;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

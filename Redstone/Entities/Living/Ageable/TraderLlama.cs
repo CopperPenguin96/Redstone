@@ -6,6 +6,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Trader Llama";
 
+        public override VarInt Type => 94;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

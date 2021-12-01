@@ -13,6 +13,8 @@ namespace Redstone.Entities.Living.Monsters
     {
         public override string Name => "Blaze";
 
+        public override VarInt Type => 6;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

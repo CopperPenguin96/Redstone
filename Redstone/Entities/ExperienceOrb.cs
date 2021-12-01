@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Experience Orb";
 
+        public override VarInt Type => 25;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;
@@ -22,5 +24,7 @@ namespace Redstone.Entities
         public override BoundingBox BoundingBox => new(0.5, 0.5, 0.5);
 
         public override Identifier Identifier => "experience_orb";
+
+        public short AwardAmount { get; set; }
     }
 }

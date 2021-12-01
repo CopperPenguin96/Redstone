@@ -16,6 +16,8 @@ namespace Redstone.Players
     {
         public override string Name => "Player";
 
+        public override VarInt Type => 111;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Mobs
     {
         public override string Name => "Tropical Fish";
 
+        public override VarInt Type => 95;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

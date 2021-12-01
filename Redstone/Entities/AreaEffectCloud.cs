@@ -12,6 +12,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Area Effect Cloud";
 
+        public override VarInt Type => 0;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -8,6 +8,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Sheep";
 
+        public override VarInt Type => 74;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

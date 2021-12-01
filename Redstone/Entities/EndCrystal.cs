@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "End Crystal";
 
+        public override VarInt Type => 19;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

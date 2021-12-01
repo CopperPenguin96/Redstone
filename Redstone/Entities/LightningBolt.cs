@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Lightning Bolt";
 
+        public override VarInt Type => 45;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

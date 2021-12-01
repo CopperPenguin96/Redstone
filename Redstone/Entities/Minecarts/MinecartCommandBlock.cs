@@ -11,6 +11,8 @@ namespace Redstone.Entities.Minecarts
     {
         public override string Name => "Minecart Command Block";
 
+        public override VarInt Type => 52;
+
         internal override bool UseSpawnEntityOnly => true;
         
         internal override bool UseSpawnPaintingOnly => false;

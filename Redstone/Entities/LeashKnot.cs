@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Leash Knot";
 
+        public override VarInt Type => 44;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

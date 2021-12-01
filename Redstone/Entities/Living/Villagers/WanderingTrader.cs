@@ -11,6 +11,8 @@ namespace Redstone.Entities.Living.Villagers
     {
         public override string Name => "Wandering Trader";
 
+        public override VarInt Type => 100;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

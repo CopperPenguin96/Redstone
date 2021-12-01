@@ -11,6 +11,8 @@ namespace Redstone.Entities.Arrows
     {
         public override string Name => "Thrown Trident";
 
+        public override VarInt Type => 93;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

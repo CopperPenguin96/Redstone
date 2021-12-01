@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Marker";
 
+        public override VarInt Type => 49;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

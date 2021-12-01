@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Firework Rocket Entity";
 
+        public override VarInt Type => 28;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;

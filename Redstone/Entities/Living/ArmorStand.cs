@@ -12,6 +12,8 @@ namespace Redstone.Entities.Living
     {
         public override string Name => "Armor Stand";
 
+        public override VarInt Type => 1;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;

@@ -7,6 +7,8 @@ namespace Redstone.Entities.Living.Ageable
     {
         public override string Name => "Fox";
 
+        public override VarInt Type => 29;
+
         internal override bool UseSpawnEntityOnly => false;
 
         internal override bool UseSpawnPaintingOnly => false;
@@ -19,7 +21,7 @@ namespace Redstone.Entities.Living.Ageable
 
         public override Identifier Identifier => new("fox");
 
-        public VarInt Type { get; set; } = 0;
+        public VarInt FoxType { get; set; } = 0;
 
         private byte _fox;
 

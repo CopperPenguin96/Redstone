@@ -11,6 +11,8 @@ namespace Redstone.Entities
     {
         public override string Name => "Item Frame";
 
+        public override VarInt Type => 42;
+
         internal override bool UseSpawnEntityOnly => true;
 
         internal override bool UseSpawnPaintingOnly => false;
