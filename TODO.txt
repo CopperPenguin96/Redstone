@@ -1,10 +1,17 @@
 =-=-=REDSTONE TODO=-=-=
+*** Currently just implementing packets and making sure everything is setup
+*** to send them properly.
 
 - Login Protocol
 -- Set Compression (future release?)
 
 - Play Protocol
--- Keep working on entities/particles
+-- Spawn Painting
+-- Spawn Player
+-- Sculk Vibration Signal
+-- Enity Animation
+-- Statistics
+-- Acknowledge Player Digging
 
 - World Loading/Saving
 - Plugin/Mod support
