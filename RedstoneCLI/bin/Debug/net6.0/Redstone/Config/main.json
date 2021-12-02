@@ -2,7 +2,7 @@
   "configVersion": 0,
   "serverName": "[Redstone] Default",
   "port": 25565,
-  "motd": "Welcome to the &aserver!",
+  "motd": "&aWelcome to &4$server!",
   "maxPlayers": 20,
   "logNormalColor": "f",
   "logChatColor": "7",
@@ -12,5 +12,6 @@
   "logFatalColor": "4",
   "logSaving": false,
   "logSaveMode": 0,
-  "listIcon": "Redstone/ricon.png"
+  "listIcon": "Redstone/ricon.png",
+  "enableEncryption": true
 }

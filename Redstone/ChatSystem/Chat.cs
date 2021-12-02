@@ -14,7 +14,6 @@ namespace Redstone.ChatSystem
     {
         public static string Format(string rawMessage, Player? player)
         {
-            return "";
             if (player != null)
             {
                 rawMessage = rawMessage.Replace("$name", player.DisplayName);
@@ -69,92 +68,119 @@ namespace Redstone.ChatSystem
             // todo caps
             // todo swears
 
-            List<string> componentList = new();
-            bool nextChanged = false;
-
-            string color = "reset";
-            bool bold = false;
-            bool italic = false;
-            bool underlined = false;
-            bool strikethrough = false;
-            bool obfuscated = false;
-            Dictionary<char, string> colorCodes = new()
+            string[] colors =
             {
-                {'0', "black"},
-                {'1', "dark_blue"},
-                {'2', "dark_green"},
-                {'3', "dark_cyan"},
-                {'4', "dark_red"},
-                {'5', "dark_purple"},
-                {'6', "dark_purple"},
-                {'7', "gray"},
-                {'8', "dark_gray"},
-                {'9', "blue"},
-                {'a', "green"},
-                {'b', "aqua"},
-                {'c', "red"},
-                {'d', "light_purple"},
-                {'e', "yellow"},
-                {'f', "white"},
-                {'k', "obfuscated"},
-                {'l', "bold"},
-                {'m', "strikethrough"},
-                {'n', "underlined"},
-                {'o', "italic"},
-                {'r', "reset"},
-                {'&', "&"}
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                "a", "b", "c", "d", "e", "f"
             };
-            string text = "";
-            while (rawMessage != "")
+
+            if (!rawMessage.Contains("&"))
             {
-                char currentChar = rawMessage[0];
-                if (nextChanged)
+                return "{\"text\": \"" + rawMessage + "\"}";
+            }
+
+            string[] splits = rawMessage.Split("&");
+            List<int> includeInNext = new();
+            string json = "{ ";
+
+            List<string> jsonParts = new();
+            for (int x = 0; x < splits.Length; x++)
+            {
+                string currentSplit = splits[x];
+                if (currentSplit.Length == 0) continue;
+                if (currentSplit.Length == 1)
                 {
-                    bool val = colorCodes.TryGetValue(currentChar, out string newColor);
-
-                    if (val)
+                    includeInNext.Add(x);
+                    continue;
+                }
+                else
+                {
+                    if (colors.Contains("" + currentSplit[0])
+                        || currentSplit[0] is 'k' or 'l' or 'm' or 'n' or
+                            'o' or 'r')
                     {
-                        if (newColor == "bold") bold = true;
-
-                        if (newColor == "strikethrough") strikethrough = true;
-                        if (newColor == "underlined") underlined = true;
-                        if (newColor == "italic") italic = true;
-                        if (newColor == "obfuscated") obfuscated = true;
-                        if (newColor == "&") text += "&";
-
-                        if (newColor == "reset")
-                        {
-                            strikethrough = false;
-                            bold = false;
-                            underlined = false;
-                            obfuscated = false;
-                            italic = false;
-                            color = "reset";
-                        }
-                        else
-                        {
-                            color = newColor;
-                        }
+                        includeInNext.Add(x);
+                        currentSplit = currentSplit[1..];
                     }
-                    else if (currentChar == '&')
+                }
+
+                bool alreadyColor = false;
+                for (int i = includeInNext.Count - 1; i >= 0; i--) // go backwards
+                {
+                    if (splits[includeInNext[i]].ToLower() == "r")
                     {
-                        if (nextChanged)
-                        {
-                            text += "&";
-                            nextChanged = false;
-                        }
-                        else
-                        {
-                            nextChanged = true;
-                            // createJsonComponent todo
-                        }
+                        jsonParts.Add($"\"text\": \"{currentSplit}\"");
+                        break;
                     }
                     else
                     {
-                        text += currentChar;
+                        string codeJson = $"\"text\": \"{currentSplit}\"";
+                        string code = splits[includeInNext[i]][0] + "";
+                        string name = MinecraftFormatting.CodeToId(code);
+                        if (colors.Contains(code))
+                        {
+                            if (alreadyColor) continue;
+                            alreadyColor = true;
+                            codeJson += $", \"color\": \"{name}\"";
+                        }
+
+                        if (code == "l")
+                        {
+                            codeJson += ", \"bold\": \"true\"";
+                        }
+
+                        if (code == "o")
+                        {
+                            codeJson += ", \"italic\": \"true\"";
+                        }
+
+                        if (code == "n")
+                        {
+                            codeJson += ", \"underlined\": \"true\"";
+                        }
+
+                        if (code == "m")
+                        {
+                            codeJson += ", \"strikethrough\": \"true\"";
+                        }
+
+                        if (code == "k")
+                        {
+                            codeJson += ", \"obfuscated\": \"true\"";
+                        }
+
+                        jsonParts.Add(codeJson);
                     }
                 }
             }
+
+            for (int z = 0; z < jsonParts.Count; z++)
+            {
+                if (z == 0)
+                {
+                    json += jsonParts[z];
+                }
+                else if (jsonParts.Count > 1)
+                {
+                    if (z == 1)
+                    {
+                        json += ", \"extra\": [{" +
+                                jsonParts[z] + "}";
+                    }
+                    else
+                    {
+                        json += ",{" + jsonParts[z] + "}";
+                    }
+
+                    if (z == jsonParts.Count - 1)
+                    {
+                        json += "]";
+                    }
+                }
+            }
+
+            json += "}";
+            return json;
         }
     }
 }

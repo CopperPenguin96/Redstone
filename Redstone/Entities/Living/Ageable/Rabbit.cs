@@ -20,6 +20,6 @@ namespace Redstone.Entities.Living.Ageable
 
         public override Identifier Identifier => new("rabbit");
 
-        public VarInt Type { get; set; } = 0;
+        public VarInt RabbitType { get; set; } = 0;
     }
 }

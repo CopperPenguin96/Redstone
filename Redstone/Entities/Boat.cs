@@ -32,7 +32,7 @@ namespace Redstone.Entities
 
         public float DamageTaken { get; set; } = 0.0f;
 
-        public WoodType Type { get; set; } = WoodType.Oak;
+        public WoodType WoodType { get; set; } = WoodType.Oak;
 
         public bool IsLeftPaddleTurning { get; set; } = false;
 

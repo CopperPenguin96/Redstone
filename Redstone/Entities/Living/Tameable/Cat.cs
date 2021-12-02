@@ -25,7 +25,7 @@ namespace Redstone.Entities.Living.Tameable
 
         public override Identifier Identifier => "cat";
 
-        public VarInt Type { get; set; } = 1;
+        public VarInt CatType { get; set; } = 1;
 
         public bool IsLying { get; set; } = false;
 
