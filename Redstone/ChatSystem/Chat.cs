@@ -74,20 +74,29 @@ namespace Redstone.ChatSystem
                 "a", "b", "c", "d", "e", "f"
             };
 
+            // If there are no formatting codes, just send the message.
             if (!rawMessage.Contains("&"))
             {
                 return "{\"text\": \"" + rawMessage + "\"}";
             }
 
+            // Split the message up by the formatting code
             string[] splits = rawMessage.Split("&");
             List<int> includeInNext = new();
+
+            // begin building the json string
             string json = "{ ";
 
             List<string> jsonParts = new();
             for (int x = 0; x < splits.Length; x++)
             {
                 string currentSplit = splits[x];
+
+                // If the current split is worthless, skip over it
                 if (currentSplit.Length == 0) continue;
+
+                // If the current split is just a code (meaning more follow after
+                // Then record that it still needs to be used, continue to next
                 if (currentSplit.Length == 1)
                 {
                     includeInNext.Add(x);
@@ -95,6 +104,7 @@ namespace Redstone.ChatSystem
                 }
                 else
                 {
+                    // Verify code is appropiate
                     if (colors.Contains("" + currentSplit[0])
                         || currentSplit[0] is 'k' or 'l' or 'm' or 'n' or
                             'o' or 'r')
@@ -105,8 +115,9 @@ namespace Redstone.ChatSystem
                 }
 
                 bool alreadyColor = false;
-                for (int i = includeInNext.Count - 1; i >= 0; i--) // go backwards
+                for (int i = includeInNext.Count - 1; i >= 0; i--) // go backwards (so we know to overwrite
                 {
+                    // If most recent code is reset, do that first. Skip rest.
                     if (splits[includeInNext[i]].ToLower() == "r")
                     {
                         jsonParts.Add($"\"text\": \"{currentSplit}\"");
@@ -119,11 +130,13 @@ namespace Redstone.ChatSystem
                         string name = MinecraftFormatting.CodeToId(code);
                         if (colors.Contains(code))
                         {
+                            // If coloring already applied to this patch of string, skip coloring.
                             if (alreadyColor) continue;
                             alreadyColor = true;
                             codeJson += $", \"color\": \"{name}\"";
                         }
 
+                        // Apply formatting
                         if (code == "l")
                         {
                             codeJson += ", \"bold\": \"true\"";
@@ -154,15 +167,16 @@ namespace Redstone.ChatSystem
                 }
             }
 
+            // Loop through each json part we just hardcoded
             for (int z = 0; z < jsonParts.Count; z++)
             {
-                if (z == 0)
+                if (z == 0) // Get the first
                 {
                     json += jsonParts[z];
                 }
-                else if (jsonParts.Count > 1)
+                else if (jsonParts.Count > 1) // If there are more
                 {
-                    if (z == 1)
+                    if (z == 1) // add the extra tag, and then proceed to add those under extra
                     {
                         json += ", \"extra\": [{" +
                                 jsonParts[z] + "}";
@@ -174,13 +188,13 @@ namespace Redstone.ChatSystem
 
                     if (z == jsonParts.Count - 1)
                     {
-                        json += "]";
+                        json += "]"; // finish the extra tag
                     }
                 }
             }
 
-            json += "}";
-            return json;
+            json += "}"; // close the array.
+            return json; // BAM
         }
     }
 }
