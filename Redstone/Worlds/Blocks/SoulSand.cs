@@ -6,10 +6,10 @@ namespace Redstone.Worlds.Blocks
     {
         public override string Name => "Soul Sand";
 
-        public override Identifier Id => "soul";
+        public override Identifier Id => "soul sand";
 
-        public override int Type => sand;
+        public override int Type => 88;
 
-        public override int Meta => 88;
+        public override int Meta => 0;
     }
 }
