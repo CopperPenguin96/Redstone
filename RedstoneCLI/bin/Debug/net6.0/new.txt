@@ -1,0 +1,190 @@
+SprucePressurePlate&Spruce Pressure Plate&spruce_pressure_plate&0&0
+BirchPressurePlate&Birch Pressure Plate&birch_pressure_plate&0&0
+JunglePressurePlate&Jungle Pressure Plate&jungle_pressure_plate&0&0
+AcaciaPressurePlate&Acacia Pressure Plate&acacia_pressure_plate&0&0
+DarkOakPressurePlate&Dark Oak Pressure Plate&dark_oak_pressure_plate&0&0
+RedstoneOre&Redstone Ore&redstone_ore&73&0
+RedstoneTorch&Redstone Torch&redstone_torch&76&0
+StoneButton&Stone Button&stone_button&77&0
+Snow&Snow&snow&78&0
+Ice&Ice&ice&79&0
+SnowBlock&Snow Block&snow_block&80&0
+Cactus&Cactus&cactus&81&0
+Clay&Clay&clay&337&0
+Jukebox&Jukebox&jukebox&84&0
+OakFence&Oak Fence&oak_fence&85&0
+SpruceFence&Spruce Fence&spruce_fence&188&0
+BirchFence&Birch Fence&birch_fence&189&0
+JungleFence&Jungle Fence&jungle_fence&190&0
+AcaciaFence&Acacia Fence&acacia_fence&192&0
+DarkOakFence&Dark Oak Fence&dark_oak_fence&191&0
+Pumpkin&Pumpkin&pumpkin&86&0
+CarvedPumpkin&Carved Pumpkin&carved_pumpkin&0&0
+Netherrack&Netherrack&netherrack&87&0
+SoulSand&Soul Sand&soul&sand&88&0
+Glowstone&Glowstone&glowstone&89&0
+JackOLantern&Jack O Lantern&jack_0_lantern&91&0
+OakTrapdoor&Oak Trapdoor&oak_trapdoor&96&0
+SpruceTrapdoor&Spruce Trapdoor&spruce_trapdoor&0&0
+BirchTrapdoor&Birch Trapdoor&birch_trapdoor&0&0
+JungleTrapdoor&Jungle Trapdoor&jungle_trapdoor&0&0
+AcaciaTrapdoor&Acacia Trapdoor&acacia_trapdoor&0&0
+DarkOakTrapdoor&Dark Oak Trapdoor&dark_oak_trapdoor&0&0
+InfestedStone&Infested Stone&infested_stone&97&0
+InfestedCobblestone&Infested Cobblestone&infested_cobblestone&97&1
+InfestedStoneBricks&Infested Stone Bricks&infested_stone_bricks&97&2
+InfestedMossyStoneBricks&Infested Mossy Stone Bricks&infested_mossy_stone_bricks&97&3
+InfestedCrackedStoneBricks&Infested Cracked Stone Bricks&infested_cracked_stone_bricks&97&4
+InfestedChiseledStoneBricks&Infested Chiseled Stone Bricks&infested_chiseled_stone_bricks&97&5
+StoneBricks&Stone Bricks&stone_bricks&98&0
+MossyStoneBricks&Mossy Stone Bricks&mossy_stone_bricks&98&1
+CrackedStoneBricks&Cracked Stone Bricks&cracked_stone_bricks&98&2
+ChiseledStoneBricks&Chiseled Stone Bricks&chiseled_stone_bricks&98&3
+BrownMushroomBlock&Brown Mushroom Block&brown_mushroom_block&99&0
+RedMushroomBlock&Red Mushroom Block&red_mushroom_block&100&0
+MushroomSTem&Mushroom Stem&mushroom_stem&0&0
+IronBars&Iron Bars&iron_bars&101&0
+GlassPane&Glass Pane&glass_pane&102&0
+Melon&Melon&melon&103&0
+Vines&Vines&vines&106&0
+OakFenceGate&Oak Fence Gate&oak_fence_gate&107&0
+SpruceFenceGate&Spruce Fence Gate&spruce_fence_gate&183&0
+BirchFenceGate&Birch Fence Gate&birch_fence_gate&184&0
+JungleFenceGate&Jungle Fence Gate&jungle_fence_gate&185&0
+AcaciaFenceGate&Acacia Fence Gate&acacia_fence_gate&187&0
+DarkOakFenceGate&Dark Oak Fence Gate&dark_oak_fence_gate&186&0
+BrickStairs&Brick Stairs&brick_stairs&108&0
+StoneBrickStairs&Stone Brick Stairs&stone_brick_stairs&109&0
+Mycelium&Mycelium&mycelium&110&0
+LilyPad&Lily Pad&lily_pad&111&0
+NetherBricks&Nether Bricks&nether_bricks&112&0
+NetherBrickFence&Nether Brick Fence&nether_brick_fence&113&0
+NetherBrickStairs&Nether Brick Stairs&nether_brick_stairs&114&0
+EnchantingTable&Enchanting Table&enchanting_table&116&0
+EndPortalFrame&End Portal Frame&end_portal_frame&120&0
+EndStone&End Stone&end_stone&121&0
+EndStoneBricks&End Stone Bricks&end_stone_bricks&206&0
+DragonEgg&Dragon Egg&dragon_egg&122&0
+RedstoneLamp&Redstone Lamp&redstone_lamp&123&0
+SandstoneStairs&Sandstone Stairs&sandstone_stairs&128&0
+EmeraldOre&Emerald Ore&emerald_ore&129&0
+EnderChest&Ender Chest&ender_chest&130&0
+TripwireHook&Tripwire Hook&tripwire_hook&131&0
+EmeraldBlock&Block of Emerald&emerald_block&133&0
+SpruceStairs&Spruce Stairs&spruce_stairs&134&0
+BirchStairs&Birch Stairs&birch_stairs&135&0
+JungleStairs&Jungle Stairs&jungle_stairs&136&0
+CommandBlock&Command Block&command_block&137&0
+Beacon&Beacon&beacon&138&0
+CobblestoneWall&Cobblestone Wall&cobblestone_wall&139&0
+MossyCobblestoneWall&Mossy Cobblestone Wall&mossy_cobblestone_wall&139&1
+OakButton&Oak Button&oak_button&143&0
+SpruceButton&Spruce Button&spruce_button&0&0
+BirchButton&Birch Button&birch_button&0&0
+JungleButton&Jungle Button&jungle_button&0&0
+AcaciaButton&Acacia Button&acacia_button&0&0
+DarkOakButton&Dark Oak Button&dark_oak_button&0&0
+Anvil&Anvil&anvil&145&0
+ChippedAnvil&Chipped Anvil&chipped_anvil&145&1
+DamagedAnvil&Damaged Anvil&damaged_anvil&145&2
+TrappedChest&Trapped Chest&trapped_chest&146&0
+LightWeightedPressurePlate&Light Weighted Pressure Plate&light_weighted_pressure_plate&147&0
+HeavyWeightedPressurePlate&Heavy Weighted Pressure Plate&heavy_weighted_pressure_plate&148&0
+DaylightDetector&Daylight Detector&daylight_detector&151&0
+RedstoneBlock&Redstone Block&redstone_block&152&0
+NetherQuartzOre&Nether Quartz Ore&nether_quartz_ore&153&0
+Hopper&Hopper&hopper&154&0
+ChiseledQuartzBlock&Chiseled Quartz Block&chiseled_quartz_block&155&1
+QuartzBlock&Quartz Block&quartz_block&155&0
+QuartzPillar&Quartz Pillar&quartz_pillar&155&2
+QuartzStairs&Quartz Stairs&quartz_stairs&156&0
+ActivatorRail&Activator Rail&activator_rail&157&0
+Dropper&Dropper&dropper&158&0
+WhiteTerracotta&White Terracotta&white_terracotta&159&0
+OrangeTerracotta&Orange Terracotta&orange_terracotta&159&1
+MagentaTerracotta&Magenta Terracotta&magenta_terracotta&159&2
+LightBlueTerracotta&Light Blue Terracotta&light_blue_terracotta&159&3
+YellowTerracotta&Yellow Terracotta&yellow_terracotta&159&4
+LimeTerracotta&Lime Terracotta&lime_terracotta&159&5
+PinkTerracotta&Pink Terracotta&pink_terracotta&159&6
+GrayTerracotta&Gray Terracotta&Gray_terracotta&159&7
+LightGrayTerracotta&Light Gray Terracotta&light_gray_terracotta&159&8
+CyanTerracotta&Cyan Terracotta&Cyan_terracotta&159&9
+PurpleTerracotta&Purple Terracotta&purple_terracotta&159&10
+BlueTerracotta&Blue Terracotta&blue_terracotta&159&11
+BrownTerracotta&Brown Terracotta&brown_terracotta&159&12
+GreenTerracotta&Green Terracotta&green_terracotta&159&13
+RedTerracotta&Red Terracotta&red_terracotta&159&14
+BlackTerracotta&Black Terracotta&black_terracotta&159&15
+Barrier&Barrier&barrier&166&0
+IronTrapdoor&Iron Trapdoor&iron_trapdoor&167&0
+HayBale&Hay Bale&hay_block&170&0
+WhiteCarpet&White Carpet&white_carpet&171&0
+OrangeCarpet&Orange Carpet&orange_carpet&171&1
+MagentaCarpet&Magenta Carpet&magenta_carpet&171&2
+LightBlueCarpet&Light Blue Carpet&light_blue_carpet&171&3
+YellowCarpet&Yellow Carpet&yellow_carpet&171&4
+LimeCarpet&Lime Carpet&lime_carpet&171&5
+PinkCarpet&Pink Carpet&pink_carpet&171&6
+GrayCarpet&Gray Carpet&gray_carpet&171&7
+LightGrayCarpet&Light Gray Carpet&light_gray_carpet&171&8
+CyanCarpet&Cyan Carpet&cyan_carpet&171&9
+PurpleCarpet&Purple Carpet&purple_carpet&171&10
+BlueCarpet&Blue Carpet&blue_carpet&171&11
+BrownCarpet&Brown Carpet&brown_carpet&171&12
+GreenCarpet&Green Carpet&green_carpet&171&13
+RedCarpet&Red Carpet&red_carpet&171&14
+BlackCarpet&Black Carpet&black_carpet&171&15
+Terracotta&Terracotta&terracotta&172&0
+CoalBlock&Block of Coal&coal_block&173&0
+PackedIce&Packed Ice&packed_ice&174&0
+AcaciaStairs&Acacia Stairs&acacia_stairs&163&0
+DarkOakStairs&Dark Oak Stairs&dark_oak_stairs&164&0
+SlimeBlock&Slime Block&slime_block&165&0
+GrassPath&Grass Path&grass_path&208&0
+Sunflower&Sunflower&sunflower&175&0
+Lilac&Lilac&lilac&175&1
+RoseBush&Rose Bush&rose_bush&175&4
+Peony&Peony&peony&175&5
+TallGrass&Tall Grass&tall_grass&175&2
+LargeFern&Large Fern&large_fern&175&3
+WhiteStainedGlass&White Stained Glass&white_stained_glass&95&0
+OrangeStainedGlass&Orange Stained Glass&orange_stained_glass&95&1
+MagentaStainedGlass&Magenta Stained Glass&magenta_stained_glass&95&2
+LightBlueStainedGlass&Light Blue Stained Glass&light_blue_stained_glass&95&3
+YellowStainedGlass&Yellow Stained Glass&yellow_stained_glass&95&4
+LimeStainedGlass&Lime Stained Glass&lime_stained_glass&95&5
+PinkStainedGlass&Pink Stained Glass&pink_stained_glass&95&6
+GrayStainedGlass&Gray Stained Glass&gray_stained_glass&95&7
+LightGrayStainedGlass&Light Gray Stained Glass&light_gray_stained_glass&95&8
+CyanStainedGlass&Cyan Stained Glass&cyan_stained_glass&95&9
+PurpleStainedGlass&Purple Stained Glass&purple_stained_glass&95&10
+BlueStainedGlass&Blue Stained Glass&blue_stained_glass&95&11
+BrownStainedGlass&Brown Stained Glass&brown_stained_glass&95&12
+GreenStainedGlass&Green Stained Glass&green_stained_glass&95&13
+RedStainedGlass&Red Stained Glass&red_stained_glas&95&14
+BlackStainedGlass&Black Stained Glass&black_stained_glass&95&15
+WhiteStainedGlassPane&White Stained Glass Pane&white_stained_glass_pane&160&0
+OrangeStainedGlassPane&Orange Stained Glass Pane&orange_stained_glass_pane&160&1
+MagentaStainedGlassPane&Magenta Stained Glass Pane&magenta_stained_glass_pane&160&2
+LightBlueStainedGlassPane&Light Blue Stained Glass Pane&light_blue_stained_glass_pane&160&3
+YellowStainedGlassPane&Yellow Stained Glass Pane&yellow_stained_glass_pane&160&4
+LimeStainedGlassPane&Lime Stained Glass Pane&lime_stained_glass_pane&160&5
+PinkStainedGlassPane&Pink Stained Glass Pane&pink_stained_glass_pane&160&6
+GrayStainedGlassPane&Gray Stained Glass Pane&gray_stained_glass_pane&160&7
+LightGrayStainedGlassPane&Light Gray Stained Glass Pane&light_gray_stained_glass_pane&160&8
+CyanStainedGlassPane&Cyan Stained Glass Pane&cyan_stained_glass_pane&160&9
+PurpleStainedGlassPane&Purple Stained Glass Pane&purple_stained_glass_pane&160&10
+BlueStainedGlassPane&Blue Stained Glass Pane&blue_stained_glass_pane&160&11
+BrownStainedGlassPane&Brown Stained Glass Pane&brown_stained_glass_pane&160&12
+GreenStainedGlassPane&Green Stained Glass Pane&green_stained_glass_pane&160&13
+RedStainedGlassPane&Red Stained Glass Pane&red_stained_glass_pane&160&14
+BlackStainedGlassPane&Black Stained Glass Pane&black_stained_glass_pane&160&15
+Prismarine&Prismarine&prismarine&168&0
+PrismarineBricks&Prismarine Bricks&prismarine_bricks&168&1
+DarkPrismarine&Dark Prismarine&dark_prismarine&168&2
+PrismarineStairs&Prismarine Stairs&prismarine_stairs&0&0
+PrismarineBrickStairs&Prismarine Brick Stairs&prismarine_brick_stairs&0&0
+DarkPrismarineStairs&Dark Prismarine Stairs&dark_prismarine_stairs&0&0
+SeaLantern&Sea Lantern&sea_lantern&169&0
+RedSandstone&Red Sandstone&red_sandstone&179&0

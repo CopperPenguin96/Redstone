@@ -13,7 +13,7 @@ namespace Redstone.Worlds
         {
             if (pos == null) throw new ArgumentNullException(nameof(pos));
 
-            return new Block();
+            return null;
         }
     }
 }
