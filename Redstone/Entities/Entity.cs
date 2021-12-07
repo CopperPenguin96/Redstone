@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Redstone.Entities.Flags;
 using Redstone.Types;
 using Redstone.Utils;
+using SmartNbt.Tags;
 
 namespace Redstone.Entities
 {
@@ -18,7 +19,7 @@ namespace Redstone.Entities
         public JavaUUID UniqueId { get; set; }
 
         public virtual string Name => "Entity";
-
+        
         internal virtual bool UseSpawnEntityOnly { get; }
 
         internal virtual bool UseSpawnPaintingOnly { get; }

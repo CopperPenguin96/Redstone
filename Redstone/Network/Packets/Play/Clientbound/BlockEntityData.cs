@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Redstone.Entities;
 using Redstone.Types;
 using Redstone.Worlds;
+using SmartNbt;
 using SmartNbt.Tags;
 
 namespace Redstone.Network.Packets.Play.Clientbound
@@ -16,20 +18,27 @@ namespace Redstone.Network.Packets.Play.Clientbound
 
         private Position _pos;
         private BlockEntityAction _action;
-        private NbtCompound _nbt = new NbtCompound();
+        private Block _block;
+        private NbtCompound _nbt;
 
-        public BlockEntityData(Position pos, BlockEntityAction action
-            
+        public BlockEntityData(Position pos, BlockEntityAction action,
+            Block? block
             )
         {
             _pos = pos;
             _action = action;
+            _block = block;
+            _nbt = _block.NBT;
         }
 
 
         public void Send(ref MinecraftClient client, GameStream stream)
         {
-
+            if (!(_block == null || _nbt == null))
+            {
+                Protocol.Send(ref client, stream, Packet,
+                    _nbt);
+            }
         }
     }
 

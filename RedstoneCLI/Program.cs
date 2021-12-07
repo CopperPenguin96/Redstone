@@ -6,13 +6,15 @@ using Redstone.Entities;
 using Redstone.Entities.Particles;
 using Redstone.Utils;
 
-/*Server.Start();
+Server.Start();
 
 foreach (string file in Directory.GetFiles("Redstone/"))
 {
     Console.WriteLine(file);
-}*/
+}
 
+/*
+ THE FOLLOWING CODE IS FOR CREATING THE BLOCK CLASSES.
 string csFile = @"using Redstone.Types;
 
 namespace Redstone.Worlds.Blocks
@@ -51,6 +53,6 @@ foreach (string line in lines)
     writer.WriteLine(newLine);
     writer.Flush();
     writer.Close();
-}
+}*/
 
 Console.ReadLine();

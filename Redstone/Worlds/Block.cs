@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Redstone.Types;
+using SmartNbt.Tags;
 
 namespace Redstone.Worlds
 {
@@ -12,6 +13,8 @@ namespace Redstone.Worlds
         public VarInt State { get; set; }
 
         public World World { get; set; }
+
+        public virtual NbtCompound? NBT { get; set; }
 
         public Position Position { get; set; }
 

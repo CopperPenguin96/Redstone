@@ -10,6 +10,10 @@ namespace Redstone.Utils
 {
     public static class ExtensionMethods
     {
+        public static byte ToByte(this bool b)
+        {
+            return b ? (byte) 1 : (byte) 0;
+        }
 
         public static string Base64Encode(this string original)
         {
