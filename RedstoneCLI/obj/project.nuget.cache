@@ -1,14 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "KVKTUKpB3HTEkIk+QhdOeVavqJk6asZPFMCDRIW2P8QwryE95OPM2zrWFNueSUHrgdo72s2iovunD0kxQykVlQ==",
+  "dgSpecHash": "z8+9Mz+/q3eCvkEDEomZu5n+ozQFkomeZd4dZFPnvh3x9+dW1bFufXIZjJbmfgxrzgo1ffEVgRFKj37YW6olow==",
   "success": true,
   "projectFilePath": "A:\\Programming\\Redstone\\RedstoneCLI\\RedstoneCLI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\super\\.nuget\\packages\\bouncycastle.netcore\\1.8.10\\bouncycastle.netcore.1.8.10.nupkg.sha512",
+    "C:\\Users\\super\\.nuget\\packages\\ikvm\\8.1.5717\\ikvm.8.1.5717.nupkg.sha512",
     "C:\\Users\\super\\.nuget\\packages\\jetbrains.annotations\\2021.3.0\\jetbrains.annotations.2021.3.0.nupkg.sha512",
     "C:\\Users\\super\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\super\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\super\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'IKVM 8.1.5717' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "IKVM",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

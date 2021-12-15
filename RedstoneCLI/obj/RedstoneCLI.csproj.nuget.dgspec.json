@@ -102,6 +102,10 @@
               "target": "Package",
               "version": "[1.8.10, )"
             },
+            "IKVM": {
+              "target": "Package",
+              "version": "[8.1.5717, )"
+            },
             "JetBrains.Annotations": {
               "target": "Package",
               "version": "[2021.3.0, )"
