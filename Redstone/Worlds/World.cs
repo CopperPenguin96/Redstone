@@ -110,7 +110,11 @@ namespace Redstone.Worlds
 
         public List<GameRule> Rules { get; set; }
 
-        public 
+        public bool BonusChest { get; set; }
+
+        public long Seed { get; set; }
+        
+
 
         public bool IsHardcore { get; set; }
 
