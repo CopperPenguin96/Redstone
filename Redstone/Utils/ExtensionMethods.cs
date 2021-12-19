@@ -5,11 +5,28 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using java.util;
+using Redstone.Worlds.Blocks;
 
 namespace Redstone.Utils
 {
     public static class ExtensionMethods
     {
+        public static int[] GetIntArray(this UUID uuid)
+        {
+            if (uuid == null) throw new NullReferenceException(nameof(uuid));
+
+            int[] i = new int[4];
+            long msb = uuid.getMostSignificantBits();
+            long lsb = uuid.getLeastSignificantBits();
+
+            i[0] = (int) (msb >> 32);
+            i[1] = (int) (msb);
+            i[2] = (int) (lsb >> 32);
+            i[3] = (int) (lsb);
+            return i;
+        }
+
         public static byte ToByte(this bool b)
         {
             return b ? (byte) 1 : (byte) 0;
@@ -17,7 +34,7 @@ namespace Redstone.Utils
 
         public static string Base64Encode(this string original)
         {
-            if (original == null) throw new ArgumentNullException(nameof(original));
+            if (original == null) throw new NullReferenceException(nameof(original));
 
             byte[] plainBytes = Encoding.UTF8.GetBytes(original);
             return System.Convert.ToBase64String(plainBytes);

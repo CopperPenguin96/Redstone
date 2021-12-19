@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using java.util;
 using Redstone.Entities.Flags;
 using Redstone.Types;
 using Redstone.Utils;
@@ -16,7 +17,7 @@ namespace Redstone.Entities
 
         public virtual VarInt Type { get; }
 
-        public JavaUUID UniqueId { get; set; }
+        public UUID UniqueId { get; set; }
 
         public virtual string Name => "Entity";
         

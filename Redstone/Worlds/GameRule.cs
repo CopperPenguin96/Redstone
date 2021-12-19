@@ -34,6 +34,24 @@ namespace Redstone.Worlds
             Name = gBool.Name;
             Value = gBool.Value;
         }
+
+        public GameRule(GameRule<int> gInt, int value)
+        {
+            Name = gInt.Name;
+            Value = value;
+        }
+
+        public GameRule(GameRule<string> gStr, string value)
+        {
+            Name = gStr.Name;
+            Value = value;
+        }
+
+        public GameRule(GameRule<bool> gBool, bool value)
+        {
+            Name = gBool.Name;
+            Value = value;
+        }
     }
 
     public class GameRule<T>

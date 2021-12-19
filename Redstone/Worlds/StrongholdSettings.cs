@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Redstone.Worlds
 {
-    public enum Dimension
+    public class StrongholdSettings
     {
-        Overworld, 
-        Nether, 
-        End
+        public int Distance { get; set; }
+
+        public int Count { get; set; }
+
+        public int spread { get; set; }
     }
 }

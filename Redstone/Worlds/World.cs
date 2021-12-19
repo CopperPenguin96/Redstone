@@ -4,9 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using java.util;
+using org.omg.CORBA;
+using Redstone.Network;
 using Redstone.Players;
 using Redstone.Types;
 using Redstone.Utils;
+using Redstone.Worlds.Dimensions;
 using SmartNbt;
 using SmartNbt.Tags;
 
@@ -14,6 +18,14 @@ namespace Redstone.Worlds
 {
     public class World
     {
+        public const int Version = 19133;
+
+        public const int VersionId = 2730;
+
+        public readonly string VersionName = MinecraftVersion.Current.ToString();
+
+        public const bool IsSnapshot = false;
+
         /// <summary>
         /// List of UUID's of players that have ever entered this world.
         /// </summary>
@@ -92,8 +104,8 @@ namespace Redstone.Worlds
         /// </summary>
         public long TimeOfDay { get; set; }
 
-        public void SetDayTime(DayTime daytime) => TimeOfDay = (long) daytime;
-        
+        public void SetDayTime(DayTime daytime) => TimeOfDay = (long)daytime;
+
         public void SetSunrise() => SetDayTime(DayTime.Sunrise);
 
         public void SetMidDay() => SetDayTime(DayTime.MidDay);
@@ -113,10 +125,12 @@ namespace Redstone.Worlds
         public bool BonusChest { get; set; }
 
         public long Seed { get; set; }
-        
 
+        public List<IDimension> Dimensions { get; set; }
 
         public bool IsHardcore { get; set; }
+
+        public bool IsInitialized { get; set; }
 
         public bool GenerateStructures { get; set; }
 
@@ -134,8 +148,6 @@ namespace Redstone.Worlds
 
         public int ThunderTime { get; set; }
 
-        public int Version { get; set; }
-
         public long LastPlayed { get; set; }
 
         public long RandomSeed { get; set; }
@@ -143,10 +155,20 @@ namespace Redstone.Worlds
         public long SizeOnDisk { get; set; }
 
         public long Time { get; set; }
-
-        public string GeneratorName { get; set; }
-
+        
         public string LevelName { get; set; }
+
+        public UUID WanderingTraderUuid { get; set; }
+
+        public int WanderingTraderSpawnChance { get; set; }
+
+        public int WanderingTraderSpawnDelay { get; set; }
+
+        public bool WasModded { get; set; }
+
+        public TheEnd TheEnd { get; set; }
+
+        public bool IsLargeBiomes { get; set; }
 
         public Block GetAtPosition(Position pos)
         {
@@ -162,25 +184,144 @@ namespace Redstone.Worlds
             NbtCompound levelData = new("Data")
             {
                 new NbtByte("allowCommands", AllowCommands.ToByte()),
+                new NbtDouble("BorderCenterX", BorderCenterX),
+                new NbtDouble("BorderCenterZ", BorderCenterZ),
+                new NbtDouble("BorderDamagePerBlock", BorderDamagePerBlock),
+                new NbtDouble("BorderSize", BorderSize),
+                new NbtDouble("BorderSafeZone", BorderSafeZone),
+                new NbtDouble("BorderSizeLerpTarget", BorderSizeLerpTarget),
+                new NbtLong("BorderSizeLerpTime", BorderSizeLerpTime),
+                new NbtDouble("BorderWarningBlocks", BorderWarningBlocks),
+                new NbtDouble("BorderWarningTime", BorderWarningTime),
+                new NbtInt("clearWeatherTime", ClearWeatherTime),
+                new NbtInt("DataVersion", DataVersion),
+                new NbtLong("DayTime", TimeOfDay),
+                new NbtByte("Difficulty", (byte)Difficulty),
+                new NbtByte("DifficultyLocked", DifficultyLocked.ToByte()),
+                new NbtInt("GameType", (int)GameMode),
                 new NbtByte("hardcore", IsHardcore.ToByte()),
+                new NbtByte("initialized", IsInitialized.ToByte()),
+                new NbtLong("LastPlayed", LastPlayed),
+                new NbtString("LevelName", LevelName),
                 new NbtByte("MapFeatures", GenerateStructures.ToByte()),
                 new NbtByte("raining", IsRaining.ToByte()),
-                new NbtByte("thundering", Thundering.ToByte()),
-                new NbtInt("GameType", (int) GameMode),
-                new NbtInt("generatorVersion", GeneratorVersion),
+                new NbtLong("RandomSeed", RandomSeed),
                 new NbtInt("rainTime", RainTime),
+                new NbtLong("SizeOnDisk", SizeOnDisk),
                 new NbtInt("SpawnX", Spawn.X),
                 new NbtInt("SpawnY", Spawn.Y),
                 new NbtInt("SpawnZ", Spawn.Z),
+                new NbtByte("thundering", Thundering.ToByte()),
                 new NbtInt("thunderTime", ThunderTime),
-                new NbtInt("version", Version),
-                new NbtLong("lastPlayed", LastPlayed),
-                new NbtLong("RandomSeed", RandomSeed),
-                new NbtLong("SizeOnDisk", SizeOnDisk),
                 new NbtLong("Time", Time),
-                new NbtString("generatorName", GeneratorName),
-                new NbtString("LevelName", LevelName)
+                new NbtInt("version", Version),
+                new NbtCompound("Version")
+                {
+                    new NbtInt("Id", VersionId),
+                    new NbtString("Name", VersionName),
+                    new NbtString("Series", "main"),
+                    new NbtByte("Snapshot", IsSnapshot.ToByte())
+                },
+                new NbtIntArray("WanderingTraderId", WanderingTraderUuid.GetIntArray()),
+                new NbtInt("WanderingTraderSpawnChance", WanderingTraderSpawnChance),
+                new NbtInt("WanderingTraderSpawnDelay", WanderingTraderSpawnDelay),
+                new NbtByte("WasModded", WasModded.ToByte())
             };
+
+            // Add custom boss events to the NBT structure
+            NbtCompound bossEvents = new("CustomBossEvents");
+            foreach (CustomBossEvent cbe in CustomBossEvents)
+            {
+                NbtCompound id = new(cbe.Id.ToString());
+                NbtList cbePlayers = new("Player");
+                foreach (Player p in cbe.PlayersVisibleTo)
+                {
+                    cbePlayers.Add(new NbtIntArray(p.UniqueId.GetIntArray()));
+                }
+
+                id.Add(cbePlayers);
+                id.Add(
+                    new NbtString(
+                        "Color",
+                        MinecraftFormatting
+                            .CodeToId(cbe.Color.Code.ToString())));
+                id.Add(new NbtByte("CreateWorldFog", cbe.CreateWorldFog.ToByte()));
+                id.Add(new NbtByte("DarkenScreen", cbe.DarkenScreen.ToByte()));
+                id.Add(new NbtInt("Max", cbe.MaxHealth));
+                id.Add(new NbtInt("Value", cbe.Value));
+                id.Add(new NbtString("Name", cbe.Name));
+                id.Add(new NbtString("Overlay", cbe.OverlayString));
+                id.Add(new NbtByte("PlayBossMusic", cbe.PlayBossMusic.ToByte()));
+                id.Add(new NbtByte("Visible", cbe.Visible.ToByte()));
+                bossEvents.Add(id);
+            }
+
+            levelData.Add(bossEvents);
+
+            // Add "datapacks" future feature?
+            NbtCompound dataPacks = new("DataPacks")
+            {
+                new NbtList("Disabled"),
+                new NbtList("Enabled") { new NbtString("", "vanilla") }
+            };
+            levelData.Add(dataPacks);
+
+            // Add Dragon Fight info
+            NbtCompound dragonFight = new("DragonFight")
+            {
+                new NbtCompound("ExitPortalLocation")
+                {
+                    new NbtByte("X", (byte) TheEnd.ExitPortalLocation.X),
+                    new NbtByte("Y", (byte) TheEnd.ExitPortalLocation.Y),
+                    new NbtByte("Z", (byte) TheEnd.ExitPortalLocation.Z)
+                },
+                new NbtByte("DragonKilled", TheEnd.DragonKilled.ToByte()),
+                new NbtLong("DragonUUIDLeast", TheEnd.DragonUuid.getLeastSignificantBits()),
+                new NbtLong("DragonUUIDMost", TheEnd.DragonUuid.getMostSignificantBits()),
+                new NbtByte("PreviouslyKilled", TheEnd.PreviouslyKilled.ToByte())
+            };
+            levelData.Add(dragonFight);
+
+            // Add Game Rules
+            NbtCompound gameRules = new("GameRules");
+            foreach (GameRule rule in Rules)
+            {
+                gameRules.Add(new NbtString(rule.Name, rule.Value.ToString()!));
+            }
+
+            levelData.Add(gameRules);
+
+            // Add World Gen Settings
+            NbtCompound worldGenSettings = new("WorldGenSettings")
+            {
+                new NbtByte("bonus_chest", BonusChest.ToByte()),
+                new NbtLong("seed", Seed),
+                new NbtByte("generate_features", GenerateStructures.ToByte())
+            };
+            NbtCompound dims = new("dimensions");
+            foreach (var d in Dimensions.Select(dim => new NbtCompound(dim.Id.ToString())
+                     {
+                         new NbtString("type", dim.Id.ToString()),
+                         new NbtCompound("generator")
+                         {
+                             new NbtString("type", dim.Type.ToString()),
+                             new NbtString("settings", dim.Type.ToString()),
+                             new NbtLong("seed", Seed),
+                             new NbtCompound("biome_source", new NbtCompound("biome_source")
+                             {
+                                 new NbtByte("large_biomes", IsLargeBiomes.ToByte()),
+                                 new NbtLong("seed", Seed),
+                                 new NbtString("type", dim.BiomeSourceType)
+                             })
+                         }
+                     }))
+            {
+                dims.Add(d);
+            }
+
+            worldGenSettings.Add(dims);
+            levelData.Add(worldGenSettings);
+
             levelDat.Add(levelData);
 
             var writer = File.Create("level.dat");
@@ -189,34 +330,7 @@ namespace Redstone.Worlds
             levelDatWriter.BaseStream.Flush();
             levelDatWriter.BaseStream.Close();
 
-            // Create [uuid].dat files
-            foreach (string uuid in PlayerIds)
-            {
-                Player player = Player.FindById(uuid)!;
-                NbtCompound cmp = new()
-                {
-                    new NbtByte("OnGround", player.OnGround.ToByte()),
-                    new NbtByte("Sleeping", player.IsSleeping.ToByte()),
-                    new NbtShort("Air", player.Air),
-                    new NbtShort("AttackTime", player.AttackTime),
-                    new NbtShort("DeathTime", player.DeathTime),
-                    new NbtShort("Fire", player.Fire),
-                    new NbtShort("Health", player.Health),
-                    new NbtShort("HurtTime", player.HurtTime),
-                    new NbtShort("SleepTimer", player.SleepTimer),
-                    new NbtInt("Dimension", (int) player.Dimension),
-                    new NbtInt("foodLevel", player.FoodLevel),
-                    new NbtInt("foodTickTimer", player.FoodTickTimer),
-                    new NbtInt("playerGameType", (int) player.GameMode),
-                    new NbtInt("XpLevel", player.ExperienceLevel),
-                    new NbtInt("XpTotal", player.ExperienceTotal),
-                    new NbtFloat("XpP", player.XpP),
-                    new NbtCompound("Inventory")
-                    {
-
-                    }
-                };
-            }
         }
+
     }
 }

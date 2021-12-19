@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Redstone.Types;
 using Redstone.Utils;
 using Redstone.Worlds;
+using Redstone.Worlds.Dimensions;
 using Slot = Redstone.Types.Slot;
 
 namespace Redstone.Players
@@ -37,7 +38,7 @@ namespace Redstone.Players
 
         public short SleepTimer { get; set; }
 
-        public Dimension Dimension { get; set; }
+        public IDimension Dimension { get; set; }
 
         public int FoodLevel { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Redstone.Worlds
 {
-    public enum Biome : byte
+    public enum BiomeType : byte
     {
         Ocean = 0,
         Plains = 1,
@@ -31,5 +31,24 @@ namespace Redstone.Worlds
         ExtremeHillsEdge = 20,
         Jungle = 21,
         JungleHills = 22
+    }
+
+    public class Biome
+    {
+        public string Name { get; set; }
+
+        public float Temparature { get; set; }
+
+        public float Humidity { get; set; }
+
+        public float Continentalness { get; set; }
+
+        public float Erosion { get; set; }
+
+        public float Weirdness { get; set; }
+
+        public float Depth { get; set; }
+
+        public float Offset { get; set; }
     }
 }

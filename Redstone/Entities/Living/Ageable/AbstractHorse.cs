@@ -1,4 +1,5 @@
-﻿using Redstone.Entities.Flags;
+﻿using java.util;
+using Redstone.Entities.Flags;
 using Redstone.Entities.Living.Mobs;
 using Redstone.Types;
 using Redstone.Utils;
@@ -78,6 +79,6 @@ namespace Redstone.Entities.Living.Ageable
             }
         }
 
-        public OptObject<JavaUUID> Owner { get; set; }
+        public OptObject<UUID> Owner { get; set; }
     }
 }

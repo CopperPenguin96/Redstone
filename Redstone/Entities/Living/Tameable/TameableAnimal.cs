@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using java.util;
 using Redstone.Entities.Living.Ageable;
 using Redstone.Entities.Living.Mobs;
 using Redstone.Types;
@@ -34,7 +35,7 @@ namespace Redstone.Entities.Living.Tameable
             }
         }
 
-        public OptObject<JavaUUID> Owner { get; set; }
+        public OptObject<UUID> Owner { get; set; }
     }
 
     public enum TameableFlag : byte

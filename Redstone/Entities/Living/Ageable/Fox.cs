@@ -1,4 +1,5 @@
-﻿using Redstone.Types;
+﻿using java.util;
+using Redstone.Types;
 using Redstone.Utils;
 
 namespace Redstone.Entities.Living.Ageable
@@ -95,9 +96,9 @@ namespace Redstone.Entities.Living.Ageable
             }
         }
 
-        public OptObject<JavaUUID> FirstUniqueId { get; set; }
+        public OptObject<UUID> FirstUniqueId { get; set; }
 
-        public OptObject<JavaUUID> SecondUniqueId { get; set; }
+        public OptObject<UUID> SecondUniqueId { get; set; }
     }
 
     public enum FoxVariant
