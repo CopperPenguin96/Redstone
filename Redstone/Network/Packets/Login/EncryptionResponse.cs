@@ -53,8 +53,8 @@ namespace Redstone.Network.Packets.Login
             }
 
             client.Stream = new(new AesStream(client.Stream.BaseStream, client.SharedToken));
-            string uuid = json["id"].Value<string>();
-            if (uuid != client.Player.UniqueId)
+            string? uuid = json["id"]!.Value<string>();
+            if (uuid != client.Player.UniqueId.toString().Remove('-'))
             {
                 client.Disconnect("Failed to verify UniqueID");
                 return;

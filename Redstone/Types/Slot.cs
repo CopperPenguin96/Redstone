@@ -21,12 +21,17 @@ namespace Redstone.Types
         /// <summary>
         /// The Item ID. Omitted if present is false. Item IDs are distinct from block IDs;
         /// </summary>
-        public VarInt ItemID;
+        public Identifier ItemID;
 
         /// <summary>
         /// Omitted if false
         /// </summary>
         public byte ItemCount;
+
+        /// <summary>
+        /// Spot where the slot is in the inventory
+        /// </summary>
+        public byte Spot;
 
         /// <summary>
         /// Omitted if present if false. If 0 (TAG_End), there is no NBT data, and no further

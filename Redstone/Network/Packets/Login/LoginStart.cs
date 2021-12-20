@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using java.util;
 using Newtonsoft.Json;
 using Redstone.Configuration;
 using Redstone.Players;
@@ -16,11 +17,10 @@ namespace Redstone.Network.Packets.Login
             string username = stream.ReadString();
             string idRequest = new WebClient().DownloadString(PlayerDatabase.uuidRetrieval + username).Trim();
             UniqueIdRequest request = JsonConvert.DeserializeObject<UniqueIdRequest>(idRequest);
-
             for (int x = 0; x < PlayerDatabase.Players.Count; x++)
             {
                 Player player = PlayerDatabase.Players[x];
-                if (player.UniqueId == request.UniqueId)
+                if (player.UniqueId.toString().Remove('-') == request.UniqueId)
                 {
                     player.Username = username; // Make sure username is updated
                     PlayerDatabase.Players.RemoveAt(x);

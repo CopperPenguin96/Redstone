@@ -15,7 +15,7 @@ namespace Redstone
 
         public string Username => Player.Username;
 
-        public string UniqueId => Player.UniqueId;
+        public string UniqueId => Player.UniqueId.toString().Remove('-');
         
         public TcpClient Client { get; set; }
         

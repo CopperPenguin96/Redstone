@@ -13,6 +13,7 @@ using Redstone.Utils;
 using Redstone.Worlds.Dimensions;
 using SmartNbt;
 using SmartNbt.Tags;
+using Slot = Redstone.Types.Slot;
 
 namespace Redstone.Worlds
 {
@@ -97,7 +98,7 @@ namespace Redstone.Worlds
         /// <summary>
         /// An integer displayng the data version.
         /// </summary>
-        public int DataVersion { get; set; }
+        public int DataVersion = 2730;
 
         /// <summary>
         /// The time of day.
@@ -179,7 +180,6 @@ namespace Redstone.Worlds
 
         public void Save()
         {
-            NbtCompound levelDat = new();
             // Create level.dat
             NbtCompound levelData = new("Data")
             {
@@ -222,12 +222,23 @@ namespace Redstone.Worlds
                     new NbtString("Series", "main"),
                     new NbtByte("Snapshot", IsSnapshot.ToByte())
                 },
-                new NbtIntArray("WanderingTraderId", WanderingTraderUuid.GetIntArray()),
-                new NbtInt("WanderingTraderSpawnChance", WanderingTraderSpawnChance),
-                new NbtInt("WanderingTraderSpawnDelay", WanderingTraderSpawnDelay),
+                
                 new NbtByte("WasModded", WasModded.ToByte())
             };
 
+            bool ifWandSpawned = false;
+
+            // Add wandering trader if he exists
+            if (ifWandSpawned)
+            {
+                var f = new NbtIntArray("WanderingTraderId", WanderingTraderUuid.GetIntArray());
+                var x = new NbtInt("WanderingTraderSpawnChance", WanderingTraderSpawnChance);
+                var t = new NbtInt("WanderingTraderSpawnDelay", WanderingTraderSpawnDelay);
+                levelData.Add(f);
+                levelData.Add(x);
+                levelData.Add(t);
+            }
+            
             // Add custom boss events to the NBT structure
             NbtCompound bossEvents = new("CustomBossEvents");
             foreach (CustomBossEvent cbe in CustomBossEvents)
@@ -259,12 +270,12 @@ namespace Redstone.Worlds
             levelData.Add(bossEvents);
 
             // Add "datapacks" future feature?
-            NbtCompound dataPacks = new("DataPacks")
+            /*NbtCompound dataPacks = new("DataPacks")
             {
                 new NbtList("Disabled"),
-                new NbtList("Enabled") { new NbtString("", "vanilla") }
+                new NbtList("Enabled") { new NbtString("vanilla") }
             };
-            levelData.Add(dataPacks);
+            levelData.Add(dataPacks);*/
 
             // Add Dragon Fight info
             NbtCompound dragonFight = new("DragonFight")
@@ -299,38 +310,155 @@ namespace Redstone.Worlds
                 new NbtByte("generate_features", GenerateStructures.ToByte())
             };
             NbtCompound dims = new("dimensions");
-            foreach (var d in Dimensions.Select(dim => new NbtCompound(dim.Id.ToString())
-                     {
-                         new NbtString("type", dim.Id.ToString()),
-                         new NbtCompound("generator")
-                         {
-                             new NbtString("type", dim.Type.ToString()),
-                             new NbtString("settings", dim.Type.ToString()),
-                             new NbtLong("seed", Seed),
-                             new NbtCompound("biome_source", new NbtCompound("biome_source")
-                             {
-                                 new NbtByte("large_biomes", IsLargeBiomes.ToByte()),
-                                 new NbtLong("seed", Seed),
-                                 new NbtString("type", dim.BiomeSourceType)
-                             })
-                         }
-                     }))
+            foreach (var dim in Dimensions)
             {
+                NbtCompound d = new(dim.Type.ToString())
+                {
+                    new NbtString("type", dim.Type.ToString())
+                };
+                NbtCompound g = new("generator")
+                {
+                    new NbtLong("seed", Seed),
+                    new NbtString("settings", dim.Type.ToString().Replace("the_", "")),
+                    new NbtString("type", "noise")
+                };
+                NbtCompound bSource = new("biome_source")
+                {
+                    new NbtByte("large_biomes", IsLargeBiomes.ToByte()),
+                    new NbtLong("seed", Seed),
+                    new NbtString("type", dim.BiomeSourceType)
+                };
+                g.Add(bSource);
+                d.Add(g);
                 dims.Add(d);
             }
 
             worldGenSettings.Add(dims);
             levelData.Add(worldGenSettings);
+            NbtFile nbtFile = new(levelData);
 
-            levelDat.Add(levelData);
+            string dir = "Redstone/Worlds/";
+            string full = dir + LevelName;
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
 
-            var writer = File.Create("level.dat");
-            NbtWriter levelDatWriter = new(writer, "Data", false);
-            levelDatWriter.WriteTag(levelDat);
-            levelDatWriter.BaseStream.Flush();
-            levelDatWriter.BaseStream.Close();
+            if (!Directory.Exists(dir + LevelName))
+            {
+                Directory.CreateDirectory(full);
+            }
 
+            if (!Directory.Exists(full + "DIM-1"))
+            {
+                Directory.CreateDirectory(full + "DIM-1");
+            }
+
+            if (!Directory.Exists(full + "DIM-1/region/"))
+            {
+                Directory.CreateDirectory(full + "DIM-1/region");
+            }
+
+            if (!Directory.Exists(full + "DIM1"))
+            {
+                Directory.CreateDirectory(full + "DIM1/");
+            }
+
+            if (!Directory.Exists(full + "DIM1/region/"))
+            {
+                Directory.CreateDirectory(full + "DIM1/region/");
+            }
+
+            if (!Directory.Exists(full + "players/"))
+            {
+                Directory.CreateDirectory(full + "players/");
+            }
+
+            if (!Directory.Exists(full + "region/"))
+            {
+                Directory.CreateDirectory(full + "region/");
+            }
+            
+            nbtFile.SaveToFile(full + "level.dat", NbtCompression.None); // Save level.dat
+
+            // Save player files
+            foreach (Player player in PlayerDatabase.Players)
+            {
+                // Don't save if player is not in the world currently
+                if (player.World.LevelName != LevelName) continue;
+
+                int dimension = -1;
+                switch (player.Dimension.Type.ToString().ToLower())
+                {
+                    case "overworld":
+                        dimension = 0;
+                        break;
+                    case "the_nether":
+                        dimension = 1;
+                        break;
+                    case "the_end":
+                        dimension = 2;
+                        break;
+                }
+                NbtCompound cmp = new()
+                {
+                    new NbtByte("OnGround", player.OnGround.ToByte()),
+                    new NbtByte("Sleeping", player.IsSleeping.ToByte()),
+                    new NbtShort("Air", player.Air),
+                    new NbtShort("AttackTime", player.AttackTime),
+                    new NbtShort("DeathTime", player.DeathTime),
+                    new NbtShort("Fire", player.Fire),
+                    new NbtShort("Health", player.Health),
+                    new NbtShort("HurtTime", player.HurtTime),
+                    new NbtShort("SleepTimer", player.SleepTimer),
+                    new NbtInt("Dimension", dimension),
+                    new NbtInt("foodLevel", player.FoodLevel),
+                    new NbtInt("foodTickTimer", player.FoodTickTimer),
+                    new NbtInt("playerGameType", (int) player.GameMode),
+                    new NbtInt("XpLevel", player.ExperienceLevel),
+                    new NbtInt("XpTotal", player.ExperienceTotal),
+                    new NbtFloat("XpP", player.XpP),
+                    new NbtList("Motion")
+                    {
+                        new NbtDouble(player.Motion.X),
+                        new NbtDouble(player.Motion.Y),
+                        new NbtDouble(player.Motion.Z)
+                    },
+                    new NbtList("Pos")
+                    {
+                        new NbtDouble(player.Position.X),
+                        new NbtDouble(player.Position.Y),
+                        new NbtDouble(player.Position.Z)
+                    },
+                    new NbtList("Rotation")
+                    {
+                        new NbtFloat(player.Rotation.X),
+                        new NbtFloat(player.Rotation.Y)
+                    }
+                };
+
+                // Save inventory
+                NbtList inv = new("Inventory");
+                foreach (Slot sl in player.Inventory)
+                {
+                    if (!sl.Present) continue;
+                    NbtCompound slot = new()
+                    {
+                        new NbtByte("Count", sl.ItemCount),
+                        new NbtByte("Slot", sl.Spot),
+                        new NbtString("id", sl.ItemCount.ToString())
+                    };
+
+                    if (sl.NBT != null) slot.Add(sl.NBT);
+                    inv.Add(slot);
+                }
+                cmp.Add(inv);
+
+                nbtFile.SaveToFile(full + "Players/" 
+                                        + player.UniqueId.ToString() 
+                                        + ".dat", NbtCompression.None); // Save players
+
+            }
         }
-
     }
 }

@@ -56,3 +56,4 @@ A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\IKVM.OpenJDK.XML.WebService
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\IKVM.OpenJDK.XML.XPath.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\IKVM.Runtime.JNI.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\IKVM.Runtime.dll
+A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\MedallionRandom.dll

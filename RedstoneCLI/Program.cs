@@ -5,14 +5,20 @@ using Redstone.ChatSystem;
 using Redstone.Entities;
 using Redstone.Entities.Particles;
 using Redstone.Utils;
+using Redstone.Worlds;
+using Redstone.Worlds.Generators;
 
+/*
 Server.Start();
 
 foreach (string file in Directory.GetFiles("Redstone/"))
 {
     Console.WriteLine(file);
-}
+}*/
 
+Generator gen = new VanillaGenerator();
+World world = gen.Generate("Test World", 555555);
+world.Save();
 /*
  THE FOLLOWING CODE IS FOR CREATING THE BLOCK CLASSES.
 string csFile = @"using Redstone.Types;

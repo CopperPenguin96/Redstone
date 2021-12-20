@@ -10,6 +10,6 @@ namespace Redstone.Worlds.Generators
     {
         public World World { get; set; }
 
-        public abstract void Generate(string name, long seed);
+        public abstract World Generate(string name, long seed);
     }
 }

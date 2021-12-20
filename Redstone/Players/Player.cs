@@ -54,9 +54,9 @@ namespace Redstone.Players
 
         public List<Slot> Inventory { get; set; }
 
-        public Position Motion { get; set; }
+        public PosDouble Motion { get; set; }
 
-        public Position Rotation { get; set; }
+        public PosFloat Rotation { get; set; }
 
         public World World { get; set; }
 
