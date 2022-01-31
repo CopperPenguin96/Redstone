@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using java.util;
 using Redstone.Types;
 using Redstone.Types.Exceptions;
 using Redstone.Utils;
@@ -14,6 +15,8 @@ namespace Redstone.Worlds
     public class World
     {
         public Level Level { get; set; }
+
+        public Raids Raids { get; set; }
 
         public World(string name = "DefaultRedstoneWorld")
         {
@@ -280,6 +283,108 @@ namespace Redstone.Worlds
                 }
             }
 
+            // todo advancements
+
+            // load data/raids
+            if (Directory.Exists(dir + "data/raids.dat"))
+            {
+                NbtFile raidFile = new(dir + "data/raids.dat");
+                NbtCompound root = raidFile.RootTag;
+                foreach (NbtTag tag in root.Tags)
+                {
+                    switch (tag.Name)
+                    {
+                        case "NextAvailableID":
+                            world.Raids.NextAvailableId =
+                                ((NbtInt) tag).Value;
+                            break;
+                        case "Raids":
+                            NbtList raids = (NbtList) tag;
+                            foreach (NbtCompound raid in raids)
+                            {
+                                Raid raidObj = new();
+                                foreach (NbtTag raidTag in raid.Tags)
+                                {
+                                    switch (raidTag.Name)
+                                    {
+                                        case "Active":
+                                            raidObj.Active =
+                                                ((NbtByte) raidTag).Value != 0;
+                                            break;
+                                        case "BadOmenLevel":
+                                            raidObj.BadOmenLevel =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "CX":
+                                            raidObj.RaidCenter.X =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "CY":
+                                            raidObj.RaidCenter.Y =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "CZ":
+                                            raidObj.RaidCenter.Z =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "GroupsSpawned":
+                                            raidObj.GroupsSpawned =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "HeroesOfTheVillage":
+                                            NbtList li = (NbtList) raidTag;
+                                            foreach (NbtCompound nbt in li)
+                                            {
+                                                NbtLong least = (NbtLong) nbt["UUIDLeast"];
+                                                NbtLong most = (NbtLong) nbt["UUIDMost"];
+
+                                                UUID uid = new UUID(most.Value, least.Value);
+                                                raidObj.Heroes.Add(uid);
+                                            }
+                                            break;
+                                        case "Id":
+                                            raidObj.Id =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "NumGroups":
+                                            raidObj.NumGroups =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "PreRaidTicks":
+                                            raidObj.PreRaidTicks =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "PostRaidTicks":
+                                            raidObj.PostRaidTicks =
+                                                ((NbtInt) raidTag).Value;
+                                            break;
+                                        case "Started":
+                                            raidObj.Started =
+                                                ((NbtByte) raidTag).Value != 0;
+                                            break;
+                                        case "Status":
+                                            raidObj.Status =
+                                                ((NbtString) raidTag).Value;
+                                            break;
+                                        case "TicksActive":
+                                            raidObj.TimeActive =
+                                                TimeSpan.FromTicks(((NbtLong) raidTag).Value);
+                                            break;
+                                        case "TotalHealth":
+                                            raidObj.TotalHealth =
+                                                ((NbtFloat) raidTag).Value;
+                                            break;
+                                    }
+                                }
+                            }
+                            break;
+                        case "Tick":
+                            world.Raids.InternalTick =
+                                ((NbtInt) tag).Value;
+                            break;
+                    }
+                }
+            }
             return world;
         }
 
@@ -314,6 +419,20 @@ namespace Redstone.Worlds
 
             NbtFile levelDatFile = new(Level.Nbt);
             levelDatFile.SaveToFile(levelDat, NbtCompression.None);
+
+            // Save advancements
+            string advDir = saveDir + "advancements/";
+            if (!Directory.Exists(advDir))
+                Directory.CreateDirectory(advDir);
+            // todo
+
+            // data/raids
+            string dataDir = saveDir + "data/";
+            if (!Directory.Exists(dataDir))
+                Directory.CreateDirectory(dataDir);
+            string raidDat = dataDir + "raids.dat";
+            NbtFile raidDatFile = new(Raids.Nbt);
+            raidDatFile.SaveToFile(raidDat, NbtCompression.None);
         }
 
         public bool TrySave(out Exception ex)
