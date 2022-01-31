@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using MinecraftTypes;
 using Redstone.Statistics;
 using Redstone.Types;
 

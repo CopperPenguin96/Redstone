@@ -1,4 +1,5 @@
-﻿using Redstone.Types;
+﻿using MinecraftTypes;
+using Redstone.Types;
 
 namespace Redstone.Entities.Particles;
 

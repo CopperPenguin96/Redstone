@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using java.util;
+using MinecraftTypes;
 using Redstone.Types;
 using Redstone.Utils;
 using SmartNbt.Tags;

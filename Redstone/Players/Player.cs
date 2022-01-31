@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MinecraftTypes;
 using Redstone.Types;
 using Redstone.Utils;
 using Redstone.Worlds;
 using Redstone.Worlds.Dimensions;
-using Slot = Redstone.Types.Slot;
+using Slot = MinecraftTypes.Slot;
 
 namespace Redstone.Players
 {
@@ -38,7 +39,7 @@ namespace Redstone.Players
 
         public short SleepTimer { get; set; }
 
-        public IDimension Dimension { get; set; }
+        public Dimension Dimension { get; set; }
 
         public int FoodLevel { get; set; }
 

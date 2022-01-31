@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using java.util;
+using MinecraftTypes;
 using Redstone.Types;
 using Redstone.Types.Exceptions;
 using Redstone.Utils;
@@ -387,6 +388,8 @@ namespace Redstone.Worlds
             }
             
             // todo datapacks
+
+            // todo stats
             return world;
         }
 
@@ -441,7 +444,10 @@ namespace Redstone.Worlds
             if (!Directory.Exists(dataPackDir))
                 Directory.CreateDirectory(dataPackDir);
 
-
+            // stats todo
+            string statsDir = saveDir + "stats/";
+            if (!Directory.Exists(statsDir))
+                Directory.CreateDirectory(statsDir);
         }
 
         public bool TrySave(out Exception ex)

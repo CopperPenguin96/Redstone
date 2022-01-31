@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using MinecraftTypes;
 using Redstone.Configuration;
 using Redstone.Network;
 using Redstone.Players;

@@ -1,4 +1,5 @@
-﻿using Redstone.Entities.Flags;
+﻿using MinecraftTypes;
+using Redstone.Entities.Flags;
 using Redstone.Types;
 using Redstone.Utils;
 

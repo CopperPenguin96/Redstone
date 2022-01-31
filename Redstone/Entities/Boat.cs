@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MinecraftTypes;
 using Redstone.Types;
 using Redstone.Worlds;
 
@@ -32,7 +33,7 @@ namespace Redstone.Entities
 
         public float DamageTaken { get; set; } = 0.0f;
 
-        public WoodType WoodType { get; set; } = WoodType.Oak;
+        //public WoodType WoodType { get; set; } = WoodType.Oak;
 
         public bool IsLeftPaddleTurning { get; set; } = false;
 
