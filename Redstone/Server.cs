@@ -11,6 +11,7 @@ using Redstone.Network;
 using Redstone.Players;
 using Redstone.Types;
 using Redstone.Utils;
+using Redstone.Worlds;
 
 namespace Redstone
 {
@@ -75,6 +76,18 @@ namespace Redstone
             catch (Exception e)
             {
                 Console.WriteLine(e);
+            }
+
+            Logger.Log("Loading the World Manager", LogLevel.System);
+            try
+            {
+                WorldManager.Load();
+            }
+            catch (Exception e)
+            {
+                Logger.LogFatal("Unable to load World Manager. Server will not start.");
+                Logger.LogFatal(e.ToString());
+                return;
             }
             
             

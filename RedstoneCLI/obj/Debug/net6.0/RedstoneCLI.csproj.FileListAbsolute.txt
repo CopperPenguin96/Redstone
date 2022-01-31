@@ -14,10 +14,8 @@ A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\JetBrains.Annotations.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\Newtonsoft.Json.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\Redstone.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\SmartNbt.dll
-A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\Version Management.dll
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\Redstone.pdb
 A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\SmartNbt.pdb
-A:\Programming\Redstone\RedstoneCLI\bin\Debug\net6.0\Version Management.pdb
 A:\Programming\Redstone\RedstoneCLI\obj\Debug\net6.0\RedstoneCLI.csproj.CopyComplete
 A:\Programming\Redstone\RedstoneCLI\obj\Debug\net6.0\RedstoneCLI.dll
 A:\Programming\Redstone\RedstoneCLI\obj\Debug\net6.0\ref\RedstoneCLI.dll

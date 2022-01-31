@@ -7,11 +7,96 @@ using System.Text;
 using System.Threading.Tasks;
 using java.util;
 using Redstone.Worlds.Blocks;
+using SmartNbt;
+using SmartNbt.Tags;
 
 namespace Redstone.Utils
 {
     public static class ExtensionMethods
     {
+        public static NbtList ToNbtList<T>(this List<T> list, string listName)
+        {
+            NbtList lst = new(listName);
+
+            if (typeof(T) == typeof(byte))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtByte(Convert.ToByte(b)));
+                }
+            }
+            else if (typeof(T) == typeof(short))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtShort(Convert.ToInt16(b)));
+                }
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtInt(Convert.ToInt32(b)));
+                }
+            }
+            else if (typeof(T) == typeof(long))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtLong(Convert.ToInt64(b)));
+                }
+            }
+            else if (typeof(T) == typeof(float))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtFloat(Convert.ToSingle(b)));
+                }
+            }
+            else if (typeof(T) == typeof(double))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtDouble(Convert.ToDouble(b)));
+                }
+            }
+            else if (typeof(T) == typeof(string))
+            {
+                foreach (T b in list)
+                {
+                    lst.Add(new NbtShort(Convert.ToString(b)));
+                }
+            }
+
+            return lst;
+        }
+
+        public static string Join(this string[] parts, string glue)
+        {
+            string str = "";
+            bool isFirst = true;
+            foreach (string part in parts)
+            {
+                if (!isFirst)
+                {
+                    str += glue;
+                }
+                else
+                {
+                    isFirst = false;
+                }
+
+                str += part;
+            }
+
+            return str;
+        }
+
+        public static string Join(this List<string> parts, string glue)
+        {
+            return Join(parts.ToArray(), glue);
+        }
+
         public static int[] GetIntArray(this UUID uuid)
         {
             if (uuid == null) throw new NullReferenceException(nameof(uuid));

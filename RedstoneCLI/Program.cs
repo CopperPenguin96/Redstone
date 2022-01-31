@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using javax.annotation;
 using Redstone;
 using Redstone.ChatSystem;
 using Redstone.Entities;
@@ -8,17 +9,17 @@ using Redstone.Utils;
 using Redstone.Worlds;
 using Redstone.Worlds.Generators;
 
-/*
-Server.Start();
+
+/*Server.Start();
 
 foreach (string file in Directory.GetFiles("Redstone/"))
 {
     Console.WriteLine(file);
 }*/
 
-Generator gen = new VanillaGenerator();
-World world = gen.Generate("Test World", 555555);
+World world = WorldManager.GenerateFlat("TestWorldHooHaaHaa");
 world.Save();
+
 /*
  THE FOLLOWING CODE IS FOR CREATING THE BLOCK CLASSES.
 string csFile = @"using Redstone.Types;

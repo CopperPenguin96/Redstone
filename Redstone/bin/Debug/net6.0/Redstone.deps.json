@@ -891,14 +891,6 @@
             "fileVersion": "1.0.0.0"
           }
         }
-      },
-      "Version Management/1.0.0.0": {
-        "runtime": {
-          "Version Management.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -1476,11 +1468,6 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "SmartNbt/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Version Management/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

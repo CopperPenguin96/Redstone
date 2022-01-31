@@ -1,463 +1,333 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using java.util;
-using org.omg.CORBA;
-using Redstone.Network;
-using Redstone.Players;
 using Redstone.Types;
+using Redstone.Types.Exceptions;
 using Redstone.Utils;
-using Redstone.Worlds.Dimensions;
 using SmartNbt;
 using SmartNbt.Tags;
-using Slot = Redstone.Types.Slot;
 
 namespace Redstone.Worlds
 {
     public class World
     {
-        public const int Version = 19133;
+        public Level Level { get; set; }
 
-        public const int VersionId = 2730;
-
-        public readonly string VersionName = MinecraftVersion.Current.ToString();
-
-        public const bool IsSnapshot = false;
-
-        /// <summary>
-        /// List of UUID's of players that have ever entered this world.
-        /// </summary>
-        public static List<string> PlayerIds = new();
-
-        /// <summary>
-        /// True if cheats are enabled.
-        /// </summary>
-        public bool AllowCommands { get; set; }
-
-        /// <summary>
-        /// Center of the world border on the X coordinate.
-        /// Defaults to 0.
-        /// </summary>
-        public double BorderCenterX { get; set; }
-
-        /// <summary>
-        /// Center of the world border on the Z coordinate.
-        /// Defaults to 0.
-        /// </summary>
-        public double BorderCenterZ { get; set; }
-
-        /// <summary>
-        /// Defaults to 0.2.
-        /// </summary>
-        public double BorderDamagePerBlock { get; set; } = 0.2;
-
-        /// <summary>
-        /// Width and length of the border of the border.
-        /// Defaults to 60000000.
-        /// </summary>
-        public double BorderSize { get; set; } = 60000000;
-
-        /// <summary>
-        /// Defaults to 5.
-        /// </summary>
-        public double BorderSafeZone { get; set; } = 5;
-
-        /// <summary>
-        /// Defaults to 60000000.
-        /// </summary>
-        public double BorderSizeLerpTarget { get; set; } = 60000000;
-
-        /// <summary>
-        /// Defaults to 0.
-        /// </summary>
-        public long BorderSizeLerpTime { get; set; } = 0;
-
-        /// <summary>
-        /// Defaults to 5.
-        /// </summary>
-        public double BorderWarningBlocks { get; set; } = 5;
-
-        /// <summary>
-        /// Defaults to 15.
-        /// </summary>
-        public double BorderWarningTime { get; set; } = 15;
-
-        /// <summary>
-        /// The number of ticks until clear weather has ended.
-        /// </summary>
-        public int ClearWeatherTime { get; set; }
-
-        /// <summary>
-        /// A collection of bossbars
-        /// </summary>
-        public List<CustomBossEvent> CustomBossEvents { get; set; }
-
-        /// <summary>
-        /// An integer displayng the data version.
-        /// </summary>
-        public int DataVersion = 2730;
-
-        /// <summary>
-        /// The time of day.
-        /// </summary>
-        public long TimeOfDay { get; set; }
-
-        public void SetDayTime(DayTime daytime) => TimeOfDay = (long)daytime;
-
-        public void SetSunrise() => SetDayTime(DayTime.Sunrise);
-
-        public void SetMidDay() => SetDayTime(DayTime.MidDay);
-
-        public void SetSunset() => SetDayTime(DayTime.Sunset);
-
-        public void SetMidnight() => SetDayTime(DayTime.Midnight);
-
-        public void SetNextDay() => SetDayTime(DayTime.NextDay);
-
-        public Difficulty Difficulty { get; set; }
-
-        public bool DifficultyLocked { get; set; }
-
-        public List<GameRule> Rules { get; set; }
-
-        public bool BonusChest { get; set; }
-
-        public long Seed { get; set; }
-
-        public List<IDimension> Dimensions { get; set; }
-
-        public bool IsHardcore { get; set; }
-
-        public bool IsInitialized { get; set; }
-
-        public bool GenerateStructures { get; set; }
-
-        public bool IsRaining { get; set; }
-
-        public bool Thundering { get; set; }
-
-        public GameMode GameMode { get; set; }
-
-        public int GeneratorVersion { get; set; }
-
-        public int RainTime { get; set; }
-
-        public Position Spawn { get; set; }
-
-        public int ThunderTime { get; set; }
-
-        public long LastPlayed { get; set; }
-
-        public long RandomSeed { get; set; }
-
-        public long SizeOnDisk { get; set; }
-
-        public long Time { get; set; }
-        
-        public string LevelName { get; set; }
-
-        public UUID WanderingTraderUuid { get; set; }
-
-        public int WanderingTraderSpawnChance { get; set; }
-
-        public int WanderingTraderSpawnDelay { get; set; }
-
-        public bool WasModded { get; set; }
-
-        public TheEnd TheEnd { get; set; }
-
-        public bool IsLargeBiomes { get; set; }
-
-        public Block GetAtPosition(Position pos)
+        public World(string name = "DefaultRedstoneWorld")
         {
-            if (pos == null) throw new ArgumentNullException(nameof(pos));
+            if (name == null) throw new ArgumentNullException(nameof(name));
 
-            return null!;
+            Level = new Level
+            {
+                Name = name
+            };
         }
 
-        public void Save()
+        public static World Load(string name)
         {
-            // Create level.dat
-            NbtCompound levelData = new("Data")
-            {
-                new NbtByte("allowCommands", AllowCommands.ToByte()),
-                new NbtDouble("BorderCenterX", BorderCenterX),
-                new NbtDouble("BorderCenterZ", BorderCenterZ),
-                new NbtDouble("BorderDamagePerBlock", BorderDamagePerBlock),
-                new NbtDouble("BorderSize", BorderSize),
-                new NbtDouble("BorderSafeZone", BorderSafeZone),
-                new NbtDouble("BorderSizeLerpTarget", BorderSizeLerpTarget),
-                new NbtLong("BorderSizeLerpTime", BorderSizeLerpTime),
-                new NbtDouble("BorderWarningBlocks", BorderWarningBlocks),
-                new NbtDouble("BorderWarningTime", BorderWarningTime),
-                new NbtInt("clearWeatherTime", ClearWeatherTime),
-                new NbtInt("DataVersion", DataVersion),
-                new NbtLong("DayTime", TimeOfDay),
-                new NbtByte("Difficulty", (byte)Difficulty),
-                new NbtByte("DifficultyLocked", DifficultyLocked.ToByte()),
-                new NbtInt("GameType", (int)GameMode),
-                new NbtByte("hardcore", IsHardcore.ToByte()),
-                new NbtByte("initialized", IsInitialized.ToByte()),
-                new NbtLong("LastPlayed", LastPlayed),
-                new NbtString("LevelName", LevelName),
-                new NbtByte("MapFeatures", GenerateStructures.ToByte()),
-                new NbtByte("raining", IsRaining.ToByte()),
-                new NbtLong("RandomSeed", RandomSeed),
-                new NbtInt("rainTime", RainTime),
-                new NbtLong("SizeOnDisk", SizeOnDisk),
-                new NbtInt("SpawnX", Spawn.X),
-                new NbtInt("SpawnY", Spawn.Y),
-                new NbtInt("SpawnZ", Spawn.Z),
-                new NbtByte("thundering", Thundering.ToByte()),
-                new NbtInt("thunderTime", ThunderTime),
-                new NbtLong("Time", Time),
-                new NbtInt("version", Version),
-                new NbtCompound("Version")
-                {
-                    new NbtInt("Id", VersionId),
-                    new NbtString("Name", VersionName),
-                    new NbtString("Series", "main"),
-                    new NbtByte("Snapshot", IsSnapshot.ToByte())
-                },
-                
-                new NbtByte("WasModded", WasModded.ToByte())
-            };
+            if (name == null) throw new ArgumentNullException(nameof(name));
 
-            bool ifWandSpawned = false;
-
-            // Add wandering trader if he exists
-            if (ifWandSpawned)
-            {
-                var f = new NbtIntArray("WanderingTraderId", WanderingTraderUuid.GetIntArray());
-                var x = new NbtInt("WanderingTraderSpawnChance", WanderingTraderSpawnChance);
-                var t = new NbtInt("WanderingTraderSpawnDelay", WanderingTraderSpawnDelay);
-                levelData.Add(f);
-                levelData.Add(x);
-                levelData.Add(t);
-            }
-            
-            // Add custom boss events to the NBT structure
-            NbtCompound bossEvents = new("CustomBossEvents");
-            foreach (CustomBossEvent cbe in CustomBossEvents)
-            {
-                NbtCompound id = new(cbe.Id.ToString());
-                NbtList cbePlayers = new("Player");
-                foreach (Player p in cbe.PlayersVisibleTo)
-                {
-                    cbePlayers.Add(new NbtIntArray(p.UniqueId.GetIntArray()));
-                }
-
-                id.Add(cbePlayers);
-                id.Add(
-                    new NbtString(
-                        "Color",
-                        MinecraftFormatting
-                            .CodeToId(cbe.Color.Code.ToString())));
-                id.Add(new NbtByte("CreateWorldFog", cbe.CreateWorldFog.ToByte()));
-                id.Add(new NbtByte("DarkenScreen", cbe.DarkenScreen.ToByte()));
-                id.Add(new NbtInt("Max", cbe.MaxHealth));
-                id.Add(new NbtInt("Value", cbe.Value));
-                id.Add(new NbtString("Name", cbe.Name));
-                id.Add(new NbtString("Overlay", cbe.OverlayString));
-                id.Add(new NbtByte("PlayBossMusic", cbe.PlayBossMusic.ToByte()));
-                id.Add(new NbtByte("Visible", cbe.Visible.ToByte()));
-                bossEvents.Add(id);
-            }
-
-            levelData.Add(bossEvents);
-
-            // Add "datapacks" future feature?
-            /*NbtCompound dataPacks = new("DataPacks")
-            {
-                new NbtList("Disabled"),
-                new NbtList("Enabled") { new NbtString("vanilla") }
-            };
-            levelData.Add(dataPacks);*/
-
-            // Add Dragon Fight info
-            NbtCompound dragonFight = new("DragonFight")
-            {
-                new NbtCompound("ExitPortalLocation")
-                {
-                    new NbtByte("X", (byte) TheEnd.ExitPortalLocation.X),
-                    new NbtByte("Y", (byte) TheEnd.ExitPortalLocation.Y),
-                    new NbtByte("Z", (byte) TheEnd.ExitPortalLocation.Z)
-                },
-                new NbtByte("DragonKilled", TheEnd.DragonKilled.ToByte()),
-                new NbtLong("DragonUUIDLeast", TheEnd.DragonUuid.getLeastSignificantBits()),
-                new NbtLong("DragonUUIDMost", TheEnd.DragonUuid.getMostSignificantBits()),
-                new NbtByte("PreviouslyKilled", TheEnd.PreviouslyKilled.ToByte())
-            };
-            levelData.Add(dragonFight);
-
-            // Add Game Rules
-            NbtCompound gameRules = new("GameRules");
-            foreach (GameRule rule in Rules)
-            {
-                gameRules.Add(new NbtString(rule.Name, rule.Value.ToString()!));
-            }
-
-            levelData.Add(gameRules);
-
-            // Add World Gen Settings
-            NbtCompound worldGenSettings = new("WorldGenSettings")
-            {
-                new NbtByte("bonus_chest", BonusChest.ToByte()),
-                new NbtLong("seed", Seed),
-                new NbtByte("generate_features", GenerateStructures.ToByte())
-            };
-            NbtCompound dims = new("dimensions");
-            foreach (var dim in Dimensions)
-            {
-                NbtCompound d = new(dim.Type.ToString())
-                {
-                    new NbtString("type", dim.Type.ToString())
-                };
-                NbtCompound g = new("generator")
-                {
-                    new NbtLong("seed", Seed),
-                    new NbtString("settings", dim.Type.ToString().Replace("the_", "")),
-                    new NbtString("type", "noise")
-                };
-                NbtCompound bSource = new("biome_source")
-                {
-                    new NbtByte("large_biomes", IsLargeBiomes.ToByte()),
-                    new NbtLong("seed", Seed),
-                    new NbtString("type", dim.BiomeSourceType)
-                };
-                g.Add(bSource);
-                d.Add(g);
-                dims.Add(d);
-            }
-
-            worldGenSettings.Add(dims);
-            levelData.Add(worldGenSettings);
-            NbtFile nbtFile = new(levelData);
-
-            string dir = "Redstone/Worlds/";
-            string full = dir + LevelName;
+            string dir = WorldManager.Dir + "name" + "/";
             if (!Directory.Exists(dir))
             {
-                Directory.CreateDirectory(dir);
+                throw new WorldNotFoundException(name, true);
             }
 
-            if (!Directory.Exists(dir + LevelName))
+            string fileDat = dir + "level.dat";
+            string oldDat = dir + "level.dat_old";
+            NbtFile file = null!;
+            if (!File.Exists(fileDat) && File.Exists(oldDat))
             {
-                Directory.CreateDirectory(full);
+                Logger.LogWarning("World Manager: Level not found for " + name + ". Using backup.");
+                file = new NbtFile(oldDat);
+            }
+            else if (File.Exists(fileDat))
+            {
+                file = new NbtFile(fileDat);
+            }
+            else
+            {
+                throw new InvalidWorldException(name, true);
             }
 
-            if (!Directory.Exists(full + "DIM-1"))
-            {
-                Directory.CreateDirectory(full + "DIM-1");
-            }
+            if (file == null) throw new InvalidWorldException(nameof(file));
 
-            if (!Directory.Exists(full + "DIM-1/region/"))
-            {
-                Directory.CreateDirectory(full + "DIM-1/region");
-            }
+            NbtCompound rootTag = file.RootTag;
+            if (rootTag.Name != "Data") throw new InvalidWorldException("World " + name + " has an invalid Root Tag");
 
-            if (!Directory.Exists(full + "DIM1"))
+            World world = new()
             {
-                Directory.CreateDirectory(full + "DIM1/");
-            }
+                Level = new Level()
+            };
 
-            if (!Directory.Exists(full + "DIM1/region/"))
+            foreach (NbtTag tag in rootTag.Tags)
             {
-                Directory.CreateDirectory(full + "DIM1/region/");
-            }
-
-            if (!Directory.Exists(full + "players/"))
-            {
-                Directory.CreateDirectory(full + "players/");
-            }
-
-            if (!Directory.Exists(full + "region/"))
-            {
-                Directory.CreateDirectory(full + "region/");
-            }
-            
-            nbtFile.SaveToFile(full + "level.dat", NbtCompression.None); // Save level.dat
-
-            // Save player files
-            foreach (Player player in PlayerDatabase.Players)
-            {
-                // Don't save if player is not in the world currently
-                if (player.World.LevelName != LevelName) continue;
-
-                int dimension = -1;
-                switch (player.Dimension.Type.ToString().ToLower())
+                // Todo custom boss events, data packs
+                switch (tag.Name)
                 {
-                    case "overworld":
-                        dimension = 0;
+                    case "DragonFight":
+                        DragonFight fight = new();
+                        NbtCompound dragonTag = (NbtCompound) tag;
+
+                        foreach (NbtTag dTags in dragonTag)
+                        {
+                            switch (dTags.Name)
+                            {
+                                case "Gateways":
+                                    fight.Gateways = (NbtList) dTags;
+                                    break;
+                                case "DragonKilled":
+                                    fight.DragonKilled =
+                                        ((NbtByte) dTags).Value != 0;
+                                    break;
+                                case "NeedsStateScanning":
+                                    fight.NeedsStateScanning =
+                                        ((NbtByte)dTags).Value != 0;
+                                    break;
+                                case "PreviouslyKilled":
+                                    fight.PreviouslyKilled =
+                                        ((NbtByte)dTags).Value != 0;
+                                    break;
+                            }
+                        }
+
+                        world.Level.DragonFight = fight;
                         break;
-                    case "the_nether":
-                        dimension = 1;
+                    case "GameRules":
+                        NbtCompound rules = (NbtCompound) tag;
+
+                        world.Level.GameRules = new();
+                        foreach (NbtString rule in rules.Tags)
+                        {
+                            world.Level.GameRules.Add(
+                                new GameRule(rule.Name!, rule.Value)
+                                );
+                        }
                         break;
-                    case "the_end":
-                        dimension = 2;
+                    case "WorldGenSettings": // 0.o
+                        NbtCompound genSettings = (NbtCompound) tag;
+
+                        foreach (NbtTag genTags in genSettings.Tags)
+                        {
+                            switch (genTags.Name)
+                            {
+                                case "bonus_chest":
+                                    world.Level.BonusChest =
+                                        ((NbtByte) genTags).Value != 0;
+                                    break;
+                                case "generate_features":
+                                    world.Level.GenerateStructures =
+                                        ((NbtByte) genTags).Value != 0;
+                                    break;
+                                case "seed":
+                                    world.Level.Seed =
+                                        ((NbtLong) genTags).Value;
+                                    break;
+                                case "minecraft:overworld": // only used to get large biomes
+                                    NbtCompound n = (NbtCompound) genTags;
+                                    foreach (NbtTag t in n.Tags)
+                                    {
+                                        if (t.Name != "generator") continue;
+                                        NbtCompound tz = (NbtCompound) t;
+                                        foreach (NbtTag tf in tz.Tags)
+                                        {
+                                            if (tf.Name != "biome_source") continue;
+                                            NbtCompound tl = (NbtCompound) tf;
+                                            foreach (NbtTag tg in tl.Tags)
+                                            {
+                                                if (tg.Name == "large_biomes")
+                                                {
+                                                    world.Level.Overworld.LargeBiomes =
+                                                        ((NbtByte) tg).Value != 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+                    case "ScheduledEvents":
+                        break; // todo
+                    case "ServerBrands":
+                        break; // todo
+                    case "allowCommands":
+                        world.Level.AllowCommands =
+                            ((NbtByte) tag).Value != 0;
+                        break;
+                    case "BorderCenterX":
+                        world.Level.BorderCenter.X =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderCenterZ":
+                        world.Level.BorderCenter.Z =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderDamagePerBlock":
+                        world.Level.BorderDamagePerBlock =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderSafeZone":
+                        world.Level.BorderSafeZone =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderSize":
+                        world.Level.BorderSize =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderSizeLerpTarget":
+                        world.Level.BorderSizeLerpTarget =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderSizeLerpTime":
+                        world.Level.BorderSizeLerpTime =
+                            TimeSpan.FromTicks(((NbtLong) tag).Value);
+                        break;
+                    case "BorderWarningBlocks":
+                        world.Level.BorderWarningBlocks =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "BorderWarningTime":
+                        world.Level.BorderWarningTime =
+                            ((NbtDouble) tag).Value;
+                        break;
+                    case "clearWeatherTime":
+                        world.Level.ClearWeatherTime =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "DayTime":
+                        world.Level.DayTime =
+                            TimeSpan.FromTicks(((NbtLong) tag).Value);
+                        break;
+                    case "Difficulty":
+                        world.Level.Difficulty =
+                            (Difficulty) ((NbtByte) tag).Value;
+                        break;
+                    case "DifficultyLocked":
+                        world.Level.DifficultyLocked =
+                            ((NbtByte) tag).Value != 0;
+                        break;
+                    case "GameType":
+                        world.Level.GameMode =
+                            (GameMode) ((NbtInt) tag).Value;
+                        break;
+                    case "hardcore":
+                        world.Level.IsHardcore =
+                            ((NbtByte) tag).Value != 0;
+                        break;
+                    case "initialized":
+                        world.Level.Initialized =
+                            ((NbtByte)tag).Value != 0;
+                        break;
+                    case "LastPlayed":
+                        world.Level.LastPlayed =
+                            new DateTime(((NbtLong) tag).Value);
+                        break;
+                    case "LevelName":
+                        world.Level.Name =
+                            ((NbtString) tag).Value;
+                        break;
+                    case "raining":
+                        world.Level.IsRaining =
+                            ((NbtByte)tag).Value != 0;
+                        break;
+                    case "rainTime":
+                        world.Level.RainTime =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "SpawnAngle":
+                        world.Level.SpawnAngle =
+                            ((NbtFloat) tag).Value;
+                        break;
+                    case "SpawnX":
+                        world.Level.Spawn.X =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "SpawnY":
+                        world.Level.Spawn.Y =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "SpawnZ":
+                        world.Level.Spawn.Z =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "thundering":
+                        world.Level.IsThundering =
+                            ((NbtByte) tag).Value != 0;
+                        break;
+                    case "Time":
+                        world.Level.Time =
+                            TimeSpan.FromTicks(((NbtLong) tag).Value);
+                        break;
+                    case "thunderTime":
+                        world.Level.ThunderTime =
+                            TimeSpan.FromTicks(((NbtInt) tag).Value);
+                        break;
+                    case "WanderingTraderSpawnChance":
+                        world.Level.WanderingTraderSpawnChance =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "WanderingTraderSpawnDelay":
+                        world.Level.WanderingTraderSpawnDelay =
+                            ((NbtInt) tag).Value;
+                        break;
+                    case "WasModded":
+                        world.Level.WasModded =
+                            ((NbtByte)tag).Value != 0;
                         break;
                 }
-                NbtCompound cmp = new()
-                {
-                    new NbtByte("OnGround", player.OnGround.ToByte()),
-                    new NbtByte("Sleeping", player.IsSleeping.ToByte()),
-                    new NbtShort("Air", player.Air),
-                    new NbtShort("AttackTime", player.AttackTime),
-                    new NbtShort("DeathTime", player.DeathTime),
-                    new NbtShort("Fire", player.Fire),
-                    new NbtShort("Health", player.Health),
-                    new NbtShort("HurtTime", player.HurtTime),
-                    new NbtShort("SleepTimer", player.SleepTimer),
-                    new NbtInt("Dimension", dimension),
-                    new NbtInt("foodLevel", player.FoodLevel),
-                    new NbtInt("foodTickTimer", player.FoodTickTimer),
-                    new NbtInt("playerGameType", (int) player.GameMode),
-                    new NbtInt("XpLevel", player.ExperienceLevel),
-                    new NbtInt("XpTotal", player.ExperienceTotal),
-                    new NbtFloat("XpP", player.XpP),
-                    new NbtList("Motion")
-                    {
-                        new NbtDouble(player.Motion.X),
-                        new NbtDouble(player.Motion.Y),
-                        new NbtDouble(player.Motion.Z)
-                    },
-                    new NbtList("Pos")
-                    {
-                        new NbtDouble(player.Position.X),
-                        new NbtDouble(player.Position.Y),
-                        new NbtDouble(player.Position.Z)
-                    },
-                    new NbtList("Rotation")
-                    {
-                        new NbtFloat(player.Rotation.X),
-                        new NbtFloat(player.Rotation.Y)
-                    }
-                };
+            }
 
-                // Save inventory
-                NbtList inv = new("Inventory");
-                foreach (Slot sl in player.Inventory)
-                {
-                    if (!sl.Present) continue;
-                    NbtCompound slot = new()
-                    {
-                        new NbtByte("Count", sl.ItemCount),
-                        new NbtByte("Slot", sl.Spot),
-                        new NbtString("id", sl.ItemCount.ToString())
-                    };
+            return world;
+        }
 
-                    if (sl.NBT != null) slot.Add(sl.NBT);
-                    inv.Add(slot);
-                }
-                cmp.Add(inv);
+        public static bool TryLoad(string name, out World world, out Exception ex)
+        {
+            try
+            {
+                world = Load(name);
+                ex = null!;
+                return true;
+            }
+            catch (Exception e)
+            {
+                world = null!;
+                ex = e;
+                return false;
+            }
+        }
+        public void Save()
+        {
+            string saveDir = WorldManager.Dir + Level.Name + "/";
 
-                nbtFile.SaveToFile(full + "Players/" 
-                                        + player.UniqueId.ToString() 
-                                        + ".dat", NbtCompression.None); // Save players
+            // Save level.dat & make level.dat_old
+            string levelDat = saveDir + "level.dat";
+            string oldDat = saveDir + "level.dat_old";
 
+            if (File.Exists(levelDat))
+            {
+                if (File.Exists(oldDat)) File.Delete(oldDat);
+                File.Copy(levelDat, oldDat);
+            }
+
+            NbtFile levelDatFile = new(Level.Nbt);
+            levelDatFile.SaveToFile(levelDat, NbtCompression.None);
+        }
+
+        public bool TrySave(out Exception ex)
+        {
+            try
+            {
+                Save();
+                ex = null!;
+                return true;
+            }
+            catch (Exception e)
+            {
+                ex = e;
+                return false;
             }
         }
     }

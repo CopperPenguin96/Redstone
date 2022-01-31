@@ -7,9 +7,7 @@ A:\Programming\Redstone\Redstone\bin\Debug\net6.0\Redstone.dll
 A:\Programming\Redstone\Redstone\bin\Debug\net6.0\ref\Redstone.dll
 A:\Programming\Redstone\Redstone\bin\Debug\net6.0\Redstone.pdb
 A:\Programming\Redstone\Redstone\bin\Debug\net6.0\SmartNbt.dll
-A:\Programming\Redstone\Redstone\bin\Debug\net6.0\Version Management.dll
 A:\Programming\Redstone\Redstone\bin\Debug\net6.0\SmartNbt.pdb
-A:\Programming\Redstone\Redstone\bin\Debug\net6.0\Version Management.pdb
 A:\Programming\Redstone\Redstone\obj\Debug\net6.0\Redstone.csproj.CopyComplete
 A:\Programming\Redstone\Redstone\obj\Debug\net6.0\Redstone.dll
 A:\Programming\Redstone\Redstone\obj\Debug\net6.0\ref\Redstone.dll

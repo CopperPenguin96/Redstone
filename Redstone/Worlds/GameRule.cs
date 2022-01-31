@@ -56,11 +56,11 @@ namespace Redstone.Worlds
 
     public class GameRule<T>
     {
-        public string Name { get; protected set; }
+        [NotNull] public string Name { get; protected set; }
 
-        public T Value { get; set; }
+        [NotNull] public T Value { get; set; }
 
-        protected GameRule() {}
+        protected GameRule() { }
 
         public GameRule(string name)
         {
