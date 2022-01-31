@@ -385,6 +385,8 @@ namespace Redstone.Worlds
                     }
                 }
             }
+            
+            // todo datapacks
             return world;
         }
 
@@ -433,6 +435,13 @@ namespace Redstone.Worlds
             string raidDat = dataDir + "raids.dat";
             NbtFile raidDatFile = new(Raids.Nbt);
             raidDatFile.SaveToFile(raidDat, NbtCompression.None);
+
+            // datapacks todo
+            string dataPackDir = saveDir + "datapacks/";
+            if (!Directory.Exists(dataPackDir))
+                Directory.CreateDirectory(dataPackDir);
+
+
         }
 
         public bool TrySave(out Exception ex)
