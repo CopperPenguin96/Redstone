@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using MinecraftTypes;
 using Redstone.Security;
-using Redstone.Types;
 
 namespace Redstone.Network.Packets.Login
 {

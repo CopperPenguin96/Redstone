@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.Entities;
-using Redstone.Players;
-
-namespace Redstone.Network.Packets.Play.Clientbound
+﻿namespace Redstone.Network.Packets.Play.Clientbound
 {
     internal class JoinGame : ISendingPacket
     {

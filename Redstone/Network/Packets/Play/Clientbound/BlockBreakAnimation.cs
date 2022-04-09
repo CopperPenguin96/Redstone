@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MinecraftTypes;
-using Redstone.Types;
-using Redstone.Worlds;
+﻿using MinecraftTypes;
 
 namespace Redstone.Network.Packets.Play.Clientbound
 {
@@ -31,7 +24,7 @@ namespace Redstone.Network.Packets.Play.Clientbound
         public void Send(ref MinecraftClient client, GameStream stream)
         {
             Protocol.Send(ref client, stream, Packet,
-                client.Player.Id, _pos, _stage);
+                client.Player.PlayerEntity.Id, _pos, _stage);
         }
     }
 }

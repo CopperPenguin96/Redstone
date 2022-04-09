@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.Players;
-using Redstone.Types.Exceptions;
+﻿using SmartBlocks.Entities.Living;
 
 namespace Redstone.Network.Packets.Play.Clientbound
 {
@@ -17,9 +11,9 @@ namespace Redstone.Network.Packets.Play.Clientbound
         public Packet Packet => Packet.SpawnPlayer;
         public string Name => "Spawn Player";
 
-        private Player _player;
+        private PlayerEntity _player;
 
-        public SpawnPlayer(Player player)
+        public SpawnPlayer(PlayerEntity player)
         {
             _player = player ?? throw new ArgumentNullException(nameof(player));
         }

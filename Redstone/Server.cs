@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using MinecraftTypes;
 using Redstone.Configuration;
 using Redstone.Network;
 using Redstone.Players;
-using Redstone.Types;
 using Redstone.Utils;
-using Redstone.Worlds;
 
 namespace Redstone
 {
@@ -82,7 +74,7 @@ namespace Redstone
             Logger.Log("Loading the World Manager", LogLevel.System);
             try
             {
-                WorldManager.Load();
+                //WorldManager.Load();
             }
             catch (Exception e)
             {

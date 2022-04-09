@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MinecraftTypes;
-using Redstone.Types;
-using Redstone.Worlds;
+﻿using MinecraftTypes;
+using SmartBlocks.Blocks;
 
 namespace Redstone.Network.Packets.Play.Clientbound
 {
@@ -17,18 +11,20 @@ namespace Redstone.Network.Packets.Play.Clientbound
         private Block _block;
         private DiggingStatus _status;
         private bool _success;
+        private Position _pos;
 
-        public AcknowledgePlayerDigging(Block block, DiggingStatus status, bool successful)
+        public AcknowledgePlayerDigging(Block block, DiggingStatus status, bool successful, Position pos)
         {
             _block = block;
             _status = status;
             _success = successful;
+            _pos = pos;
         }
 
         public void Send(ref MinecraftClient client, GameStream stream)
         {
             Protocol.Send(ref client, stream, Packet,
-                _block.Position, _block.State,
+                _pos, _block.Hardness,
                 (VarInt) (int) _status, _success);
         }
     }

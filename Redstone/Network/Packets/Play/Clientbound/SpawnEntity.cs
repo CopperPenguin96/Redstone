@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Redstone.Entities;
-using Redstone.Types;
-using Redstone.Types.Exceptions;
+﻿using Redstone.Types.Exceptions;
+using SmartBlocks.Entities;
 
 namespace Redstone.Network.Packets.Play.Clientbound
 {
@@ -35,8 +29,8 @@ namespace Redstone.Network.Packets.Play.Clientbound
                     data = iFrame.Rotation;
                     break;
                 case "falling_block":
-                    FallingBlock fBlock = (FallingBlock) _entity;
-                    data = fBlock.World.GetAtPosition(fBlock.SpawnPosition).State;
+                    /*FallingBlock fBlock = (FallingBlock) _entity;
+                    data = fBlock.World.GetAtPosition(fBlock.SpawnPosition).State*/
                     break;
                 case "fishing_hook":
                     FishingHook fHook = (FishingHook) _entity;

@@ -49,10 +49,8 @@
 #if NETFX_CORE
 #define SIMPLE_JSON_TYPEINFO
 #endif
-using System;
 using System.CodeDom.Compiler;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;

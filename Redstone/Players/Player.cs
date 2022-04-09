@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using java.util;
 using MinecraftTypes;
-using Redstone.Types;
-using Redstone.Utils;
-using Redstone.Worlds;
-using Redstone.Worlds.Dimensions;
+using SmartBlocks.Entities.Living;
+using SmartBlocks.Worlds;
 using Slot = MinecraftTypes.Slot;
 
 namespace Redstone.Players
@@ -17,6 +11,10 @@ namespace Redstone.Players
         public string Username { get; set; }
 
         public string? DisplayName { get; set; }
+
+        public UUID UniqueId { get; set; }
+
+        public PlayerEntity PlayerEntity { get; set; }
 
         public bool OnGround { get; set; }
 

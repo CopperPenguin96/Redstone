@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MinecraftTypes;
-using Redstone.Entities;
-using Redstone.Types;
-using Redstone.Worlds;
-using SmartNbt;
+﻿using MinecraftTypes;
+using SmartBlocks.Blocks;
 using SmartNbt.Tags;
 
 namespace Redstone.Network.Packets.Play.Clientbound
@@ -29,7 +21,6 @@ namespace Redstone.Network.Packets.Play.Clientbound
             _pos = pos;
             _action = action;
             _block = block;
-            _nbt = _block.NbtData!;
         }
 
 

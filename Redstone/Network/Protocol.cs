@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using MinecraftTypes;
 using Redstone.Network.Packets;
 using Redstone.Network.Packets.Login;
 using Redstone.Network.Packets.Status;
-using Redstone.Types;
 using SmartNbt;
 
 namespace Redstone.Network
