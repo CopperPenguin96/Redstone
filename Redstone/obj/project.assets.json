@@ -1437,6 +1437,9 @@
       "MinecraftTypes/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "SmartNbt": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/MinecraftTypes.dll": {}
         },

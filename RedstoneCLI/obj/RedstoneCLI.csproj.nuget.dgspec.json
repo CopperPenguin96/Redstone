@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Programming\\rs\\SmartNbt\\SmartNbt\\SmartNbt\\SmartNbt.csproj": {
+                "projectPath": "D:\\Programming\\rs\\SmartNbt\\SmartNbt\\SmartNbt\\SmartNbt.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
