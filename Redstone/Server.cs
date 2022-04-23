@@ -14,19 +14,45 @@ namespace Redstone
     /// </summary>
     public sealed class Server
     {
-        
+        /// <summary>
+        /// The main directory for Redstone.
+        /// Where all configs, worlds, and other misc. files are saved.
+        /// </summary>
         public const string Path = "Redstone/";
-        public static readonly Version Version = new Version(1, 0);
 
+        /// <summary>
+        /// Redstone's software version. (Not Minecraft)
+        /// </summary>
+        public static readonly Version Version = new(1, 0);
+
+        /// <summary>
+        /// The List of Players currently online, fully logged in.
+        /// </summary>
         public static PlayerList Online = new();
+
+        /// <summary>
+        /// The time the server started.
+        /// </summary>
         public static DateTime StartTime { get; private set; }
 
+        /// <summary>
+        /// The main server thread
+        /// </summary>
         public static Thread? Thread { get; private set; }
 
+        /// <summary>
+        /// If the server is in the shutdown process
+        /// </summary>
         public static bool IsShuttingDown { get; internal set; }
 
+        /// <summary>
+        /// If the server is in the restart process
+        /// </summary>
         public static bool IsRestarting { get; internal set; }
 
+        /// <summary>
+        /// Starts the server
+        /// </summary>
         public static void Start()
         {
             Console.WriteLine(@"                  
@@ -45,8 +71,11 @@ namespace Redstone
                                            ");
             Logger.Log("Starting Redstone v" + Version + "...", LogLevel.System);
             StartTime = DateTime.Now;
+
+            // Protocol must be initiated before being used
             Protocol.Init(true, "");
 
+            // Create directories if they don't exist.
             bool dirExist = true;
             if (!Directory.Exists(Path))
             {
@@ -54,6 +83,7 @@ namespace Redstone
                 dirExist = false;
             }
 
+            // Load the config
             Logger.Log("Loading the configuration", LogLevel.System);
             try
             {
@@ -71,6 +101,7 @@ namespace Redstone
                 Console.WriteLine(e);
             }
 
+            // Load the world manager
             Logger.Log("Loading the World Manager", LogLevel.System);
             try
             {
@@ -83,22 +114,28 @@ namespace Redstone
                 return;
             }
             
-            
+            // Run the server in the main thread
             Thread = new(Run);
             Thread.Start();
         }
 
+        /// <summary>
+        /// Runs the server. Best to not use this in the foremost thread. Create a new one to use this.
+        /// </summary>
         private static void Run()
         {
             try
             {
+                // Create a new thread for the logger
                 Thread logThread = new Thread(Logger.Watch);
                 logThread.Start();
 
+                // Create the TCP Listener and start it
                 int port = Config.Port;
                 TcpListener server = new(IPAddress.Any, port);
-                
                 server.Start();
+
+                // Get the external IP, have it displayed so the host knows
                 string externalIpString = new WebClient().DownloadString("http://ipinfo.io/ip").Replace("\\r\\n", "")
                     .Replace("\\n", "").Trim();
                 Logger.Log($"Starting server on {externalIpString}:{port}.");
@@ -114,14 +151,18 @@ namespace Redstone
 
                     while (client.Client.Connected)
                     {
-                        // Receiving Packets
+                        /*
+                         * Packet format found at https://wiki.vg/Protocol
+                         *
+                         * Length First (Including size of ID, and all packet info)
+                         */
                         VarInt length = stream.ReadVarInt();
                         MemoryStream ms = new(stream.ReadByteArray(length));
                         Protocol.Receive(ref client, new GameStream(ms));
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) // Uh oh
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Unable to start the server.");
