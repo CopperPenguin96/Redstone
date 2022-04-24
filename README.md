@@ -1,7 +1,9 @@
 # Redstone (1.17.1)
 ![](https://redstoneserver.000webhostapp.com/images/wide.png)
 
-Redstone is a custom 1.17.1 Minecraft JAVA EDITION server written entirely in C#. Work in progress.
+Redstone is an upcoming (1.17.1) Minecraft Server.
+
+Underwork of porting to java from C#. Please bear with us!
 
 # Fully Featured (Soon)
 

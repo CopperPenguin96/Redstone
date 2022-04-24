@@ -1,0 +1,14 @@
+package com.CopperPenguin96.MinecraftTypes;
+
+public enum Difficulty {
+	
+	Peaceful(0),
+	Easy(1),
+	Normal(2),
+	Hard(3);
+
+	Difficulty(int i) {
+		// TODO Auto-generated constructor stub
+	}
+	
+}

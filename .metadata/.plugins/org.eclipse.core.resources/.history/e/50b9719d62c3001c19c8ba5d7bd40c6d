@@ -1,0 +1,25 @@
+package com.CopperPenguin96.MinecraftTypes;
+
+public enum Difficulty {
+	
+	Peaceful(0),
+	Easy(1),
+	Normal(2),
+	Hard(3);
+
+	private int _difficulty = 2;
+	
+	public int getValue() {
+		return _difficulty;
+	}
+	
+	public int setValue(int i) {
+		if (i > 3) {
+			throw new IndexOutOfBoundsException();
+		}
+	}
+	Difficulty(int i) {
+		// TODO Auto-generated constructor stub
+	}
+	
+}

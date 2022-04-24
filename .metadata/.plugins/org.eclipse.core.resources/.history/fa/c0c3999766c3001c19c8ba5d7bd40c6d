@@ -1,0 +1,13 @@
+package com.CopperPenguin96.MinecraftTypes;
+
+public class MinecraftVersion {
+
+	public final static MinecraftVersion Current = 
+			new MinecraftVersion(756, 1, 17, 1);
+	
+	public int Protocol;
+	
+	public MinecraftVersion(int protocol, int major, int minor, int build, int rev) {
+		
+	}
+}
