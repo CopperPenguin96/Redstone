@@ -5,6 +5,11 @@ Redstone is an upcoming (1.17.1) Minecraft Server.
 
 Underwork of porting to java from C#. Please bear with us!
 
+Several programs/libraries created for Redstone will now be included as part of Redstone. They will be rebranded as "Redstone" software.
+SmartBlocks -> Redstone Worlds
+SmartNbt -> Redstone NBT
+Minecraft Types will remain the same.
+
 # Fully Featured (Soon)
 
   - Implementing the entire Minecraft Protocol
