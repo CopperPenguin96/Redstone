@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/super/OneDrive - Ball State University/Documents/jars/json-20230618.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/super/OneDrive%20-%20Ball%20State%20University/Documents/jars/json-20230618-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/super/OneDrive - Ball State University/Documents/jars/bouncy_castle.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/super/OneDrive%20-%20Ball%20State%20University/Documents/jars/bcprov-jdk18on-1.78.1-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

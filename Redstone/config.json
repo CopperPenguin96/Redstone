@@ -1,0 +1,9 @@
+{
+    "server-name": "[Redstone] Default Server",
+    "motd": "Welcome to the server!",
+    "website": "https://www.change-me.com",
+    "time-format": 0,
+    "port": 25565,
+    "max-players": 20,
+    "version": 0
+}
