@@ -81,7 +81,7 @@ public class StatusResponse implements IPacket {
 		
 		try {
 			PacketWriter.writePacket(player.getOutputStream(), getPacketID(), json);
-		} catch (NoSuchAlgorithmException | NoSuchPaddingException | IOException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

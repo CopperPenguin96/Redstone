@@ -11,6 +11,7 @@ import com.CopperPenguin96.Redstone.Network.GameInputStream;
 import com.CopperPenguin96.Redstone.Network.Protocol;
 import com.CopperPenguin96.Redstone.Network.Packets.IPacket;
 import com.CopperPenguin96.Redstone.Network.Packets.PacketWriter;
+import com.CopperPenguin96.Redstone.Players.ClientState;
 import com.CopperPenguin96.Redstone.Players.Player;
 import com.CopperPenguin96.Redstone.Players.PlayerProperty;
 import com.CopperPenguin96.Redstone.System.Types.VarInt;
@@ -51,6 +52,7 @@ public class LoginSuccess implements IPacket {
 		try {
 			System.out.println("Testing encryption");
 			PacketWriter.writePacket(player.getOutputStream(), getPacketID(), player.UniqueId, player.Username, new VarInt(0));
+			player.State = ClientState.Config;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

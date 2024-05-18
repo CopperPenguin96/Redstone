@@ -81,7 +81,13 @@ public class PacketReader {
 	}
 	
 	private static void readConfig(Player player, byte[] content) throws IOException {
-		
+		GameInputStream stream = new GameInputStream(new ByteArrayInputStream(content));
+		int id = stream.readVarInt();
+		System.out.println("TESTING NCONFIG");
+		System.out.printf("0x%02X", (byte)id);
+		switch (id) {
+			
+		}
 	}
 	
 	private static void readPlay(Player player, byte[] content) throws IOException {

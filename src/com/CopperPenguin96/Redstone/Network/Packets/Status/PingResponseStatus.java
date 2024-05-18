@@ -26,7 +26,7 @@ public class PingResponseStatus implements IPacket {
 	public void send(Player player) throws IOException {
 		try {
 			PacketWriter.writePacket(player.getOutputStream(), getPacketID(), _payload);
-		} catch (NoSuchAlgorithmException | NoSuchPaddingException | IOException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package com.CopperPenguin96.Redstone.Network.Packets;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -9,7 +10,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 
 import org.json.JSONObject;
 
@@ -59,7 +63,32 @@ public class PacketWriter {
 	}
 	
 	public static void writePacket(GameOutputStream stream, int id, ArrayList<Object> objs) throws IOException {
+		writePacket(stream, id, objs, false);
+	}
+	
+	public static void writePacket(GameOutputStream baseStream, int id, ArrayList<Object> objs, boolean isEncryptedStream) throws IOException {
 		int totalSize = VarInt.getLength(id) + determineSize(objs);
+		
+		GameOutputStream stream = baseStream;
+		
+		if (isEncryptedStream) {
+			Cipher cipher;
+			try {
+				cipher = Cipher.getInstance("RSA");
+				cipher.init(Cipher.ENCRYPT_MODE, Server.KeyPair.getPublic());
+				CipherOutputStream cipherStream = new CipherOutputStream(baseStream, cipher);
+				stream = new GameOutputStream(cipherStream);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} 
 		
 		stream.writeVarInt(totalSize);
 		stream.writeVarInt(id);
