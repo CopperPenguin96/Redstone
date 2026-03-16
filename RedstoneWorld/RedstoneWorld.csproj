@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>Redstone.World</RootNamespace>
+		<Configurations>Debug;Release;Test</Configurations>
+		<BaseOutputPath>..\bin\</BaseOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\RedstoneCore\RedstoneCore.csproj" />
+		<ProjectReference Include="..\RedstoneNbt\RedstoneNbt.csproj" />
+	</ItemGroup>
+
+</Project>
