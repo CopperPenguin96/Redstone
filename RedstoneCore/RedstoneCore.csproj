@@ -13,4 +13,8 @@
     <PackageReference Include="Tomlyn" Version="0.19.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RedstoneNbt\RedstoneNbt.csproj" />
+  </ItemGroup>
+
 </Project>

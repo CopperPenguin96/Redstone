@@ -1,8 +1,6 @@
-﻿using Redstone.Core;
-using Redstone.Core.Types;
-using Redstone.Nbt.Tags;
+﻿using Redstone.Nbt.Tags;
 
-namespace Redstone.World
+namespace Redstone.Core.Types
 {
     public class SlotData
     {
@@ -57,10 +55,6 @@ namespace Redstone.World
 
         public void AddData(Identifier ident, params object?[] args)
         {
-            if (ContainsComp(ident))
-            {
-
-            }
             Delegate func = ComponentFunctions[ident];
             Component comp = (Component)func.DynamicInvoke(args)!;
             Components.Add(comp);

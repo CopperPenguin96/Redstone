@@ -24,7 +24,7 @@
             Value = 0;
         }
 
-        public void WriteToStream(ref Stream stream)
+        public void WriteToStream(Stream stream)
         {
             Span<byte> buffer = stackalloc byte[10];
             int position = 0;
@@ -39,7 +39,7 @@
             stream.Write(buffer[..position]);
         }
 
-        public static VarLong ReadFromStream(ref Stream stream)
+        public static VarLong ReadFromStream(Stream stream)
         {
             long value = 0;
             int position = 0;
@@ -149,10 +149,7 @@
             return Value.GetHashCode();
         }
 
-        public bool Equals(VarLong other)
-        {
-            return Value == other.Value;
-        }
+        public bool Equals(VarLong other) => this.Value == other.Value;
 
         #endregion
     }

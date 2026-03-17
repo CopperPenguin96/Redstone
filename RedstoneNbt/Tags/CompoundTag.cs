@@ -1,5 +1,4 @@
-﻿using Redstone.Core;
-using System.Collections;
+﻿using System.Collections;
 using System.Text;
 using System.Globalization;
 
@@ -227,7 +226,7 @@ namespace Redstone.Nbt.Tags
             public CompoundTag ParseCompound()
             {
                 SkipWhitespace();
-                if (!TryConsume('{')) throw new RedstoneException(new FormatException("Expected '{' at start of compound"));
+                if (!TryConsume('{')) throw new NbtException(new FormatException("Expected '{' at start of compound"));
 
                 var comp = new CompoundTag();
                 comp.Value = new List<NbtTag>();
@@ -240,7 +239,7 @@ namespace Redstone.Nbt.Tags
                     SkipWhitespace();
                     string key = ParseKey();
                     SkipWhitespace();
-                    if (!TryConsume(':')) throw new RedstoneException(new FormatException("Expected ':' after key in compound"));
+                    if (!TryConsume(':')) throw new NbtException(new FormatException("Expected ':' after key in compound"));
                     SkipWhitespace();
                     var tag = ParseElement();
                     tag.Name = key;
@@ -249,7 +248,7 @@ namespace Redstone.Nbt.Tags
                     SkipWhitespace();
                     if (TryConsume(',')) { continue; }
                     if (TryConsume('}')) break;
-                    throw new RedstoneException(new FormatException("Expected ',' or '}' in compound"));
+                    throw new NbtException(new FormatException("Expected ',' or '}' in compound"));
                 }
 
                 return comp;
@@ -273,7 +272,7 @@ namespace Redstone.Nbt.Tags
 
             private string ParseString()
             {
-                if (Next() != '"') throw new RedstoneException(new FormatException("Expected '" + '"' + " to start string"));
+                if (Next() != '"') throw new NbtException(new FormatException("Expected '" + '"' + " to start string"));
                 var sb = new StringBuilder();
                 while (_i < _s.Length)
                 {
@@ -301,7 +300,7 @@ namespace Redstone.Nbt.Tags
                         sb.Append(c);
                     }
                 }
-                throw new RedstoneException(new FormatException("Unterminated string"));
+                throw new NbtException(new FormatException("Unterminated string"));
             }
 
             private NbtTag ParseElement()
@@ -341,11 +340,11 @@ namespace Redstone.Nbt.Tags
                                 // allow suffix 'b'
                                 if (numToken.EndsWith("b", StringComparison.OrdinalIgnoreCase)) numToken = numToken[..^1];
                                 if (byte.TryParse(numToken, NumberStyles.Integer, CultureInfo.InvariantCulture, out var bv)) list.Add(bv);
-                        else throw new RedstoneException(new FormatException("Invalid byte in byte array"));
+                        else throw new NbtException(new FormatException("Invalid byte in byte array"));
                                 SkipWhitespace();
                                 if (TryConsume(',')) continue;
                                 if (TryConsume(']')) break;
-                        throw new RedstoneException(new FormatException("Expected ',' or ']' in byte array"));
+                        throw new NbtException(new FormatException("Expected ',' or ']' in byte array"));
                             }
                             return new ByteArrayTag(null, list.ToArray());
                         }
@@ -358,11 +357,11 @@ namespace Redstone.Nbt.Tags
                                 SkipWhitespace();
                                 string numToken = ParseBareToken();
                                 if (int.TryParse(numToken, NumberStyles.Integer, CultureInfo.InvariantCulture, out var iv)) list.Add(iv);
-                                else throw new RedstoneException(new FormatException("Invalid int in int array"));
+                                else throw new NbtException(new FormatException("Invalid int in int array"));
                                 SkipWhitespace();
                                 if (TryConsume(',')) continue;
                                 if (TryConsume(']')) break;
-                                throw new RedstoneException(new FormatException("Expected ',' or ']' in int array"));
+                                throw new NbtException(new FormatException("Expected ',' or ']' in int array"));
                             }
                             return new IntArrayTag(null, list.ToArray());
                         }
@@ -376,11 +375,11 @@ namespace Redstone.Nbt.Tags
                                 string numToken = ParseBareToken();
                                 if (numToken.EndsWith("L", StringComparison.OrdinalIgnoreCase)) numToken = numToken[..^1];
                                 if (long.TryParse(numToken, NumberStyles.Integer, CultureInfo.InvariantCulture, out var lv)) list.Add(lv);
-                                else throw new RedstoneException(new FormatException("Invalid long in long array"));
+                                else throw new NbtException(new FormatException("Invalid long in long array"));
                                 SkipWhitespace();
                                 if (TryConsume(',')) continue;
                                 if (TryConsume(']')) break;
-                                throw new RedstoneException(new FormatException("Expected ',' or ']' in long array"));
+                                throw new NbtException(new FormatException("Expected ',' or ']' in long array"));
                             }
                             return new LongArrayTag(null, list.ToArray());
                         }
@@ -429,12 +428,12 @@ namespace Redstone.Nbt.Tags
                         return new IntTag(null, ival);
                 }
 
-                throw new RedstoneException(new FormatException($"Unrecognized token: {token}"));
+                throw new NbtException(new FormatException($"Unrecognized token: {token}"));
             }
 
             private NbtTag ParseList()
             {
-                if (!TryConsume('[')) throw new RedstoneException(new FormatException("Expected '[' to start list"));
+                if (!TryConsume('[')) throw new NbtException(new FormatException("Expected '[' to start list"));
                 var items = new List<NbtTag>();
                 SkipWhitespace();
                 if (TryConsume(']')) return new ListTag(TagType.End) { Value = items }; // empty
@@ -448,7 +447,7 @@ namespace Redstone.Nbt.Tags
                     SkipWhitespace();
                     if (TryConsume(',')) continue;
                     if (TryConsume(']')) break;
-                    throw new RedstoneException(new FormatException("Expected ',' or ']' in list"));
+                    throw new NbtException(new FormatException("Expected ',' or ']' in list"));
                 }
 
                 // Determine list type

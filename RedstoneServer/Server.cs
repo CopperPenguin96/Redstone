@@ -1,6 +1,6 @@
-﻿using Redstone.Players;
+﻿using Redstone.Core.Players;
 
-namespace Redstone
+namespace Redstone.Server
 {
     public class Server
     {

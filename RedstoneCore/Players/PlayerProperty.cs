@@ -2,7 +2,7 @@
 using Redstone.Nbt;
 using Redstone.Nbt.Tags;
 
-namespace Redstone.Players
+namespace Redstone.Core.Players
 {
     public struct PlayerProperty : ITagProvider
     {

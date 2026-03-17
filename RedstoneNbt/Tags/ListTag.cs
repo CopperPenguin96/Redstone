@@ -1,5 +1,4 @@
-﻿using Redstone.Core;
-using System.Collections;
+﻿using System.Collections;
 
 namespace Redstone.Nbt.Tags
 {
@@ -42,20 +41,20 @@ namespace Redstone.Nbt.Tags
             
             if (ListType == TagType.End)
             {
-                throw new RedstoneException("A List Type of End Tag cannot contain any elements.");
+                throw new NbtException("A List Type of End Tag cannot contain any elements.");
             }
 
             stream.WriteByte((byte)ListType); // prefixed id of the list's type
 
             byte[] lengthArray = BitConverter.GetBytes(Count);
-            if (Global.IsBigEndian) Array.Reverse(lengthArray);
+            if (NbtReader.IsBigEndian) Array.Reverse(lengthArray);
             stream.Write(lengthArray); // length of the list
 
             foreach (NbtTag tag in Value)
             {
                 if (tag.Type != ListType)
                 {
-                    throw new RedstoneException($"All tags in a List Tag must be of the same type. Expected {ListType}, got {tag.Type}.");
+                    throw new NbtException($"All tags in a List Tag must be of the same type. Expected {ListType}, got {tag.Type}.");
                 }
 
                 tag.WriteToStream(stream, false); // false to not writing headers
@@ -73,7 +72,7 @@ namespace Redstone.Nbt.Tags
 
             if (ListType == TagType.End)
             {
-                if (length > 0) throw new RedstoneException("Invalid NBT: List of type End Tag cannot contain elements.");
+                if (length > 0) throw new NbtException("Invalid NBT: List of type End Tag cannot contain elements.");
                 return new ListTag(TagType.End);
             }
 
@@ -118,7 +117,7 @@ namespace Redstone.Nbt.Tags
                         Value.Add(new LongArrayTag().Read(stream, false));
                         break;
                     default:
-                        throw new RedstoneException($"Invalid NBT: Unknown tag type {tagType} in List Tag.");   
+                        throw new NbtException($"Invalid NBT: Unknown tag type {tagType} in List Tag.");   
                 }
             }
 
@@ -142,7 +141,7 @@ namespace Redstone.Nbt.Tags
             // Prevent creating a cycle by adding an ancestor as a child
             for (NbtTag? p = this; p != null; p = p.Parent)
             {
-                if (p == item) throw new RedstoneException("Cannot add an ancestor as a child.");
+                if (p == item) throw new NbtException("Cannot add an ancestor as a child.");
             }
 
             // Count how many ListTag ancestors this list already has (including this)
@@ -158,7 +157,7 @@ namespace Redstone.Nbt.Tags
             // If adding the item would make the total list nesting exceed 5, reject it
             if (ancestorListCount + itemListDepth > 5)
             {
-                throw new RedstoneException("A list tag cannot be nested more than 5 levels deep.");
+                throw new NbtException("A list tag cannot be nested more than 5 levels deep.");
             }
 
             item.Parent = this;

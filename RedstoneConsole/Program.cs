@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using Redstone.Core;
-
+﻿#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace Redstone
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
     internal class Program
     {

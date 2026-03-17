@@ -1,6 +1,6 @@
 ﻿using Redstone.Core.Types;
 using Redstone.Nbt.Tags;
-namespace Redstone.Players.Chatting
+namespace Redstone.Core.Players.Chatting
 {
     public class ObjectText : ChatComponent
     {

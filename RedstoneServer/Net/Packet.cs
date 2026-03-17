@@ -1,4 +1,4 @@
-﻿namespace Redstone.Net
+﻿namespace Redstone.Server.Net
 {
     internal enum Packet : byte
     {

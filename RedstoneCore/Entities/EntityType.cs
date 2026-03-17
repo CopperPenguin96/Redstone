@@ -1,5 +1,4 @@
 ﻿using Redstone.Core.Types;
-using System.Drawing;
 
 namespace Redstone.Core.Entities
 {

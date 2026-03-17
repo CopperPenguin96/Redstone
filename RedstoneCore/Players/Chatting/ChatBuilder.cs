@@ -1,4 +1,4 @@
-﻿namespace Redstone.Players.Chatting
+﻿namespace Redstone.Core.Players.Chatting
 {
     public abstract class ChatBuilder
     {
@@ -13,7 +13,7 @@
 
         public static ChatBuilder Parse(string snbt)
         {
-            Redstone.Core.RedstoneException.ThrowIfNull(snbt);
+            RedstoneException.ThrowIfNull(snbt);
 
             // Parse into a ChatComponent when possible and wrap into a builder that can
             // produce a JSON output suitable for Java edition text components.

@@ -1,6 +1,4 @@
-using Redstone.Core.Types;
-
-namespace Redstone.World
+namespace Redstone.Core.Types
 {
     public sealed class Component
     {

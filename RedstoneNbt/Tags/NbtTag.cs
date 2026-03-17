@@ -1,5 +1,4 @@
-﻿using Redstone.Core;
-using System.Text;
+﻿using System.Text;
 
 namespace Redstone.Nbt.Tags
 {
@@ -30,7 +29,7 @@ namespace Redstone.Nbt.Tags
             _reader = new NbtReader(stream);
 
             _readType = (TagType)_reader.ReadByte();
-            if (_readType != Type) throw new RedstoneException("NBT Tag Type mix-match");
+            if (_readType != Type) throw new NbtException("NBT Tag Type mix-match");
 
             if (_readType == TagType.End) return;
 
@@ -47,6 +46,32 @@ namespace Redstone.Nbt.Tags
             return this;
         }
 
+        public static NbtTag ReadFromStream(Stream stream, bool readHeaders = true)
+        {
+            NbtReader reader = new(stream);
+            TagType type = (TagType)reader.ReadByte();
+            if (type == TagType.End) return new EndTag();
+            string name = reader.ReadString();
+            NbtTag tag = type switch
+            {
+                TagType.Byte => new ByteTag(name, 0),
+                TagType.Short => new ShortTag(name, 0),
+                TagType.Int => new IntTag(name, 0),
+                TagType.Long => new LongTag(name, 0L),
+                TagType.Float => new FloatTag(name, 0f),
+                TagType.Double => new DoubleTag(name, 0d),
+                TagType.ByteArray => new ByteArrayTag(name, []),
+                TagType.String => new StringTag(name, string.Empty),
+                TagType.List => new ListTag(name, TagType.End), // List type will be read in the constructor
+                TagType.Compound => new CompoundTag(name),
+                TagType.IntArray => new IntArrayTag(name, []),
+                TagType.LongArray => new LongArrayTag(name, []),
+                _ => throw new NbtException($"Unknown NBT tag type: {type}")
+            };
+            tag.Read(stream, false);
+            return tag;
+        }
+
 
         public void WriteHeader(Stream stream)
         {
@@ -57,7 +82,7 @@ namespace Redstone.Nbt.Tags
             if (Name != null)
             {
                 byte[] nameLengthBytes = BitConverter.GetBytes((ushort)Name.Length);
-                if (Global.IsBigEndian) Array.Reverse(nameLengthBytes);
+                if (NbtReader.IsBigEndian) Array.Reverse(nameLengthBytes);
                 byte[] nameBytes = Encoding.UTF8.GetBytes(Name);
 
                 stream.Write(nameLengthBytes);

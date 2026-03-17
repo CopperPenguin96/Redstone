@@ -1,18 +1,35 @@
 ﻿using Redstone.Core;
+using Redstone.Core.Net;
 using Redstone.Nbt;
 using Redstone.Nbt.Tags;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System;
 
-namespace Redstone.Players.Chatting
+namespace Redstone.Core.Players.Chatting
 {
     public abstract class ChatComponent : ITagProvider
     {
         public abstract string Type { get; }
 
         public abstract NbtTag Nbt { get; }
+
+        public void WriteToStream(Stream stream) 
+        {
+            MinecraftStream mc = new(stream);
+            if (Type == "text")
+            {
+                mc.WriteTag(new StringTag("", ((CompoundTag)Nbt).ToString()));
+            }
+            else
+            {
+                if (Nbt.Type != TagType.Compound)
+                {
+                    throw new RedstoneException(new InvalidOperationException("Non-plain text ChatComponent NBT must be a CompoundTag"));
+                }
+
+                mc.WriteTag(Nbt);
+            }
+        }
 
         public static ChatComponent Parse(string snbt)
         {

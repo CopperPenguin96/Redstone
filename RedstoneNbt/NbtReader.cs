@@ -1,11 +1,10 @@
-﻿using Redstone.Core;
-using System.Text;
+﻿using System.Text;
 
 namespace Redstone.Nbt
 {
     public class NbtReader : BinaryReader
     {
-        public bool IsBigEndian = Global.IsBigEndian;
+        public static bool IsBigEndian { get; set; } = true;
 
         public NbtReader(Stream input) : base(input)
         {
