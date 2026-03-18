@@ -1,6 +1,7 @@
-﻿using Redstone.Core.Types;
+﻿using Redstone.Core.Players;
+using Redstone.Core.Types;
 
-namespace Redstone.Core.Players
+namespace Redstone.Server.Players
 {
     public sealed class Player
     {

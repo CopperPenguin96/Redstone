@@ -4,43 +4,33 @@ namespace Redstone.Core.Types
 {
     public class Position
     {
-        private long _value;
         private const int X_Bits = 26;
         private const int Y_Bits = 12;
         private const int Z_Bits = 26;
 
-        public int[] Coordinates => [X, Y, Z];
+        public int X { get; set; }
 
-        public int X
+        public int Y { get; set; } 
+
+        public int Z { get; set; }
+
+        public Position(long encoded)
         {
-            get => (int)(_value >> Z_Bits + Y_Bits);
+            X = (int)(encoded >> 38);
+            Z = (int)(encoded << 26 >> 38);
+            Y = (int)(encoded << 52 >> 52);
         }
 
-        public int Y
+        public static Position Decode(long value)
         {
-            get
-            {
-                long y_mask = (1L << Y_Bits) - 1;
-                long yVal = _value & y_mask;
-                return (int)(yVal | ((yVal & 1L << Y_Bits - 1) != 0 ? ~y_mask : 0));
-            }
-        }
-
-        public int Z
-        {
-            get
-            {
-                long zVal = _value >> Y_Bits;
-                long z_mask = (1L << Z_Bits) - 1;
-                zVal &= z_mask;
-                return (int)(zVal | ((zVal & 1L << Z_Bits - 1) != 0 ? ~z_mask : 0));
-            }
+            return new Position(value);
         }
 
         public long Encode()
         {
             return (X & 0x3FFFFFF) << 38 | (Z & 0x3FFFFFF) << 12 | Y & 0xFFF;
         }
+
         public override string ToString()
         {
             // Represent the position as three space-separated coordinates: "X Y Z"

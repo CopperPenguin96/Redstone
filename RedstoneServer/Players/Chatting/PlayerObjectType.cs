@@ -1,6 +1,8 @@
 ﻿using Redstone.Core;
 using Redstone.Core.Types;
 using Redstone.Nbt.Tags;
+using Redstone.Server;
+using Redstone.Server.Players;
 
 namespace Redstone.Core.Players.Chatting
 {
@@ -18,7 +20,7 @@ namespace Redstone.Core.Players.Chatting
         {
             get
             {
-                foreach (Player player in Server.Online)
+                foreach (Player player in PrimaryServer.Online)
                 {
                     if (player.UniqueId == PlayerID) return player;
                 }

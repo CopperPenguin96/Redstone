@@ -179,5 +179,117 @@ namespace Redstone.Core.Entities
 
             return slot;
         }
+
+        public void WriteBool(bool b)
+        {
+            WriteByte(b ? (byte)1 : (byte)0);
+        }
+
+        public bool ReadBool()
+        {
+            return ReadByte() != 0;
+        }
+
+        public void WriteRotation(Rotation rotation)
+        {
+            WriteFloat(rotation.X);
+            WriteFloat(rotation.Y);
+            WriteFloat(rotation.Z);
+        }
+
+        public void WriteRotation(float x, float y, float z)
+        {
+            WriteRotation(new(x, y, z));
+        }
+
+        public Rotation ReadRotation()
+        {
+            return new Rotation(ReadFloat(), ReadFloat(), ReadFloat());
+        }
+
+        public void WritePosition(Position position)
+        {
+            WriteLong(position.Encode());
+        }
+
+        public Position ReadPosition()
+        {
+            return new Position(ReadLong());
+        }
+
+        private long ReadLong()
+        {
+            Span<byte> buffer = ReadBytes(8);
+            return BitConverter.ToInt64(buffer);
+        }
+
+        private void WriteLong(long value)
+        {
+            Span<byte> buffer = new(BitConverter.GetBytes(value));
+            WriteBytes(buffer);
+        }
+
+        public void WriteOptionalPosition(OptValue<Position> optionalPosition)
+        {
+            if (!optionalPosition.Enabled)
+            {
+                WriteByte(0);
+                return;
+            }
+
+            WriteByte(1);
+            WritePosition(optionalPosition.Value);
+        }
+
+        public OptValue<Position> ReadOptionalPermission()
+        {
+            if (ReadByte() == 0) return new OptValue<Position>(false);
+
+            return new OptValue<Position>(true, ReadPosition());
+        }
+
+        public void WriteDirection(Direction direction)
+        {
+            WriteVarInt(direction);
+        }
+
+        public Direction ReadDirection()
+        {
+            return ReadVarInt();
+        }
+
+        public void WriteOptLivingEntRef(OptValue<Guid> id)
+        {
+            if (!id.Enabled)
+            {
+                WriteByte(0);
+                return;
+            }
+
+            WriteByte(1);
+            WriteBytes(id.Value.ToByteArray());
+        }
+
+        public OptValue<Guid> ReadOptLivingEntRef()
+        {
+            if (ReadByte() == 0) return new OptValue<Guid>(false);
+            byte[] guidBytes = ReadBytes(16).ToArray();
+            Guid id = new(guidBytes, Global.IsBigEndian);
+            return new OptValue<Guid>(true, id);
+        }
+
+        public void WriteOptionalVarInt(OptValue<VarInt> vi)
+        {
+            if (!vi.Enabled)
+            {
+                WriteByte(0);
+                return;
+            }
+
+            WriteByte(1);
+            WriteVarInt(vi.Value);
+        }
+
+
     }
 }
