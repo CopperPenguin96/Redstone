@@ -1,6 +1,8 @@
-﻿using Redstone.Core.Configuration;
+﻿using Microsoft.Win32;
+using Redstone.Core.Configuration;
 using Redstone.Core.Logging;
 using Redstone.Core.Utils;
+using Registry = Redstone.Core.Registries.Registry;
 
 namespace Redstone.Core
 {
@@ -51,6 +53,9 @@ namespace Redstone.Core
                 Logger.LogWarning("Redstone has entered TEST mode.");
                 IsDebug = true;
             }
+
+            Logger.LogSystem("Initializing registries...");
+            Registry.Init();
 
             IsInit = true;
         }

@@ -17,4 +17,16 @@
     <ProjectReference Include="..\RedstoneNbt\RedstoneNbt.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Registries\Attributes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Registries\Biomes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Registries\Particles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

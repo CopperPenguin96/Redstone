@@ -18,5 +18,10 @@ namespace Redstone.World
         {
             return new();
         }
+
+        public void FromJson(string json)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
