@@ -6,8 +6,8 @@
 
         public static readonly Version RedstoneVersion = new Version(0, 0);
 
-        public static readonly Version MinecraftVersion = new(1, 21, 10);
+        public static readonly Version MinecraftVersion = new(1, 21);
 
-        public const int Version = 773;
+        public const int Version = 767;
     }
 }

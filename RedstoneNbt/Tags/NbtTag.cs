@@ -211,5 +211,29 @@ namespace Redstone.Nbt.Tags
             }
             return sb.ToString();
         }
+
+        public bool ValueAsBool => ValueAsByte == 1;
+
+        public byte ValueAsByte => (byte)Value;
+
+        public byte[] ValueAsByteArray => (byte[])Value;
+
+        public List<NbtTag> ValueAsList => (List<NbtTag>)Value;
+
+        public double ValueAsDouble => (double)Value;
+
+        public float ValueAsFloat => (float)Value;
+
+        public int ValueAsInt => (int)Value;
+
+        public int[] ValueAsIntArray => (int[])Value;
+
+        public long ValueAsLong => (long)Value;
+
+        public long[] ValueAsLongArray => (long[])Value;
+
+        public short ValueAsShort => (short)Value;
+
+        public string ValueAsString => (string)Value;
     }
 }

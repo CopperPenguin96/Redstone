@@ -4,7 +4,7 @@ using Redstone.Nbt.Tags;
 
 namespace Redstone.Core.Players
 {
-    public struct PlayerProperty : ITagProvider
+    public class PlayerProperty : NbtTagProvider
     {
         public string Name { get; set; }
 
@@ -27,7 +27,7 @@ namespace Redstone.Core.Players
             }
         }
 
-        public NbtTag Nbt
+        public override CompoundTag Nbt
         {
             get
             {
@@ -43,6 +43,31 @@ namespace Redstone.Core.Players
                 }
 
                 return cmp;
+            }
+        }
+
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag cmp))
+            {
+                throw new ArgumentException("Expected CompoundTag");
+            }
+
+            if (!cmp.Contains("name") || !cmp.Contains("value"))
+            {
+                throw new ArgumentException("Missing required fields in CompoundTag");
+            }
+
+            Name = cmp["name"].ValueAsString;
+            Value = cmp["value"].ValueAsString;
+
+            if (cmp.Contains("signature"))
+            {
+                Signature = new OptValue<string>(cmp["signature"].ValueAsString);
+            }
+            else
+            {
+                Signature = new OptValue<string>();
             }
         }
     }

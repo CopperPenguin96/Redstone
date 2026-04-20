@@ -4,9 +4,9 @@ using Redstone.Nbt.Tags;
 
 namespace Redstone.Core.Players.Chatting
 {
-    public sealed class ClickEvent : ITagProvider
+    public sealed class ClickEvent : NbtTagProvider
     {
-        public ClickEventAction Action { get; } 
+        public ClickEventAction Action { get; private set; } 
 
         public Dictionary<string, ClickParameter> Parems = [];
 
@@ -95,7 +95,93 @@ namespace Redstone.Core.Players.Chatting
             return clickEvent;
         }
 
-        public NbtTag Nbt
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag compoundTag))
+            {
+                throw new RedstoneException("Expected CompoundTag for ClickEvent, got " + tag.GetType().Name);
+            }
+
+            if (!compoundTag.Contains("action"))
+            {
+                throw new RedstoneException("Missing 'action' field in ClickEvent CompoundTag");
+            }
+
+            var actionStr = compoundTag["action"].ValueAsString;
+            switch (actionStr.ToLower())
+            {
+                case "open_url":
+                    Action = ClickEventAction.OpenUrl;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["url"] = new ClickParameter("url", compoundTag["url"].ValueAsString)
+                    };
+                    break;
+                case "open_file":
+                    Action = ClickEventAction.OpenFile;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["path"] = new ClickParameter("path", compoundTag["path"].ValueAsString)
+                    };
+                    break;
+                case "run_command":
+                    Action = ClickEventAction.RunCommand;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["command"] = new ClickParameter("command", compoundTag["command"].ValueAsString)
+                    };
+                    break;
+                case "suggest_command":
+                    Action = ClickEventAction.SuggestCommand;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["command"] = new ClickParameter("command", compoundTag["command"].ValueAsString)
+                    };
+                    break;
+                case "change_page":
+                    Action = ClickEventAction.ChangePage;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["page"] = new ClickParameter("page", compoundTag["page"].ValueAsInt)
+                    };
+                    break;
+                case "copy_to_clipboard":
+                    Action = ClickEventAction.CopyToClipboard;
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["value"] = new ClickParameter("value", compoundTag["value"].ValueAsString)
+                    };
+                    break;
+                case "show_dialog":
+                    Action = ClickEventAction.ShowDialog;
+                    if (!compoundTag.Contains("dialog")) throw new RedstoneException("Missing 'dialog' field for show_dialog ClickEvent");
+                    var dialogTag = compoundTag["dialog"];
+                    object dialogVal = dialogTag.Type == TagType.String ? (object)dialogTag.ValueAsString : dialogTag as CompoundTag ?? throw new RedstoneException("Unsupported 'dialog' tag type in ClickEvent");
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["dialog"] = new ClickParameter("dialog", dialogVal)
+                    };
+                    break;
+                case "custom":
+                    Action = ClickEventAction.Custom;
+                    if (!compoundTag.Contains("id")) throw new RedstoneException("Missing 'id' field for custom ClickEvent");
+                    Parems = new Dictionary<string, ClickParameter>()
+                    {
+                        ["id"] = new ClickParameter("id", compoundTag["id"].ValueAsString)
+                    };
+                    if (compoundTag.Contains("payload"))
+                    {
+                        Parems["payload"] = new ClickParameter("payload", compoundTag["payload"].ValueAsString);
+                    }
+                    break;
+                default:
+                    throw new RedstoneException("Unknown ClickEvent action: " + actionStr);
+            }
+        }
+
+
+
+        public override CompoundTag Nbt
         {
             get
             {

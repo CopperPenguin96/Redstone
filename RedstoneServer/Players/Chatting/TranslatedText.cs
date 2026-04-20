@@ -22,7 +22,7 @@ namespace Redstone.Core.Players.Chatting
             else Fallback = new(true, fallback);
         }
 
-        public override CompoundTag Nbt
+        public override NbtTag Nbt
         {
             get
             {
@@ -48,6 +48,12 @@ namespace Redstone.Core.Players.Chatting
 
                 return tag;
             }
+        }
+
+
+        public override void Parse(NbtTag tag)
+        {
+            throw new NotImplementedException();
         }
     }
 }

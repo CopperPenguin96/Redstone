@@ -9,15 +9,15 @@
 
         public new bool Value
         {
-            get => (bool)base.Value;
-            set => base.Value = value;
+            get => ((byte)base.Value) == 1;
+            set => base.Value = value ? (byte)1 : (byte)0; // rather than setting as a bool, set it as a byte which is the actual value
         }
 
         public BoolTag() : base(null!, null!) { }
 
         public BoolTag(string name) : base(name, null!) { }
 
-        public BoolTag(string name, bool value) : base(name, value) { }
+        public BoolTag(string name, bool value) : base(name, value ? (byte)1:(byte)0) { }
 
         public override void WriteToStream(Stream stream, bool writeHeaders = true)
         {

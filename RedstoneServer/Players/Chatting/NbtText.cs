@@ -55,6 +55,62 @@ namespace Redstone.Core.Players.Chatting
                 return tag;
             }
         }
+
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag compound))
+            {
+                throw new RedstoneException("Expected a compound tag for NbtText");
+            }
+
+            if (!compound.Contains("type", out NbtTag typeTag) || typeTag.ValueAsString != Type)
+            {
+                throw new RedstoneException($"Expected type to be '{Type}' for NbtText");
+            }
+
+            if (compound.Contains("source", out NbtTag sourceTag))
+            {
+                Source = new(NbtSource.Parse(sourceTag.ValueAsString));
+            }
+
+            if (compound.Contains("nbt", out NbtTag nbtTag))
+            {
+                Tag = new StringTag(null!, nbtTag.ValueAsString);
+            }
+            else
+            {
+                throw new RedstoneException("Missing 'nbt' tag for NbtText");
+            }
+
+            if (compound.Contains("interpret", out NbtTag interpretTag))
+            {
+                Interpret = new(interpretTag.ValueAsBool);
+            }
+
+            if (compound.Contains("separator", out NbtTag separatorTag))
+            {
+                Seperator = new(Parse(((CompoundTag)separatorTag).ToString()));
+            }
+
+            if (!compound.Contains("entity", out NbtTag entityTag))
+            {
+                throw new RedstoneException("Missing 'entity' tag for NbtText");
+            }
+
+            if (!compound.Contains("block", out NbtTag blockTag))
+            {
+                throw new RedstoneException("Missing 'block' tag for NbtText");
+            }
+
+            if (!compound.Contains("storage", out NbtTag storageTag))
+            {
+                throw new RedstoneException("Missing 'storage' tag for NbtText");
+            }
+
+            TargetEntity = Selector.Parse(entityTag.ValueAsString);
+            BlockPos = Position.Parse(blockTag.ValueAsString);
+            Storage = Identifier.Parse(storageTag.ValueAsString);
+        }
     }
 
     public sealed class NbtSource

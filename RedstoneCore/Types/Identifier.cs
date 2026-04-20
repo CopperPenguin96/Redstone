@@ -70,5 +70,11 @@
 
             return new(name);
         }
+
+        public static Identifier Parse(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) RedstoneException.Throw(new ArgumentNullException(nameof(value)), Severity.Error);
+            return new(value);
+        }
     }
 }

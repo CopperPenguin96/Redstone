@@ -67,6 +67,34 @@ namespace Redstone.Nbt.Tags
             set => Value[index] = value;
         }
 
+        public NbtTag this[string name]
+        {
+            get
+            {
+                foreach (NbtTag tag in Value)
+                {
+                    if (tag.Name == name) return tag;
+                }
+
+                return null!;
+            }
+            set
+            {
+                for (int x = 0; x < Value.Count; x++)
+                {
+                    NbtTag tag = Value[x];
+                    if (tag.Name == name)
+                    {
+                        Value[x] = tag;
+                        return;
+                    }
+                }
+
+                // if we get to this point, add because it doesn't exist
+                Add(value);
+            }
+        }
+
         public void Add(NbtTag item)
         {
             item.Parent = this;
@@ -175,6 +203,26 @@ namespace Redstone.Nbt.Tags
         public bool Contains(NbtTag item)
         {
             return Value.Contains(item);
+        }
+
+        public bool Contains(string name, out NbtTag tag)
+        {
+            foreach (var val in Value)
+            {
+                if (val.Name.Equals(name))
+                {
+                    tag = val;
+                    return true;
+                }
+            }
+
+            tag = null!;
+            return false;
+        }
+
+        public bool Contains(string name)
+        {
+            return Contains(name, out _);
         }
 
         public void CopyTo(NbtTag[] array, int arrayIndex)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Redstone.Core.Configuration;
 using Redstone.Core.Logging;
+using Redstone.Core.Registries;
 using Redstone.Core.Utils;
 using Registry = Redstone.Core.Registries.Registry;
 
@@ -55,7 +56,7 @@ namespace Redstone.Core
             }
 
             Logger.LogSystem("Initializing registries...");
-            Registry.Init();
+            RegistryManager.Init();
 
             IsInit = true;
         }

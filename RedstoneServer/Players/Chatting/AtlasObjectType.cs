@@ -47,5 +47,33 @@ namespace Redstone.Core.Players.Chatting
                 return tag;
             }
         }
+
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag compound))
+                throw new RedstoneException("Expected a CompoundTag for AtlasObjectType component.");
+
+            if (!compound.Contains("type", out NbtTag typeTag) || typeTag.ValueAsString != Type)
+            {
+                throw new RedstoneException($"Expected type to be '{Type}' for AtlasObjectType component.");
+            }
+
+            if (!compound.Contains("sprite", out NbtTag spriteTag))
+            {
+                throw new RedstoneException("Missing 'sprite' tag for AtlasObjectType component.");
+            }
+
+            Sprite = spriteTag.ValueAsString;
+
+            if (compound.Contains("atlas", out NbtTag atlasTag))
+            {
+                Atlas = new OptValue<string>(atlasTag.ValueAsString);
+            }
+
+            if (compound.Contains("object", out NbtTag objectTag))
+            {
+                Object = new OptValue<string>(objectTag.ValueAsString);
+            }
+        }
     }
 }

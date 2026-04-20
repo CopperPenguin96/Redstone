@@ -1,17 +1,18 @@
 ﻿using Redstone.Core.Utils;
+using System.Text.Json.Nodes;
 
 namespace Redstone.World
 {
     public class GeneratorSettings : IJsonProvider
     {
-        public string JsonString()
+        public JsonNode ToJson()
         {
             return "{}"; // todo 
         }
 
         public override string ToString()
         {
-            return JsonString();
+            return ToJson().ToString();
         }
 
         public static GeneratorSettings Parse(string json)

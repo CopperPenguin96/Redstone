@@ -25,5 +25,19 @@ namespace Redstone.Core.Players.Chatting
                 };
             }
         }
+
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag compound))
+                throw new ArgumentException("Expected a CompoundTag for KeybindType.");
+
+            if (!compound.Contains("type", out NbtTag typeTag) || typeTag.ValueAsString != Type)
+                throw new ArgumentException($"Expected type to be '{Type}' for KeybindType");
+
+            if (!compound.Contains("keybind", out NbtTag keybindTag))
+                throw new ArgumentException("Missing 'keybind' tag for KeybindType");
+
+            Keybind = KeybindDefinition.Parse(keybindTag.ValueAsString);
+        }
     }
 }

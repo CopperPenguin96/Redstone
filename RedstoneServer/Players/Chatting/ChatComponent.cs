@@ -7,11 +7,11 @@ using System.Text.RegularExpressions;
 
 namespace Redstone.Core.Players.Chatting
 {
-    public abstract class ChatComponent : ITagProvider
+    public abstract class ChatComponent : NbtTagProvider
     {
         public abstract string Type { get; }
 
-        public abstract NbtTag Nbt { get; }
+        public override NbtTag Nbt { get; }
 
         public void WriteToStream(Stream stream) 
         {

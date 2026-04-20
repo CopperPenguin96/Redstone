@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Registries\BannerPattern.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Tomlyn" Version="0.19.0" />
   </ItemGroup>
 
@@ -18,15 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Registries\Attributes.json">
+    <Resource Include="Registries\BannerPattern.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Registries\Biomes.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Registries\Particles.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Resource>
   </ItemGroup>
 
 </Project>

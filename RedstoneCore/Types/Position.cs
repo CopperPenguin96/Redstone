@@ -37,6 +37,19 @@ namespace Redstone.Core.Types
             return $"{X} {Y} {Z}";
         }
 
+        private Position() { } // for parsing
+
+        public static Position Parse(string s)
+        {
+            string[] parts = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 3)
+                throw new FormatException("Invalid position format. Expected format: \"X Y Z\".");
+            int x = int.Parse(parts[0], CultureInfo.InvariantCulture);
+            int y = int.Parse(parts[1], CultureInfo.InvariantCulture);
+            int z = int.Parse(parts[2], CultureInfo.InvariantCulture);
+            return new Position() { X = x, Y = y, Z = z };
+        }
+
         public string ToMinecraftString(PositionFormat format, double? xOffset = null, double? yOffset = null, double? zOffset = null)
         {
             static string FormatNumber(double value)

@@ -27,5 +27,18 @@ namespace Redstone.Core.Players.Chatting
                 };
             }
         }
+
+        public override void Parse(NbtTag tag)
+        {
+            if (!(tag is CompoundTag cmp)) throw new RedstoneException("Expected CompoundTag for PlainText component.");
+
+            if (!cmp.Contains("type", out var typeTag) || typeTag.ValueAsString != Type)
+                throw new RedstoneException($"Expected type '{Type}' for PlainText component, but got '{typeTag?.ValueAsString ?? "null"}'.");
+
+            if (!cmp.Contains("text", out var textTag))
+                throw new RedstoneException("Missing 'text' field for PlainText component.");
+
+            Text = textTag.ValueAsString;
+        }
     }
 }
